@@ -303,7 +303,7 @@ const Admin = () => {
   const sectionNames = sections.map((section: any) => section.section);
 
   return (
-    <div className="min-h-screen pt-20 bg-gray-50" data-testid="page-admin">
+    <div className="min-h-screen bg-gray-50" data-testid="page-admin">
       {/* Header */}
       <section className="py-12 bg-white shadow-sm" data-testid="section-admin-header">
         <div className="max-w-7xl mx-auto px-6">

@@ -33,9 +33,9 @@ const Alumni = () => {
   }
 
   return (
-    <div className="min-h-screen pt-20" data-testid="page-alumni">
+    <div className="min-h-screen " data-testid="page-alumni">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-r from-primary-teal to-primary-blue text-white" data-testid="section-alumni-hero">
+      <section className=" bg-gradient-to-r from-primary-teal to-primary-blue text-white" data-testid="section-alumni-hero">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <h1 className="text-5xl md:text-6xl font-heading font-bold mb-6" data-testid="heading-alumni-title">
             Alumni Network

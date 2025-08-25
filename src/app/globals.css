@@ -1,5 +1,14 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+/* globals.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@400;700&family=Nunito+Sans&display=swap');
+
+:root {
+  --font-playfair: 'Playfair Display', serif;
+  --font-roboto: 'Roboto', sans-serif;
+  --font-nunito: 'Nunito Sans', sans-serif;
+}
 
 @custom-variant dark (&:is(.dark *));
 

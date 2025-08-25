@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Roboto, Nunito_Sans } from "next/font/google";
 import "./globals.css";
 
 import Providers from "./providers"; // contains QueryClientProvider wrapper
@@ -8,21 +7,12 @@ import Footer from "@/components/Footer";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster as Sonner } from "sonner"; // sonner toast
 
-const playfairDisplay = Playfair_Display({
-  variable: "--font-playfair-display",
-  subsets: ["latin"],
-});
-
-const roboto = Roboto({
-  variable: "--font-roboto",
-  subsets: ["latin"],
-  weight: ["400", "700"], // Specify weights as Roboto requires them
-});
-
-const nunitoSans = Nunito_Sans({
-  variable: "--font-nunito-sans",
-  subsets: ["latin"],
-});
+import { Nunito } from 'next/font/google'
+ 
+const roboto = Nunito({
+  weight: '400',
+  subsets: ['latin'],
+})
 
 export const metadata: Metadata = {
   title: "Department of Biomedical Engineering | NIT Raipur",
@@ -38,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${playfairDisplay.variable} ${roboto.variable} ${nunitoSans.variable} antialiased`}
+      className={roboto.className}
       >
         <Providers>
           <TooltipProvider>

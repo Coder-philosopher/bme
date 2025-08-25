@@ -39,7 +39,7 @@ export default function Page() {
               </p>
               <Link href="/about">
                 <Button
-                  className="bg-primary-blue hover:bg-blue-700 text-white shadow-lg hover:shadow-xl"
+                  className="bg-blue-500 hover:bg-blue-700 text-white shadow-lg hover:shadow-xl"
                   size="lg"
                   data-testid="button-learn-more"
                 >

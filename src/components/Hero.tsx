@@ -1,9 +1,22 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Hero = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
+
   const handleExploreAcademics = () => {
     const academicsSection = document.getElementById("academics");
     if (academicsSection) {
@@ -18,33 +31,42 @@ const Hero = () => {
     }
   };
 
+  const desktopVideoId = "yvVNDCElEJo"; // Full NIT Raipur Drone Tour
+  const mobileVideoId = "NpdwOZ4uFJ0"; // Shorts version for mobile
+
   return (
     <section
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen w-full flex items-center justify-center overflow-hidden"
       data-testid="section-hero"
     >
-      {/* Background video */}
-      <video
-        className="hero-video absolute inset-0 w-full h-full object-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-        data-testid="video-hero-background"
-      >
-        <source src="/hero.mp4" type="video/mp4" />
-      </video>
+      {/* YouTube Background */}
+      <div className="absolute inset-0 z-0 w-full h-full">
+        <iframe
+          className="absolute top-0 left-0 w-full h-full object-cover pointer-events-none"
+          src={`https://www.youtube.com/embed/${
+            isMobile ? mobileVideoId : desktopVideoId
+          }?autoplay=1&mute=1&loop=1&playlist=${
+            isMobile ? mobileVideoId : desktopVideoId
+          }&controls=0&modestbranding=1&showinfo=0&rel=0&playsinline=1`}
+          title="Hero Background Video"
+          allow="autoplay; encrypted-media"
+          allowFullScreen
+          frameBorder="0"
+          data-testid="video-hero-background"
+        ></iframe>
+      </div>
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50"></div>
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50 z-10"></div>
 
-      {/* Content */}
-      <div className="relative z-10 text-center text-white max-w-5xl mx-auto px-6">
+      {/* Foreground Content */}
+      <div className="relative z-20 text-center text-white max-w-5xl mx-auto px-6">
         <h1
           className="text-5xl md:text-7xl font-heading font-bold mb-6 animate-fade-in"
           data-testid="heading-hero-title"
         >
-          Department of <span className="text-primary-teal">Biomedical Engineering</span>
+          Department of{" "}
+          <span className="text-primary-teal">Biomedical Engineering</span>
         </h1>
         <h2
           className="text-2xl md:text-3xl font-light mb-8 animate-slide-up"
@@ -56,8 +78,8 @@ const Hero = () => {
           className="text-xl md:text-2xl mb-12 max-w-3xl mx-auto leading-relaxed animate-slide-up"
           data-testid="text-hero-description"
         >
-          Pioneering innovation in healthcare technology, advancing medical research,
-          and shaping the future of biomedical sciences.
+          Pioneering innovation in healthcare technology, advancing medical
+          research, and shaping the future of biomedical sciences.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-6 justify-center">
@@ -71,7 +93,7 @@ const Hero = () => {
           <Button
             variant="outline"
             onClick={handleKnowMore}
-            className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105"
+            className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-gray-900 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105"
             data-testid="button-know-more"
           >
             Know More
@@ -79,9 +101,9 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll Indicator */}
       <div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce z-20"
         data-testid="indicator-scroll"
       >
         <ChevronDown size={32} />

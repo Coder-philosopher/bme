@@ -1,4 +1,3 @@
-// next.config.js
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   eslint: {
@@ -6,6 +5,9 @@ const nextConfig = {
   },
   typescript: {
     ignoreBuildErrors: true,
+  },
+  images: {
+    domains: ['images.unsplash.com'], // ✅ allow Unsplash images
   },
 };
 

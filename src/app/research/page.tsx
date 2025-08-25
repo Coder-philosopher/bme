@@ -41,10 +41,10 @@ const Research = () => {
   }
 
   return (
-    <div className="min-h-screen pt-20" data-testid="page-research">
+    <div className="min-h-screen " data-testid="page-research">
       {/* Hero Section */}
       <section
-        className="py-20 bg-gradient-to-r from-primary-teal to-primary-blue text-white"
+        className=" bg-gradient-to-r from-primary-teal to-primary-blue text-white"
         data-testid="section-research-hero"
       >
         <div className="max-w-7xl mx-auto px-6 text-center">

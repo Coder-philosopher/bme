@@ -65,32 +65,32 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300">
+    <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-7xl px-4 sm:px-6">
       <div
-        className={`bg-white/95 backdrop-blur-md shadow-lg rounded-2xl border border-gray-200/50 transition-all duration-300 ${
-          isScrolled ? "shadow-xl scale-[0.98]" : "shadow-lg"
+        className={`backdrop-blur-md rounded-2xl border border-gray-200/50 transition-all duration-300 ${
+          isScrolled ? "bg-white/90 shadow-sm" : "bg-white/70 shadow-sm"
         }`}
       >
-        <div className="flex items-center justify-between px-6 py-3">
+        <div className="flex items-center justify-between px-4 py-3">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3 flex-shrink-0">
-            <img src="/placeholder.svg" alt="NIT Raipur Logo" className="h-10 w-10 rounded-full" />
+            <img src="/image.png" alt="NIT Raipur Logo" className="h-10 w-10 rounded-full" />
             <div className="text-gray-900 font-heading font-semibold hidden sm:block">
               <span className="block text-sm">NIT Raipur</span>
               <span className="block text-xs text-gray-600">Biomedical Engineering</span>
             </div>
           </Link>
 
-          {/* Desktop nav */}
-          <div className="hidden lg:flex items-center space-x-1 mx-6">
+          {/* Navigation Links - Desktop */}
+          <div className="hidden lg:flex items-center space-x-2">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.path}
-                className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 hover:bg-primary-teal hover:text-white ${
+                className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 text-[14px] ${
                   pathname === item.path
-                    ? "bg-primary-teal text-white"
-                    : "text-gray-700 hover:text-white"
+                    ? "underline underline-offset-4 decoration-primary-teal text-gray-900"
+                    : "text-gray-700 hover:text-gray-900 "
                 }`}
               >
                 {item.name}
@@ -98,42 +98,46 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Search + mobile menu */}
-          <div className="flex items-center space-x-3">
-            {showSearch ? (
-              <form onSubmit={handleSearch} className="hidden sm:flex items-center">
-                <Input
-                  type="text"
-                  placeholder="Search website..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-48 h-8 text-sm rounded-lg border-gray-300"
-                />
+          {/* Search + Mobile Toggle */}
+          <div className="flex items-center space-x-2">
+            {/* Desktop Search */}
+            <div className="hidden sm:flex items-center">
+              {showSearch ? (
+                <form onSubmit={handleSearch} className="flex items-center">
+                  <Input
+                    type="text"
+                    placeholder="Search..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-48 h-8 text-sm rounded-lg border-gray-300"
+                  />
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => setShowSearch(false)}
+                    className="ml-1 h-8 w-8 rounded-lg"
+                  >
+                    <X size={16} />
+                  </Button>
+                </form>
+              ) : (
                 <Button
-                  type="button"
                   variant="ghost"
                   size="sm"
-                  onClick={() => setShowSearch(false)}
-                  className="ml-1 h-8 w-8 rounded-lg"
+                  onClick={() => setShowSearch(true)}
+                  className="h-10 w-10 rounded-xl "
                 >
-                  <X size={16} />
+                  <Search size={18} />
                 </Button>
-              </form>
-            ) : (
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setShowSearch(true)}
-                className="h-10 w-10 rounded-xl hover:bg-gray-100 hidden sm:flex"
-              >
-                <Search size={18} />
-              </Button>
-            )}
+              )}
+            </div>
 
+            {/* Mobile menu toggle */}
             <Button
               variant="ghost"
               size="sm"
-              className="lg:hidden h-10 w-10 rounded-xl hover:bg-gray-100"
+              className="lg:hidden h-10 w-10 rounded-xl "
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -144,10 +148,11 @@ const Navbar = () => {
         {/* Mobile menu */}
         {isMobileMenuOpen && (
           <div className="lg:hidden border-t border-gray-200/50 p-4">
-            <form onSubmit={handleSearch} className="flex items-center mb-4 sm:hidden">
+            {/* Mobile Search */}
+            <form onSubmit={handleSearch} className="flex items-center mb-4">
               <Input
                 type="text"
-                placeholder="Search website..."
+                placeholder="Search..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="flex-1 h-8 text-sm rounded-lg border-gray-300 mr-2"
@@ -157,15 +162,16 @@ const Navbar = () => {
               </Button>
             </form>
 
+            {/* Mobile nav links */}
             <div className="grid grid-cols-2 gap-2">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   href={item.path}
-                  className={`px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 text-center ${
+                  className={`px-4 py-3 rounded-xl text-sm font-medium text-center transition-all duration-200 ${
                     pathname === item.path
-                      ? "bg-primary-teal text-white"
-                      : "text-gray-700 hover:bg-gray-100"
+                      ? "underline underline-offset-4 decoration-primary-teal text-gray-900"
+                      : "text-gray-800 hover:bg-gray-100 hover:text-gray-900"
                   }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
@@ -173,6 +179,7 @@ const Navbar = () => {
                 </Link>
               ))}
             </div>
+
           </div>
         )}
       </div>
