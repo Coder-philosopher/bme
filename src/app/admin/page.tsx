@@ -8,8 +8,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
-import { apiRequest, queryClient } from "@/lib/queryClient";
+import { apiRequest, makeQueryClient } from "@/lib/queryClient"; // ✅ updated import
 import { Save, RefreshCw, Settings, Database, Eye, Lock, Shield, AlertTriangle } from "lucide-react";
+
+// ✅ create client instance
+const queryClient = makeQueryClient();
 
 const Admin = () => {
   const { toast } = useToast();
@@ -470,8 +473,8 @@ const Admin = () => {
                   <li>• Select a section from the left navigation</li>
                   <li>• Edit the JSON data in the text area</li>
                   <li>• Ensure proper JSON formatting</li>
-                  <li>• Click "Save" to update the data</li>
-                  <li>• Use "Reset" to revert changes</li>
+                  <li>• Click &quot;Save&quot; to update the data</li>
+                  <li>• Use &quot;Reset&quot; to revert changes</li>
                 </ul>
               </div>
               

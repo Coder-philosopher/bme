@@ -242,7 +242,7 @@ const Events = () => {
                 Upcoming Events
               </h2>
               <p className="text-xl text-gray-600" data-testid="text-upcoming-subtitle">
-                Don't miss these exciting upcoming events
+                Don&apos;t miss these exciting upcoming events
               </p>
             </div>
             
