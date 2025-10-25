@@ -170,11 +170,11 @@ const researchData = {
 };
 
 const ComingSoonPlaceholder = ({ icon: Icon, title }: { icon: any; title: string }) => (
-  <Card className="p-12 text-center">
-    <Icon className="w-16 h-16 mx-auto mb-4 text-gray-300" />
-    <h3 className="text-xl font-semibold text-gray-400 mb-2">{title}</h3>
-    <p className="text-gray-500">Content will be updated soon</p>
-  </Card>
+  <div className="p-16 text-center border-2 border-gray-300 bg-gray-50">
+    <Icon className="w-16 h-16 mx-auto mb-4 text-gray-400" />
+    <h3 className="text-xl font-bold text-gray-900 mb-2 uppercase tracking-wide">{title}</h3>
+    <p className="text-gray-700">Content will be updated soon</p>
+  </div>
 );
 
 const Research = () => {
@@ -190,95 +190,95 @@ const Research = () => {
     .toFixed(2);
 
   return (
-    <div className="min-h-screen pt-28 bg-gradient-to-b from-gray-50 to-white">
-      {/* Hero Section */}
-      <section className="pb-10 bg-gradient-to-r from-purple-50 via-blue-50 to-teal-50">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+    <div className="min-h-screen pt-28 bg-white">
+      {/* Hero Section - Academic */}
+      <section className="pb-12 bg-blue-900 border-b-4 border-gray-800">
+        <div className="max-w-7xl mx-auto px-6 text-center py-20">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 uppercase tracking-wide">
             Research & Innovation
           </h1>
-          <p className="text-lg md:text-2xl text-gray-700 max-w-3xl mx-auto">
+          <div className="w-32 h-1 bg-white mx-auto mb-6"></div>
+          <p className="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto">
             Advancing biomedical science through cutting-edge research and collaboration
           </p>
         </div>
       </section>
 
       {/* Stats Cards */}
-      <section className="py-12 -mt-10">
+      <section className="py-12 bg-gray-50 border-b-2 border-gray-300">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-3 gap-6">
-            <Card className="p-6 bg-gradient-to-br from-blue-50 to-white border-t-4 border-blue-500">
+            <div className="p-6 border-2 border-gray-400 bg-white border-t-4 border-t-blue-900">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-600 mb-1">Total Projects</p>
-                  <p className="text-3xl font-bold text-gray-900">{totalProjects}</p>
+                  <p className="text-xs font-bold text-gray-700 mb-2 uppercase tracking-wide">Total Projects</p>
+                  <p className="text-4xl font-bold text-blue-900">{totalProjects}</p>
                 </div>
-                <Lightbulb className="w-12 h-12 text-blue-500 opacity-20" />
+                <Lightbulb className="w-12 h-12 text-blue-900 opacity-20" />
               </div>
-            </Card>
+            </div>
 
-            <Card className="p-6 bg-gradient-to-br from-green-50 to-white border-t-4 border-green-500">
+            <div className="p-6 border-2 border-gray-400 bg-white border-t-4 border-t-blue-900">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-600 mb-1">Ongoing Projects</p>
-                  <p className="text-3xl font-bold text-gray-900">{ongoingProjects}</p>
+                  <p className="text-xs font-bold text-gray-700 mb-2 uppercase tracking-wide">Ongoing Projects</p>
+                  <p className="text-4xl font-bold text-blue-900">{ongoingProjects}</p>
                 </div>
-                <Award className="w-12 h-12 text-green-500 opacity-20" />
+                <Award className="w-12 h-12 text-blue-900 opacity-20" />
               </div>
-            </Card>
+            </div>
 
-            <Card className="p-6 bg-gradient-to-br from-purple-50 to-white border-t-4 border-purple-500">
+            <div className="p-6 border-2 border-gray-400 bg-white border-t-4 border-t-blue-900">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-600 mb-1">Total Funding</p>
-                  <p className="text-2xl font-bold text-gray-900">₹{(parseFloat(totalFunding) / 10000000).toFixed(2)}Cr+</p>
+                  <p className="text-xs font-bold text-gray-700 mb-2 uppercase tracking-wide">Total Funding</p>
+                  <p className="text-3xl font-bold text-blue-900">₹{(parseFloat(totalFunding) / 10000000).toFixed(2)}Cr+</p>
                 </div>
-                <FileText className="w-12 h-12 text-purple-500 opacity-20" />
+                <FileText className="w-12 h-12 text-blue-900 opacity-20" />
               </div>
-            </Card>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Main Content */}
-      <section className="py-12">
+      <section className="py-16">
         <div className="max-w-7xl mx-auto px-6">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            {/* Desktop Sidebar + Mobile Tabs */}
             <div className="flex flex-col lg:flex-row gap-8">
               {/* Vertical Sidebar for Desktop */}
-              <TabsList className="hidden lg:flex flex-col w-64 rounded-xl bg-white shadow-md gap-2 p-4 h-fit sticky top-28">
+              <TabsList className="hidden lg:flex flex-col w-64 bg-gray-50 border-2 border-gray-300 gap-0 p-0 h-fit sticky top-28">
                 <TabsTrigger
                   value="projects"
-                  className="w-full justify-start text-left px-4 py-3 data-[state=active]:bg-teal-50 data-[state=active]:text-teal-700"
+                  className="w-full justify-start text-left px-4 py-3 border-b-2 border-gray-300 data-[state=active]:bg-blue-900 data-[state=active]:text-white font-bold uppercase tracking-wide text-sm"
                 >
                   <Lightbulb className="w-5 h-5 mr-3" />
                   Research Projects
                 </TabsTrigger>
                 <TabsTrigger
                   value="publications"
-                  className="w-full justify-start text-left px-4 py-3 data-[state=active]:bg-teal-50 data-[state=active]:text-teal-700"
+                  className="w-full justify-start text-left px-4 py-3 border-b-2 border-gray-300 data-[state=active]:bg-blue-900 data-[state=active]:text-white font-bold uppercase tracking-wide text-sm"
                 >
                   <BookOpen className="w-5 h-5 mr-3" />
                   Publications
                 </TabsTrigger>
                 <TabsTrigger
                   value="conference"
-                  className="w-full justify-start text-left px-4 py-3 data-[state=active]:bg-teal-50 data-[state=active]:text-teal-700"
+                  className="w-full justify-start text-left px-4 py-3 border-b-2 border-gray-300 data-[state=active]:bg-blue-900 data-[state=active]:text-white font-bold uppercase tracking-wide text-sm"
                 >
                   <Presentation className="w-5 h-5 mr-3" />
                   Conferences
                 </TabsTrigger>
                 <TabsTrigger
                   value="mous"
-                  className="w-full justify-start text-left px-4 py-3 data-[state=active]:bg-teal-50 data-[state=active]:text-teal-700"
+                  className="w-full justify-start text-left px-4 py-3 border-b-2 border-gray-300 data-[state=active]:bg-blue-900 data-[state=active]:text-white font-bold uppercase tracking-wide text-sm"
                 >
                   <Users className="w-5 h-5 mr-3" />
                   MoUs & Collaborations
                 </TabsTrigger>
                 <TabsTrigger
                   value="talks"
-                  className="w-full justify-start text-left px-4 py-3 data-[state=active]:bg-teal-50 data-[state=active]:text-teal-700"
+                  className="w-full justify-start text-left px-4 py-3 data-[state=active]:bg-blue-900 data-[state=active]:text-white font-bold uppercase tracking-wide text-sm"
                 >
                   <Calendar className="w-5 h-5 mr-3" />
                   Invited Talks
@@ -286,20 +286,20 @@ const Research = () => {
               </TabsList>
 
               {/* Horizontal Tabs for Mobile */}
-              <TabsList className="lg:hidden grid grid-cols-5 gap-2 rounded-lg bg-white shadow p-2 mb-6">
-                <TabsTrigger value="projects" className="text-xs px-2 py-2">
+              <TabsList className="lg:hidden grid grid-cols-5 gap-2 bg-gray-50 border-2 border-gray-300 p-2 mb-6">
+                <TabsTrigger value="projects" className="text-xs px-2 py-2 font-bold uppercase data-[state=active]:bg-blue-900 data-[state=active]:text-white">
                   Projects
                 </TabsTrigger>
-                <TabsTrigger value="publications" className="text-xs px-2 py-2">
+                <TabsTrigger value="publications" className="text-xs px-2 py-2 font-bold uppercase data-[state=active]:bg-blue-900 data-[state=active]:text-white">
                   Publications
                 </TabsTrigger>
-                <TabsTrigger value="conference" className="text-xs px-2 py-2">
+                <TabsTrigger value="conference" className="text-xs px-2 py-2 font-bold uppercase data-[state=active]:bg-blue-900 data-[state=active]:text-white">
                   Conferences
                 </TabsTrigger>
-                <TabsTrigger value="mous" className="text-xs px-2 py-2">
+                <TabsTrigger value="mous" className="text-xs px-2 py-2 font-bold uppercase data-[state=active]:bg-blue-900 data-[state=active]:text-white">
                   MoUs
                 </TabsTrigger>
-                <TabsTrigger value="talks" className="text-xs px-2 py-2">
+                <TabsTrigger value="talks" className="text-xs px-2 py-2 font-bold uppercase data-[state=active]:bg-blue-900 data-[state=active]:text-white">
                   Talks
                 </TabsTrigger>
               </TabsList>
@@ -311,61 +311,61 @@ const Research = () => {
                   <div className="space-y-12">
                     {/* Sponsored Research Projects */}
                     <div>
-                      <div className="flex items-center mb-6">
-                        <div className="bg-gradient-to-r from-blue-500 to-teal-500 p-3 rounded-lg mr-4">
+                      <div className="flex items-center mb-6 pb-4 border-b-2 border-gray-400">
+                        <div className="bg-blue-900 p-3 mr-4">
                           <Award className="w-6 h-6 text-white" />
                         </div>
-                        <h2 className="text-3xl font-bold text-gray-900">
+                        <h2 className="text-3xl font-bold text-gray-900 uppercase tracking-wide">
                           Sponsored Research Projects
                         </h2>
                       </div>
-                      <Card className="overflow-hidden">
+                      <div className="overflow-hidden border-2 border-gray-400 bg-gray-50">
                         <div className="overflow-x-auto">
                           <Table>
                             <TableHeader>
-                              <TableRow className="bg-gray-50">
-                                <TableHead className="font-semibold">Project No.</TableHead>
-                                <TableHead className="font-semibold">Title</TableHead>
-                                <TableHead className="font-semibold">Coordinators</TableHead>
-                                <TableHead className="font-semibold">Funding Agency</TableHead>
-                                <TableHead className="font-semibold text-center">Year</TableHead>
-                                <TableHead className="font-semibold text-right">Grant (₹)</TableHead>
-                                <TableHead className="font-semibold text-center">Status</TableHead>
+                              <TableRow className="border-b-2 border-gray-400">
+                                <TableHead className="font-bold text-gray-900 uppercase tracking-wide bg-blue-900 text-white border-r-2 border-gray-300 text-xs">Project No.</TableHead>
+                                <TableHead className="font-bold text-gray-900 uppercase tracking-wide bg-blue-900 text-white border-r-2 border-gray-300 text-xs">Title</TableHead>
+                                <TableHead className="font-bold text-gray-900 uppercase tracking-wide bg-blue-900 text-white border-r-2 border-gray-300 text-xs">Coordinators</TableHead>
+                                <TableHead className="font-bold text-gray-900 uppercase tracking-wide bg-blue-900 text-white border-r-2 border-gray-300 text-xs">Funding Agency</TableHead>
+                                <TableHead className="font-bold text-gray-900 uppercase tracking-wide bg-blue-900 text-white text-center border-r-2 border-gray-300 text-xs">Year</TableHead>
+                                <TableHead className="font-bold text-gray-900 uppercase tracking-wide bg-blue-900 text-white text-right border-r-2 border-gray-300 text-xs">Grant (₹)</TableHead>
+                                <TableHead className="font-bold text-gray-900 uppercase tracking-wide bg-blue-900 text-white text-center text-xs">Status</TableHead>
                               </TableRow>
                             </TableHeader>
                             <TableBody>
                               {researchData.research_projects.map((project, idx) => (
-                                <TableRow key={idx} className="hover:bg-gray-50">
-                                  <TableCell className="font-mono text-xs">
+                                <TableRow key={idx} className="border-b border-gray-300 hover:bg-white bg-gray-50">
+                                  <TableCell className="font-mono text-xs font-semibold text-gray-800 border-r border-gray-300">
                                     {project.project_no}
                                   </TableCell>
-                                  <TableCell className="max-w-md">
-                                    <p className="font-medium text-gray-900">{project.title}</p>
+                                  <TableCell className="max-w-md border-r border-gray-300">
+                                    <p className="font-bold text-gray-900 text-sm">{project.title}</p>
                                   </TableCell>
-                                  <TableCell>
+                                  <TableCell className="border-r border-gray-300">
                                     {project.coordinators.map((coord, i) => (
-                                      <div key={i} className="text-sm text-gray-600">
+                                      <div key={i} className="text-sm text-gray-800 font-semibold">
                                         {coord}
                                       </div>
                                     ))}
                                   </TableCell>
-                                  <TableCell>
-                                    <span className="text-sm font-medium text-blue-700">
+                                  <TableCell className="border-r border-gray-300">
+                                    <span className="text-sm font-bold text-blue-900">
                                       {project.funding_agency}
                                     </span>
                                   </TableCell>
-                                  <TableCell className="text-center">
+                                  <TableCell className="text-center font-semibold text-gray-800 border-r border-gray-300">
                                     {project.year_of_sanction}
                                   </TableCell>
-                                  <TableCell className="text-right font-semibold">
+                                  <TableCell className="text-right font-bold text-gray-900 border-r border-gray-300">
                                     {project.research_grant}
                                   </TableCell>
                                   <TableCell className="text-center">
                                     <span
-                                      className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${
+                                      className={`inline-block px-3 py-1 text-xs font-bold uppercase tracking-wide border ${
                                         project.current_status === "On Going"
-                                          ? "bg-blue-100 text-blue-700"
-                                          : "bg-green-100 text-green-700"
+                                          ? "bg-blue-900 text-white border-blue-900"
+                                          : "bg-white text-gray-900 border-gray-400"
                                       }`}
                                     >
                                       {project.current_status}
@@ -376,60 +376,60 @@ const Research = () => {
                             </TableBody>
                           </Table>
                         </div>
-                      </Card>
+                      </div>
                     </div>
 
                     {/* Seed Grant Projects */}
                     <div>
-                      <div className="flex items-center mb-6">
-                        <div className="bg-gradient-to-r from-green-500 to-teal-500 p-3 rounded-lg mr-4">
+                      <div className="flex items-center mb-6 pb-4 border-b-2 border-gray-400">
+                        <div className="bg-blue-900 p-3 mr-4">
                           <Lightbulb className="w-6 h-6 text-white" />
                         </div>
-                        <h2 className="text-3xl font-bold text-gray-900">
+                        <h2 className="text-3xl font-bold text-gray-900 uppercase tracking-wide">
                           Seed Grant Projects
                         </h2>
                       </div>
-                      <Card className="overflow-hidden">
+                      <div className="overflow-hidden border-2 border-gray-400 bg-gray-50">
                         <div className="overflow-x-auto">
                           <Table>
                             <TableHeader>
-                              <TableRow className="bg-gray-50">
-                                <TableHead className="font-semibold">Project No.</TableHead>
-                                <TableHead className="font-semibold">Title</TableHead>
-                                <TableHead className="font-semibold">Coordinators</TableHead>
-                                <TableHead className="font-semibold text-center">Year</TableHead>
-                                <TableHead className="font-semibold text-right">Grant (₹)</TableHead>
-                                <TableHead className="font-semibold text-center">Status</TableHead>
+                              <TableRow className="border-b-2 border-gray-400">
+                                <TableHead className="font-bold text-gray-900 uppercase tracking-wide bg-blue-900 text-white border-r-2 border-gray-300 text-xs">Project No.</TableHead>
+                                <TableHead className="font-bold text-gray-900 uppercase tracking-wide bg-blue-900 text-white border-r-2 border-gray-300 text-xs">Title</TableHead>
+                                <TableHead className="font-bold text-gray-900 uppercase tracking-wide bg-blue-900 text-white border-r-2 border-gray-300 text-xs">Coordinators</TableHead>
+                                <TableHead className="font-bold text-gray-900 uppercase tracking-wide bg-blue-900 text-white text-center border-r-2 border-gray-300 text-xs">Year</TableHead>
+                                <TableHead className="font-bold text-gray-900 uppercase tracking-wide bg-blue-900 text-white text-right border-r-2 border-gray-300 text-xs">Grant (₹)</TableHead>
+                                <TableHead className="font-bold text-gray-900 uppercase tracking-wide bg-blue-900 text-white text-center text-xs">Status</TableHead>
                               </TableRow>
                             </TableHeader>
                             <TableBody>
                               {researchData.seed_grant_projects.map((project, idx) => (
-                                <TableRow key={idx} className="hover:bg-gray-50">
-                                  <TableCell className="font-mono text-xs">
+                                <TableRow key={idx} className="border-b border-gray-300 hover:bg-white bg-gray-50">
+                                  <TableCell className="font-mono text-xs font-semibold text-gray-800 border-r border-gray-300">
                                     {project.project_no}
                                   </TableCell>
-                                  <TableCell className="max-w-md">
-                                    <p className="font-medium text-gray-900">{project.title}</p>
+                                  <TableCell className="max-w-md border-r border-gray-300">
+                                    <p className="font-bold text-gray-900 text-sm">{project.title}</p>
                                   </TableCell>
-                                  <TableCell>
+                                  <TableCell className="border-r border-gray-300">
                                     {project.coordinators.map((coord, i) => (
-                                      <div key={i} className="text-sm text-gray-600">
+                                      <div key={i} className="text-sm text-gray-800 font-semibold">
                                         {coord}
                                       </div>
                                     ))}
                                   </TableCell>
-                                  <TableCell className="text-center">
+                                  <TableCell className="text-center font-semibold text-gray-800 border-r border-gray-300">
                                     {project.year_of_sanction}
                                   </TableCell>
-                                  <TableCell className="text-right font-semibold">
+                                  <TableCell className="text-right font-bold text-gray-900 border-r border-gray-300">
                                     {project.research_grant}
                                   </TableCell>
                                   <TableCell className="text-center">
                                     <span
-                                      className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${
+                                      className={`inline-block px-3 py-1 text-xs font-bold uppercase tracking-wide border ${
                                         project.current_status === "On Going"
-                                          ? "bg-blue-100 text-blue-700"
-                                          : "bg-green-100 text-green-700"
+                                          ? "bg-blue-900 text-white border-blue-900"
+                                          : "bg-white text-gray-900 border-gray-400"
                                       }`}
                                     >
                                       {project.current_status}
@@ -440,7 +440,7 @@ const Research = () => {
                             </TableBody>
                           </Table>
                         </div>
-                      </Card>
+                      </div>
                     </div>
                   </div>
                 </TabsContent>

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const Hero = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -79,8 +80,8 @@ const Hero = () => {
             data-testid="heading-hero-title"
           >
             Department of <br />
-            <span className="bg-gradient-to-r from-blue-200 via-cyan-200 to-blue-100 bg-clip-text text-transparent">
-              Biomedical Engineering
+            <span className="text-blue-900 bg-clip-text  ">
+              Bio Medical Engineering
             </span>
           </h1>
         </motion.div>
@@ -89,7 +90,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-2xl md:text-3xl font-semibold mb-8 text-white/90"
+          className="text-2xl md:text-3xl font-semibold mb-8 text-white"
           data-testid="heading-hero-subtitle"
         >
           National Institute of Technology Raipur
@@ -99,7 +100,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-lg md:text-xl mb-12 max-w-3xl mx-auto leading-relaxed text-white/80"
+          className="text-lg md:text-xl mb-12 max-w-3xl mx-auto leading-relaxed text-white font-semibold"
           data-testid="text-hero-description"
         >
           Pioneering innovation in healthcare technology through cutting-edge research,
@@ -107,28 +108,24 @@ const Hero = () => {
         </motion.p>
 
         {/* CTA Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
-        >
-          <Button
-            onClick={handleExploreAcademics}
-            className="bg-white hover:bg-gray-100 text-gray-900 px-8 py-6 rounded-xl font-semibold text-base shadow-2xl hover:shadow-white/20 transition-all duration-300 transform hover:scale-105"
-            data-testid="button-explore-academics"
-          >
-            Explore Academic Programs
-          </Button>
-          <Button
-            variant="outline"
-            onClick={handleKnowMore}
-            className="border-2 border-white/30 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white px-8 py-6 rounded-xl font-semibold text-base transition-all duration-300 transform hover:scale-105"
-            data-testid="button-know-more"
-          >
-            Learn About Us
-          </Button>
-        </motion.div>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+  <Link
+    href="/academics"
+    className="bg-white hover:bg-gray-100 text-blue-900 px-8 py-4 font-semibold text-base shadow-2xl hover:shadow-white/20 transition-all duration-300 transform hover:scale-105 text-center "
+    data-testid="button-explore-academics"
+  >
+    Explore Academic Programs
+  </Link>
+
+  <Link
+    href="/about"
+    className="border-2 border-white/30 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white px-8 py-4 font-semibold text-base transition-all duration-300 transform hover:scale-105 text-center "
+    data-testid="button-know-more"
+  >
+    Learn About Us
+  </Link>
+</div>
+
 
         {/* Stats Cards - Glass Morphism */}
         

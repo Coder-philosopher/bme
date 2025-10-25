@@ -9,7 +9,6 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { MapPin, Mail, Phone, Clock, Building2, Train, Plane, Car } from "lucide-react";
 
-// Hardcoded contact data
 const contactData = {
   department: {
     name: "Department of Biomedical Engineering",
@@ -87,53 +86,54 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen pt-28 bg-gradient-to-b from-gray-50 to-white">
-      {/* Hero Section */}
-      <section className="pb-10 bg-gradient-to-r from-blue-50 via-teal-50 to-cyan-50">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-            Get in Touch
+    <div className="min-h-screen pt-28 bg-white">
+      {/* Hero Section - Academic */}
+      <section className="pb-12 bg-blue-900 border-b-4 border-gray-800">
+        <div className="max-w-7xl mx-auto px-6 text-center py-20">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 uppercase tracking-wide">
+            Contact Us
           </h1>
-          <p className="text-lg md:text-2xl text-gray-700 max-w-3xl mx-auto">
+          <div className="w-32 h-1 bg-white mx-auto mb-6"></div>
+          <p className="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto">
             Connect with us for admissions, collaborations, or any inquiries
           </p>
         </div>
       </section>
 
       {/* Contact Information & Form */}
-      <section className="py-12">
+      <section className="py-20 border-b-2 border-gray-300">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Information */}
             <div className="space-y-6">
               {/* Department Contact */}
-              <Card className="p-8 shadow-lg">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-                  <Building2 className="w-6 h-6 mr-3 text-teal-600" />
+              <div className="p-8 border-2 border-gray-400 bg-gray-50">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center uppercase tracking-wide pb-3 border-b-2 border-blue-900">
+                  <Building2 className="w-6 h-6 mr-3 text-blue-900" />
                   Department Contact
                 </h3>
                 <div className="space-y-5">
-                  <div className="flex items-start space-x-4">
-                    <div className="bg-gradient-to-br from-teal-500 to-cyan-500 p-3 rounded-xl shadow-md">
+                  <div className="flex items-start space-x-4 pb-4 border-b border-gray-300">
+                    <div className="bg-blue-900 p-3">
                       <MapPin className="h-5 w-5 text-white" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900 mb-1">Address</h4>
-                      <p className="text-gray-600 whitespace-pre-line text-sm leading-relaxed">
+                      <h4 className="font-bold text-gray-900 mb-1 uppercase tracking-wide text-sm">Address</h4>
+                      <p className="text-gray-800 whitespace-pre-line text-sm leading-relaxed">
                         {contactData.department.address}
                       </p>
                     </div>
                   </div>
 
-                  <div className="flex items-start space-x-4">
-                    <div className="bg-gradient-to-br from-blue-500 to-indigo-500 p-3 rounded-xl shadow-md">
+                  <div className="flex items-start space-x-4 pb-4 border-b border-gray-300">
+                    <div className="bg-blue-900 p-3">
                       <Mail className="h-5 w-5 text-white" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900 mb-1">Email</h4>
+                      <h4 className="font-bold text-gray-900 mb-1 uppercase tracking-wide text-sm">Email</h4>
                       <a
                         href={`mailto:${contactData.department.email}`}
-                        className="text-blue-600 hover:text-blue-800 hover:underline text-sm"
+                        className="text-blue-900 hover:underline text-sm font-semibold"
                       >
                         {contactData.department.email}
                       </a>
@@ -141,96 +141,96 @@ const Contact = () => {
                   </div>
 
                   <div className="flex items-start space-x-4">
-                    <div className="bg-gradient-to-br from-green-500 to-teal-500 p-3 rounded-xl shadow-md">
+                    <div className="bg-blue-900 p-3">
                       <Phone className="h-5 w-5 text-white" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900 mb-1">Phone</h4>
+                      <h4 className="font-bold text-gray-900 mb-1 uppercase tracking-wide text-sm">Phone</h4>
                       <a
                         href={`tel:${contactData.department.phone}`}
-                        className="text-green-600 hover:text-green-800 hover:underline text-sm"
+                        className="text-blue-900 hover:underline text-sm font-semibold"
                       >
                         {contactData.department.phone}
                       </a>
                     </div>
                   </div>
                 </div>
-              </Card>
+              </div>
 
               {/* HoD Contact */}
-              <Card className="p-8 shadow-lg bg-gradient-to-br from-indigo-50 to-white">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              <div className="p-8 border-2 border-gray-400 bg-white">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4 uppercase tracking-wide pb-3 border-b-2 border-blue-900">
                   Head of Department
                 </h3>
                 <div className="space-y-2 text-sm">
-                  <p>
-                    <strong className="text-gray-700">Name:</strong>{" "}
-                    <span className="text-gray-900">{contactData.hod.name}</span>
+                  <p className="pb-2 border-b border-gray-200">
+                    <strong className="text-gray-900 uppercase tracking-wide">Name:</strong>{" "}
+                    <span className="text-gray-800 font-semibold">{contactData.hod.name}</span>
                   </p>
-                  <p>
-                    <strong className="text-gray-700">Designation:</strong>{" "}
-                    <span className="text-gray-900">{contactData.hod.designation}</span>
+                  <p className="pb-2 border-b border-gray-200">
+                    <strong className="text-gray-900 uppercase tracking-wide">Designation:</strong>{" "}
+                    <span className="text-gray-800">{contactData.hod.designation}</span>
                   </p>
-                  <p>
-                    <strong className="text-gray-700">Email:</strong>{" "}
+                  <p className="pb-2 border-b border-gray-200">
+                    <strong className="text-gray-900 uppercase tracking-wide">Email:</strong>{" "}
                     <a
                       href={`mailto:${contactData.hod.email}`}
-                      className="text-blue-600 hover:underline"
+                      className="text-blue-900 hover:underline font-semibold"
                     >
                       {contactData.hod.email}
                     </a>
                   </p>
-                  <p>
-                    <strong className="text-gray-700">Phone:</strong>{" "}
+                  <p className="pb-2 border-b border-gray-200">
+                    <strong className="text-gray-900 uppercase tracking-wide">Phone:</strong>{" "}
                     <a
                       href={`tel:${contactData.hod.phone}`}
-                      className="text-green-600 hover:underline"
+                      className="text-blue-900 hover:underline font-semibold"
                     >
                       {contactData.hod.phone}
                     </a>
                   </p>
                   <p>
-                    <strong className="text-gray-700">Office:</strong>{" "}
-                    <span className="text-gray-900">{contactData.hod.office}</span>
+                    <strong className="text-gray-900 uppercase tracking-wide">Office:</strong>{" "}
+                    <span className="text-gray-800">{contactData.hod.office}</span>
                   </p>
                 </div>
-              </Card>
+              </div>
 
               {/* Office Hours */}
-              <Card className="p-8 shadow-lg">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
-                  <Clock className="w-6 h-6 mr-3 text-blue-600" />
+              <div className="p-8 border-2 border-gray-400 bg-gray-50">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center uppercase tracking-wide pb-3 border-b-2 border-blue-900">
+                  <Clock className="w-6 h-6 mr-3 text-blue-900" />
                   Office Hours
                 </h3>
                 <div className="space-y-3 text-sm">
-                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                    <span className="font-semibold text-gray-700">Location:</span>
-                    <span className="text-gray-900">{contactData.office.location}</span>
+                  <div className="flex items-center justify-between p-3 border border-gray-300 bg-white">
+                    <span className="font-bold text-gray-900 uppercase tracking-wide">Location:</span>
+                    <span className="text-gray-800">{contactData.office.location}</span>
                   </div>
-                  <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
-                    <span className="font-semibold text-gray-700">Monday - Friday:</span>
-                    <span className="text-blue-700 font-medium">{contactData.office.hours}</span>
+                  <div className="flex items-center justify-between p-3 border border-gray-300 bg-white">
+                    <span className="font-bold text-gray-900 uppercase tracking-wide">Mon - Fri:</span>
+                    <span className="text-blue-900 font-bold">{contactData.office.hours}</span>
                   </div>
-                  <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
-                    <span className="font-semibold text-gray-700">Saturday:</span>
-                    <span className="text-green-700 font-medium">{contactData.office.saturday}</span>
+                  <div className="flex items-center justify-between p-3 border border-gray-300 bg-white">
+                    <span className="font-bold text-gray-900 uppercase tracking-wide">Saturday:</span>
+                    <span className="text-blue-900 font-bold">{contactData.office.saturday}</span>
                   </div>
-                  <div className="flex items-center justify-between p-3 bg-red-50 rounded-lg">
-                    <span className="font-semibold text-gray-700">Sunday:</span>
-                    <span className="text-red-700 font-medium">{contactData.office.sunday}</span>
+                  <div className="flex items-center justify-between p-3 border border-gray-300 bg-white">
+                    <span className="font-bold text-gray-900 uppercase tracking-wide">Sunday:</span>
+                    <span className="text-red-700 font-bold">{contactData.office.sunday}</span>
                   </div>
                 </div>
-              </Card>
+              </div>
             </div>
 
             {/* Contact Form */}
-            <Card className="p-8 shadow-lg sticky top-28 h-fit">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                Send us a Message
+            <div className="p-8 border-2 border-gray-400 bg-gray-50 sticky top-28 h-fit">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6 uppercase tracking-wide pb-3 border-b-2 border-blue-900">
+                Send Us a Message
               </h3>
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
-                  <Label htmlFor="name" className="text-sm font-semibold text-gray-700">
+                  <Label htmlFor="name" className="text-sm font-bold text-gray-900 uppercase tracking-wide">
                     Full Name *
                   </Label>
                   <Input
@@ -241,12 +241,12 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     placeholder="Enter your full name"
-                    className="mt-2"
+                    className="mt-2 border-2 border-gray-400"
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor="email" className="text-sm font-semibold text-gray-700">
+                  <Label htmlFor="email" className="text-sm font-bold text-gray-900 uppercase tracking-wide">
                     Email Address *
                   </Label>
                   <Input
@@ -257,12 +257,12 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     placeholder="Enter your email address"
-                    className="mt-2"
+                    className="mt-2 border-2 border-gray-400"
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor="subject" className="text-sm font-semibold text-gray-700">
+                  <Label htmlFor="subject" className="text-sm font-bold text-gray-900 uppercase tracking-wide">
                     Subject
                   </Label>
                   <Input
@@ -272,12 +272,12 @@ const Contact = () => {
                     value={formData.subject}
                     onChange={handleInputChange}
                     placeholder="Subject of your inquiry"
-                    className="mt-2"
+                    className="mt-2 border-2 border-gray-400"
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor="message" className="text-sm font-semibold text-gray-700">
+                  <Label htmlFor="message" className="text-sm font-bold text-gray-900 uppercase tracking-wide">
                     Message *
                   </Label>
                   <Textarea
@@ -288,97 +288,95 @@ const Contact = () => {
                     onChange={handleInputChange}
                     placeholder="Write your message here..."
                     rows={5}
-                    className="mt-2 resize-y"
+                    className="mt-2 resize-y border-2 border-gray-400"
                   />
                 </div>
 
                 <Button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 text-white py-3 px-6 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"
+                  className="w-full bg-blue-900 hover:bg-blue-800 text-white py-3 px-6 border-0 font-bold uppercase tracking-wide transition-colors duration-300"
                 >
                   Send Message
                 </Button>
               </form>
-            </Card>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Location Map */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <div className="text-center mb-12 pb-6 border-b-2 border-gray-400">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3 uppercase tracking-wide">
               Find Us on Campus
             </h2>
-            <p className="text-lg text-gray-600">
+            <div className="w-24 h-1 bg-blue-900 mx-auto mb-4"></div>
+            <p className="text-lg text-gray-700">
               Visit our department at NIT Raipur
             </p>
           </div>
 
-          <Card className="overflow-hidden shadow-xl">
+          <div className="overflow-hidden border-4 border-gray-400">
             {/* Embedded Google Map */}
             <div className="relative w-full h-[500px]">
               <iframe 
-              src="https://www.google.com/maps/embed?pb=!4v1761389495183!6m8!1m7!1sCAoSLEFGMVFpcFB3LUVZMEFJRGFhUTZweHA5ck9xM2pENDNFbW5fU3BGd2lqRmJs!2m2!1d21.24972223979945!2d81.6050290948289!3f333.6503887119515!4f2.0007897612194228!5f0.5970117501821992" 
-              width="100%" 
-              height="100%" 
-              loading="lazy" 
-              referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-
-
+                src="https://www.google.com/maps/embed?pb=!4v1761389495183!6m8!1m7!1sCAoSLEFGMVFpcFB3LUVZMEFJRGFhUTZweHA5ck9xM2pENDNFbW5fU3BGd2lqRmJs!2m2!1d21.24972223979945!2d81.6050290948289!3f333.6503887119515!4f2.0007897612194228!5f0.5970117501821992" 
+                width="100%" 
+                height="100%" 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade">
+              </iframe>
             </div>
 
             {/* Transportation Info */}
-            <div className="p-6 bg-white">
-  <h3 className="text-xl font-bold text-gray-900 mb-4">How to Reach</h3>
-  <div className="grid md:grid-cols-3 gap-4">
-    <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-      <div className="flex items-center mb-2">
-        <Plane className="w-5 h-5 mr-2 text-blue-600" />
-        <h4 className="font-semibold text-gray-900">By Air</h4>
-      </div>
-      <p className="text-gray-600 text-sm">
-        Swami Vivekananda Airport, Raipur (15 km)
-      </p>
-    </div>
+            <div className="p-6 bg-white border-t-4 border-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-4 uppercase tracking-wide">How to Reach</h3>
+              <div className="grid md:grid-cols-3 gap-4">
+                <div className="p-4 border-2 border-gray-400 bg-gray-50">
+                  <div className="flex items-center mb-2 pb-2 border-b-2 border-blue-900">
+                    <Plane className="w-5 h-5 mr-2 text-blue-900" />
+                    <h4 className="font-bold text-gray-900 uppercase tracking-wide text-sm">By Air</h4>
+                  </div>
+                  <p className="text-gray-800 text-sm">
+                    Swami Vivekananda Airport, Raipur (15 km)
+                  </p>
+                </div>
 
-    <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-      <div className="flex items-center mb-2">
-        <Train className="w-5 h-5 mr-2 text-green-600" />
-        <h4 className="font-semibold text-gray-900">By Train</h4>
-      </div>
-      <p className="text-gray-600 text-sm">
-        Raipur Railway Station (25 km)
-      </p>
-    </div>
+                <div className="p-4 border-2 border-gray-400 bg-gray-50">
+                  <div className="flex items-center mb-2 pb-2 border-b-2 border-blue-900">
+                    <Train className="w-5 h-5 mr-2 text-blue-900" />
+                    <h4 className="font-bold text-gray-900 uppercase tracking-wide text-sm">By Train</h4>
+                  </div>
+                  <p className="text-gray-800 text-sm">
+                    Raipur Railway Station (25 km)
+                  </p>
+                </div>
 
-    <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
-      <div className="flex items-center mb-2">
-        <Car className="w-5 h-5 mr-2 text-purple-600" />
-        <h4 className="font-semibold text-gray-900">By Road</h4>
-      </div>
-      <p className="text-gray-600 text-sm">
-        Via NH-6 and state highways
-      </p>
-    </div>
-  </div>
+                <div className="p-4 border-2 border-gray-400 bg-gray-50">
+                  <div className="flex items-center mb-2 pb-2 border-b-2 border-blue-900">
+                    <Car className="w-5 h-5 mr-2 text-blue-900" />
+                    <h4 className="font-bold text-gray-900 uppercase tracking-wide text-sm">By Road</h4>
+                  </div>
+                  <p className="text-gray-800 text-sm">
+                    Via NH-6 and state highways
+                  </p>
+                </div>
+              </div>
 
-  {/* 🔗 Add this Directions button below */}
-  <div className="mt-6 text-center">
-    <a
-      href="https://www.google.com/maps/dir/?api=1&origin=21.2497222,81.6050291&destination=NIT+Raipur"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="inline-block bg-blue-600 text-white px-5 py-2 rounded-md hover:bg-blue-700 transition"
-    >
-      Get Directions to NIT Raipur
-    </a>
-  </div>
-</div>
-
-          </Card>
+              {/* Directions Button */}
+              <div className="mt-6 text-center pt-6 border-t-2 border-gray-300">
+                <a
+                  href="https://www.google.com/maps/dir/?api=1&origin=21.2497222,81.6050291&destination=NIT+Raipur"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-blue-900 text-white px-6 py-3 hover:bg-blue-800 transition-colors font-bold uppercase tracking-wide"
+                >
+                  Get Directions to NIT Raipur
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>

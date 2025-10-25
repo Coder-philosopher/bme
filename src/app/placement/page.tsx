@@ -46,7 +46,7 @@ const placementData = {
   ],
   details: {
     institution: "National Institute of Technology Raipur",
-    department: "Bio-Medical Engineering (B.Tech)",
+    department: "Bio Medical Engineering (B.Tech)",
     placement_overview: {
       batch_wise_summary: [
         {
@@ -204,7 +204,7 @@ const placementData = {
   },
 };
 
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#8884D8"];
+const COLORS = ["#1e3a8a", "#3b82f6", "#60a5fa", "#93c5fd", "#dbeafe"];
 
 const Placement = () => {
   const [selectedYear, setSelectedYear] = useState("2024-2025");
@@ -235,142 +235,163 @@ const Placement = () => {
     placementData.details.detailed_placement_data[selectedYear]?.placements || [];
 
   return (
-    <div className="min-h-screen pt-28 bg-gradient-to-b from-gray-50 to-white">
-      {/* Hero */}
-      <section className="pb-10 bg-gradient-to-r from-teal-50 via-blue-50 to-blue-100">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4">
+    <div className="min-h-screen pt-28 bg-white">
+      {/* Hero - Academic */}
+      <section className="pb-12 bg-blue-900 border-b-4 border-gray-800">
+        <div className="max-w-7xl mx-auto px-6 text-center py-20">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 uppercase tracking-wide">
             Training & Placement
           </h1>
-          <p className="text-lg md:text-xl text-gray-700 mb-2">
+          <div className="w-32 h-1 bg-white mx-auto mb-6"></div>
+          <p className="text-lg md:text-xl text-gray-200 mb-2 font-semibold">
             {placementData.details.department}
           </p>
-          <p className="text-base text-gray-600">
+          <p className="text-base text-gray-300">
             {placementData.details.institution}
           </p>
         </div>
       </section>
 
-    
-      <section className="py-12 bg-gray-50">
+      {/* Charts Section */}
+      <section className="py-16 bg-gray-50 border-b-2 border-gray-300">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-            Placement Trends & Analytics
-          </h2>
+          <div className="text-center mb-12 pb-6 border-b-2 border-gray-400">
+            <h2 className="text-3xl font-bold text-gray-900 mb-3 uppercase tracking-wide">
+              Placement Trends & Analytics
+            </h2>
+            <div className="w-24 h-1 bg-blue-900 mx-auto"></div>
+          </div>
 
           <div className="grid lg:grid-cols-2 gap-8 mb-8">
             {/* Placement Trend Chart */}
-            <Card className="p-6">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">
+            <div className="p-6 border-2 border-gray-400 bg-white">
+              <h3 className="text-xl font-bold text-gray-900 mb-4 uppercase tracking-wide pb-3 border-b-2 border-blue-900">
                 5-Year Placement Trends
               </h3>
               <ResponsiveContainer width="100%" height={300}>
                 <LineChart data={placementTrendData}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="year" />
-                  <YAxis />
-                  <Tooltip />
-                  <Legend />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#d1d5db" />
+                  <XAxis dataKey="year" stroke="#374151" style={{ fontWeight: 600 }} />
+                  <YAxis stroke="#374151" style={{ fontWeight: 600 }} />
+                  <Tooltip 
+                    contentStyle={{ 
+                      border: '2px solid #9ca3af', 
+                      borderRadius: 0,
+                      fontWeight: 600 
+                    }} 
+                  />
+                  <Legend wrapperStyle={{ fontWeight: 600 }} />
                   <Line
                     type="monotone"
                     dataKey="eligible"
-                    stroke="#3B82F6"
-                    strokeWidth={2}
+                    stroke="#1e3a8a"
+                    strokeWidth={3}
                     name="Eligible"
                   />
                   <Line
                     type="monotone"
                     dataKey="placed"
-                    stroke="#10B981"
-                    strokeWidth={2}
+                    stroke="#3b82f6"
+                    strokeWidth={3}
                     name="Placed"
                   />
                 </LineChart>
               </ResponsiveContainer>
-            </Card>
+            </div>
 
             {/* Placement Percentage Bar Chart */}
-            <Card className="p-6">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">
+            <div className="p-6 border-2 border-gray-400 bg-white">
+              <h3 className="text-xl font-bold text-gray-900 mb-4 uppercase tracking-wide pb-3 border-b-2 border-blue-900">
                 Placement Percentage by Year
               </h3>
               <ResponsiveContainer width="100%" height={300}>
                 <BarChart data={placementTrendData}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="year" />
-                  <YAxis />
-                  <Tooltip />
-                  <Legend />
-                  <Bar dataKey="percentage" fill="#8B5CF6" name="Placement %" />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#d1d5db" />
+                  <XAxis dataKey="year" stroke="#374151" style={{ fontWeight: 600 }} />
+                  <YAxis stroke="#374151" style={{ fontWeight: 600 }} />
+                  <Tooltip 
+                    contentStyle={{ 
+                      border: '2px solid #9ca3af', 
+                      borderRadius: 0,
+                      fontWeight: 600 
+                    }} 
+                  />
+                  <Legend wrapperStyle={{ fontWeight: 600 }} />
+                  <Bar dataKey="percentage" fill="#1e3a8a" name="Placement %" />
                 </BarChart>
               </ResponsiveContainer>
-            </Card>
+            </div>
 
             {/* CTC Trends */}
             {ctcData.length > 0 && (
-              <Card className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
+              <div className="p-6 border-2 border-gray-400 bg-white">
+                <h3 className="text-xl font-bold text-gray-900 mb-4 uppercase tracking-wide pb-3 border-b-2 border-blue-900">
                   CTC Trends (LPA)
                 </h3>
                 <ResponsiveContainer width="100%" height={300}>
                   <BarChart data={ctcData}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="year" />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
-                    <Bar dataKey="highest" fill="#F59E0B" name="Highest" />
-                    <Bar dataKey="average" fill="#14B8A6" name="Average" />
-                    <Bar dataKey="lowest" fill="#6366F1" name="Lowest" />
+                    <CartesianGrid strokeDasharray="3 3" stroke="#d1d5db" />
+                    <XAxis dataKey="year" stroke="#374151" style={{ fontWeight: 600 }} />
+                    <YAxis stroke="#374151" style={{ fontWeight: 600 }} />
+                    <Tooltip 
+                      contentStyle={{ 
+                        border: '2px solid #9ca3af', 
+                        borderRadius: 0,
+                        fontWeight: 600 
+                      }} 
+                    />
+                    <Legend wrapperStyle={{ fontWeight: 600 }} />
+                    <Bar dataKey="highest" fill="#1e3a8a" name="Highest" />
+                    <Bar dataKey="average" fill="#3b82f6" name="Average" />
+                    <Bar dataKey="lowest" fill="#60a5fa" name="Lowest" />
                   </BarChart>
                 </ResponsiveContainer>
-              </Card>
+              </div>
             )}
 
             {/* Top Recruiters */}
-            <Card className="p-6">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">
+            <div className="p-6 border-2 border-gray-400 bg-white">
+              <h3 className="text-xl font-bold text-gray-900 mb-4 uppercase tracking-wide pb-3 border-b-2 border-blue-900">
                 Top Recurring Recruiters
               </h3>
               <div className="space-y-3">
                 {companies.slice(0, 6).map((company, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center justify-between p-3 bg-gray-50 rounded-lg"
+                    className="flex items-center justify-between p-3 border border-gray-400 bg-gray-50 hover:bg-white transition-colors duration-200"
                   >
                     <div>
-                      <p className="font-semibold text-gray-900">
+                      <p className="font-bold text-gray-900 uppercase tracking-wide text-sm">
                         {company.company_name}
                       </p>
-                      <p className="text-sm text-gray-600">
-                        {company.appearances} years • {company.total_students_placed}{" "}
-                        students
+                      <p className="text-xs text-gray-700 font-semibold">
+                        {company.appearances} years • {company.total_students_placed} students
                       </p>
                     </div>
-                    <Briefcase className="w-6 h-6 text-teal-600" />
+                    <Briefcase className="w-6 h-6 text-blue-900" />
                   </div>
                 ))}
               </div>
-            </Card>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Year Selector */}
-      <section className="py-8 bg-white border-y">
+      <section className="py-6 bg-white border-b-2 border-gray-300">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-center gap-3 flex-wrap">
-            <span className="text-sm font-semibold text-gray-700">Select Batch:</span>
+            <span className="text-sm font-bold text-gray-900 uppercase tracking-wide">Select Batch:</span>
             {summary.map((s) => (
               <Button
                 key={s.batch}
                 onClick={() => setSelectedYear(s.batch)}
                 variant={selectedYear === s.batch ? "default" : "outline"}
-                className={
+                className={`font-bold uppercase tracking-wide ${
                   selectedYear === s.batch
-                    ? "bg-teal-600 hover:bg-teal-700 text-white"
-                    : "border-gray-300"
-                }
+                    ? "bg-blue-900 hover:bg-blue-800 text-white border-2 border-blue-900"
+                    : "border-2 border-gray-400 text-gray-800 hover:bg-gray-100"
+                }`}
               >
                 {s.batch}
               </Button>
@@ -381,28 +402,28 @@ const Placement = () => {
 
       {/* Selected Year Details */}
       {currentYearData && (
-        <section className="py-12">
+        <section className="py-16 bg-white border-b-2 border-gray-300">
           <div className="max-w-7xl mx-auto px-6">
-            <Card className="p-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            <div className="p-8 border-2 border-gray-400 bg-gray-50">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6 uppercase tracking-wide pb-3 border-b-2 border-blue-900">
                 Batch {selectedYear} Placement Summary
               </h2>
               <div className="grid md:grid-cols-3 gap-6 mb-8">
-                <div className="p-4 bg-blue-50 rounded-lg">
-                  <p className="text-sm text-gray-600 mb-1">Eligible Students</p>
-                  <p className="text-2xl font-bold text-blue-700">
+                <div className="p-6 border-2 border-gray-400 bg-white">
+                  <p className="text-xs text-gray-700 mb-2 font-bold uppercase tracking-wide">Eligible Students</p>
+                  <p className="text-3xl font-bold text-blue-900">
                     {currentYearData.eligible_students}
                   </p>
                 </div>
-                <div className="p-4 bg-green-50 rounded-lg">
-                  <p className="text-sm text-gray-600 mb-1">Students Placed</p>
-                  <p className="text-2xl font-bold text-green-700">
+                <div className="p-6 border-2 border-gray-400 bg-white">
+                  <p className="text-xs text-gray-700 mb-2 font-bold uppercase tracking-wide">Students Placed</p>
+                  <p className="text-3xl font-bold text-blue-900">
                     {currentYearData.total_offers_received}
                   </p>
                 </div>
-                <div className="p-4 bg-purple-50 rounded-lg">
-                  <p className="text-sm text-gray-600 mb-1">Placement Rate</p>
-                  <p className="text-2xl font-bold text-purple-700">
+                <div className="p-6 border-2 border-gray-400 bg-white">
+                  <p className="text-xs text-gray-700 mb-2 font-bold uppercase tracking-wide">Placement Rate</p>
+                  <p className="text-3xl font-bold text-blue-900">
                     {currentYearData.placement_percentage.toFixed(1)}%
                   </p>
                 </div>
@@ -410,61 +431,64 @@ const Placement = () => {
 
               {currentYearData.average_ctc_lpa !== "NA" && (
                 <div className="grid md:grid-cols-3 gap-6">
-                  <div className="p-4 bg-orange-50 rounded-lg">
-                    <p className="text-sm text-gray-600 mb-1">Highest CTC</p>
-                    <p className="text-xl font-bold text-orange-700">
+                  <div className="p-6 border-2 border-gray-400 bg-white">
+                    <p className="text-xs text-gray-700 mb-2 font-bold uppercase tracking-wide">Highest CTC</p>
+                    <p className="text-xl font-bold text-blue-900">
                       ₹{currentYearData.highest_ctc_lpa} LPA
                     </p>
                   </div>
-                  <div className="p-4 bg-teal-50 rounded-lg">
-                    <p className="text-sm text-gray-600 mb-1">Average CTC</p>
-                    <p className="text-xl font-bold text-teal-700">
+                  <div className="p-6 border-2 border-gray-400 bg-white">
+                    <p className="text-xs text-gray-700 mb-2 font-bold uppercase tracking-wide">Average CTC</p>
+                    <p className="text-xl font-bold text-blue-900">
                       ₹{currentYearData.average_ctc_lpa} LPA
                     </p>
                   </div>
-                  <div className="p-4 bg-cyan-50 rounded-lg">
-                    <p className="text-sm text-gray-600 mb-1">Lowest CTC</p>
-                    <p className="text-xl font-bold text-cyan-700">
+                  <div className="p-6 border-2 border-gray-400 bg-white">
+                    <p className="text-xs text-gray-700 mb-2 font-bold uppercase tracking-wide">Lowest CTC</p>
+                    <p className="text-xl font-bold text-blue-900">
                       ₹{currentYearData.lowest_ctc_lpa} LPA
                     </p>
                   </div>
                 </div>
               )}
-            </Card>
+            </div>
           </div>
         </section>
       )}
 
-      {/* Charts Section */}
-      
-
       {/* Companies for Selected Year */}
       {currentYearCompanies.length > 0 && (
-        <section className="py-12">
+        <section className="py-16 bg-gray-50 border-b-2 border-gray-300">
           <div className="max-w-7xl mx-auto px-6">
-            <Card className="p-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">
+            <div className="p-8 border-2 border-gray-400 bg-white">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6 uppercase tracking-wide pb-3 border-b-2 border-blue-900">
                 Recruiters for Batch {selectedYear}
               </h3>
               <div className="overflow-x-auto">
                 <Table>
                   <TableHeader>
-                    <TableRow>
-                      <TableHead>Company Name</TableHead>
-                      <TableHead className="text-center">Students Placed</TableHead>
-                      <TableHead className="text-center">CTC (LPA)</TableHead>
+                    <TableRow className="border-b-2 border-gray-400">
+                      <TableHead className="font-bold text-gray-900 uppercase tracking-wide bg-gray-100 border-r-2 border-gray-300">
+                        Company Name
+                      </TableHead>
+                      <TableHead className="text-center font-bold text-gray-900 uppercase tracking-wide bg-gray-100 border-r-2 border-gray-300">
+                        Students Placed
+                      </TableHead>
+                      <TableHead className="text-center font-bold text-gray-900 uppercase tracking-wide bg-gray-100">
+                        CTC (LPA)
+                      </TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
                     {currentYearCompanies.map((company: any, idx: number) => (
-                      <TableRow key={idx}>
-                        <TableCell className="font-medium">
+                      <TableRow key={idx} className="border-b border-gray-300 hover:bg-gray-50">
+                        <TableCell className="font-bold text-gray-900 border-r border-gray-300">
                           {company.company_name}
                         </TableCell>
-                        <TableCell className="text-center">
+                        <TableCell className="text-center font-semibold text-gray-800 border-r border-gray-300">
                           {company.students_placed}
                         </TableCell>
-                        <TableCell className="text-center">
+                        <TableCell className="text-center font-semibold text-gray-800">
                           {company.ctc_lpa ? `₹${company.ctc_lpa}` : "NA"}
                         </TableCell>
                       </TableRow>
@@ -472,50 +496,67 @@ const Placement = () => {
                   </TableBody>
                 </Table>
               </div>
-            </Card>
+            </div>
           </div>
         </section>
       )}
 
       {/* Complete Batch-wise Table */}
-      <section className="py-12 bg-gray-50">
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-            Complete Placement Statistics
-          </h2>
-          <Card className="p-8 overflow-x-auto">
+          <div className="text-center mb-12 pb-6 border-b-2 border-gray-400">
+            <h2 className="text-3xl font-bold text-gray-900 mb-3 uppercase tracking-wide">
+              Complete Placement Statistics
+            </h2>
+            <div className="w-24 h-1 bg-blue-900 mx-auto"></div>
+          </div>
+          <div className="p-8 overflow-x-auto border-2 border-gray-400 bg-gray-50">
             <Table>
               <TableHeader>
-                <TableRow>
-                  <TableHead>Batch</TableHead>
-                  <TableHead className="text-center">Eligible</TableHead>
-                  <TableHead className="text-center">Placed</TableHead>
-                  <TableHead className="text-center">Placement %</TableHead>
-                  <TableHead className="text-center">Avg CTC</TableHead>
-                  <TableHead className="text-center">Highest CTC</TableHead>
+                <TableRow className="border-b-2 border-gray-400">
+                  <TableHead className="font-bold  uppercase tracking-wide bg-blue-900 text-white border-r-2 border-gray-300">
+                    Batch
+                  </TableHead>
+                  <TableHead className="text-center font-bold  uppercase tracking-wide bg-blue-900 text-white border-r-2 border-gray-300">
+                    Eligible
+                  </TableHead>
+                  <TableHead className="text-center font-bold  uppercase tracking-wide bg-blue-900 text-white border-r-2 border-gray-300">
+                    Placed
+                  </TableHead>
+                  <TableHead className="text-center font-bold  uppercase tracking-wide bg-blue-900 text-white border-r-2 border-gray-300">
+                    Placement %
+                  </TableHead>
+                  <TableHead className="text-center font-bold  uppercase tracking-wide bg-blue-900 text-white border-r-2 border-gray-300">
+                    Avg CTC
+                  </TableHead>
+                  <TableHead className="text-center font-bold  uppercase tracking-wide bg-blue-900 text-white">
+                    Highest CTC
+                  </TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {summary.map((stat, idx) => (
-                  <TableRow key={idx} className="hover:bg-gray-50">
-                    <TableCell className="font-medium">{stat.batch}</TableCell>
-                    <TableCell className="text-center">
+                  <TableRow key={idx} className="border-b-2 border-gray-300 hover:bg-white bg-gray-50">
+                    <TableCell className="font-bold text-gray-900 border-r-2 border-gray-300">
+                      {stat.batch}
+                    </TableCell>
+                    <TableCell className="text-center font-semibold text-gray-800 border-r-2 border-gray-300">
                       {stat.eligible_students}
                     </TableCell>
-                    <TableCell className="text-center">
+                    <TableCell className="text-center font-semibold text-gray-800 border-r-2 border-gray-300">
                       {stat.total_offers_received}
                     </TableCell>
-                    <TableCell className="text-center">
-                      <span className="px-2 py-1 bg-green-100 text-green-800 rounded-full text-sm font-semibold">
+                    <TableCell className="text-center border-r-2 border-gray-300">
+                      <span className="px-3 py-1 bg-blue-900 text-white text-sm font-bold uppercase tracking-wide">
                         {stat.placement_percentage.toFixed(1)}%
                       </span>
                     </TableCell>
-                    <TableCell className="text-center">
+                    <TableCell className="text-center font-semibold text-gray-800 border-r-2 border-gray-300">
                       {stat.average_ctc_lpa !== "NA"
                         ? `₹${stat.average_ctc_lpa}`
                         : "NA"}
                     </TableCell>
-                    <TableCell className="text-center">
+                    <TableCell className="text-center font-semibold text-gray-800">
                       {stat.highest_ctc_lpa !== "NA"
                         ? `₹${stat.highest_ctc_lpa}`
                         : "NA"}
@@ -524,7 +565,7 @@ const Placement = () => {
                 ))}
               </TableBody>
             </Table>
-          </Card>
+          </div>
         </div>
       </section>
     </div>

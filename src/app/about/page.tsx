@@ -10,37 +10,31 @@ const highlightCards = [
     icon: Award,
     title: "Academic Excellence",
     desc: "Comprehensive curriculum and world-class faculty.",
-    color: "bg-blue-100 text-blue-800",
   },
   {
     icon: FlaskConical,
     title: "Innovative Research",
     desc: "42+ funded projects and 18 patents.",
-    color: "bg-cyan-100 text-cyan-800",
   },
   {
     icon: Microscope,
     title: "Specialized Labs",
     desc: "9 cutting-edge facilities for hands-on learning.",
-    color: "bg-purple-100 text-purple-800",
   },
   {
     icon: BookOpen,
     title: "Collaboration",
     desc: "Projects with 15 international organizations.",
-    color: "bg-green-100 text-green-800",
   },
   {
     icon: Layers,
     title: "Interdisciplinary Approach",
     desc: "Blending engineering, medical sciences, data & AI.",
-    color: "bg-yellow-100 text-yellow-800",
   },
   {
     icon: Star,
     title: "Student Achievements",
     desc: "28 impactful publications, 35 PG & 15 PhD students.",
-    color: "bg-pink-100 text-pink-800",
   },
 ];
 
@@ -49,12 +43,11 @@ const AboutPage = () => {
     queryKey: ["/api/department-data/about"],
   });
 
-  // fallback if API fails
   const about = aboutData?.data || {
     department: "Biomedical Engineering",
     establishment: "2003",
-    vision: "To provide society with world-class competitive professionals ...",
-    mission: "...",
+    vision: "To provide society with world-class competitive professionals...",
+    mission: "To provide world-class education in biomedical engineering...",
     deptInfo:
       "The Department of Biomedical Engineering at NIT Raipur stands as a beacon of innovation in healthcare technology. Established in 2008 with the vision to bridge the gap between engineering excellence and medical advancement, we are committed to developing cutting-edge solutions for complex healthcare challenges.",
     facilities: [
@@ -63,7 +56,7 @@ const AboutPage = () => {
       "Bioinformatics Lab",
       "Signal and Image Processing Lab",
       "Tissue Engineering Lab",
-      "Microcontroller Lab", // localized
+      "Microcontroller Lab",
     ],
     programObjectives: {
       PEOs: [
@@ -97,10 +90,10 @@ const AboutPage = () => {
       <div className="min-h-screen pt-20" data-testid="page-about-loading">
         <div className="max-w-7xl mx-auto px-6 py-20">
           <div className="animate-pulse">
-            <div className="h-12 bg-gray-200 rounded mb-6"></div>
-            <div className="h-4 bg-gray-200 rounded mb-4"></div>
-            <div className="h-4 bg-gray-200 rounded mb-4"></div>
-            <div className="h-4 bg-gray-200 rounded"></div>
+            <div className="h-12 bg-gray-200 mb-6"></div>
+            <div className="h-4 bg-gray-200 mb-4"></div>
+            <div className="h-4 bg-gray-200 mb-4"></div>
+            <div className="h-4 bg-gray-200"></div>
           </div>
         </div>
       </div>
@@ -109,21 +102,14 @@ const AboutPage = () => {
 
   return (
     <div className="min-h-screen bg-white" data-testid="page-about">
-      {/* Hero */}
-      <section className="relative  bg-white">
-        <div className="absolute inset-0 overflow-hidden opacity-60 pointer-events-none">
-          <img
-            src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=1400&q=80"
-            alt=""
-            className="w-full h-full object-cover blur-[2px] scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-100 to-teal-200 opacity-80"></div>
-        </div>
-        <div className="max-w-7xl mx-auto px-6 py-28 text-center relative z-10">
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 drop-shadow-lg" data-testid="heading-about-title">
+      {/* Hero - Academic Style */}
+      <section className="relative bg-blue-900 border-b-4 border-gray-800">
+        <div className="max-w-7xl mx-auto px-6 py-24 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 uppercase tracking-wide" data-testid="heading-about-title">
             About Biomedical Engineering
           </h1>
-          <p className="text-xl md:text-2xl max-w-3xl mx-auto text-gray-700" data-testid="text-about-subtitle">
+          <div className="w-32 h-1 bg-white mx-auto mb-6"></div>
+          <p className="text-xl md:text-2xl max-w-3xl mx-auto text-gray-200" data-testid="text-about-subtitle">
             Excellence in education, research, and innovation since {about.establishment}
           </p>
         </div>
@@ -135,46 +121,55 @@ const AboutPage = () => {
       </section>
 
       {/* Overview & Facilities */}
-      <section className="py-20" data-testid="section-department-overview">
+      <section className="py-20 bg-white border-b-2 border-gray-300" data-testid="section-department-overview">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+          <div className="text-center mb-12 pb-6 border-b-2 border-gray-400">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3 uppercase tracking-wide" data-testid="heading-department-info">
+              Department Overview
+            </h2>
+            <div className="w-24 h-1 bg-blue-900 mx-auto"></div>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-start mb-16">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4" data-testid="heading-department-info">
-                Department Overview
-              </h2>
-              <p className="text-lg text-gray-700 mb-4 leading-relaxed" data-testid="text-department-info">
+              <p className="text-base text-gray-800 mb-6 leading-relaxed text-justify" data-testid="text-department-info">
                 {about.deptInfo}
               </p>
-              <h3 className="text-xl font-semibold text-blue-700 mb-2">Facilities</h3>
-              <ul className="grid grid-cols-2 gap-x-6 gap-y-2 text-gray-600 mb-8 list-disc pl-4">
-                {about.facilities?.map((lab, i) =>
+              
+              <h3 className="text-xl font-bold text-blue-900 mb-4 uppercase tracking-wide border-b-2 border-blue-900 pb-2">
+                Facilities
+              </h3>
+              <ul className="grid grid-cols-1 gap-y-2 text-gray-700 mb-8 list-disc pl-5">
+                {about.facilities?.map((lab, i) => (
                   <li key={lab} className="font-medium">{lab}</li>
-                )}
+                ))}
               </ul>
+
               <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <div className="text-2xl font-bold text-teal-700 mb-1">{about.stats.projects}+</div>
-                  <div className="text-sm font-semibold text-gray-600">Funded Projects</div>
+                <div className="p-4 border-2 border-gray-300 bg-gray-50">
+                  <div className="text-2xl font-bold text-blue-900 mb-1">{about.stats.projects}+</div>
+                  <div className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Funded Projects</div>
                 </div>
-                <div>
-                  <div className="text-2xl font-bold text-purple-700 mb-1">{about.stats.patents}</div>
-                  <div className="text-sm font-semibold text-gray-600">Patents</div>
+                <div className="p-4 border-2 border-gray-300 bg-gray-50">
+                  <div className="text-2xl font-bold text-blue-900 mb-1">{about.stats.patents}</div>
+                  <div className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Patents</div>
                 </div>
-                <div>
-                  <div className="text-2xl font-bold text-green-700 mb-1">{about.stats.publications}</div>
-                  <div className="text-sm font-semibold text-gray-600">Publications</div>
+                <div className="p-4 border-2 border-gray-300 bg-gray-50">
+                  <div className="text-2xl font-bold text-blue-900 mb-1">{about.stats.publications}</div>
+                  <div className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Publications</div>
                 </div>
-                <div>
-                  <div className="text-2xl font-bold text-blue-700 mb-1">{about.stats.UGstudents}+</div>
-                  <div className="text-sm font-semibold text-gray-600">UG Students</div>
+                <div className="p-4 border-2 border-gray-300 bg-gray-50">
+                  <div className="text-2xl font-bold text-blue-900 mb-1">{about.stats.UGstudents}+</div>
+                  <div className="text-sm font-semibold text-gray-700 uppercase tracking-wide">UG Students</div>
                 </div>
               </div>
             </div>
+
             <div className="relative">
               <img
                 src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&w=800&q=80"
                 alt="Biomedical lab"
-                className="rounded-2xl shadow-2xl w-full h-auto object-cover"
+                className="border-4 border-gray-400 shadow-lg w-full h-auto object-cover"
                 data-testid="image-department-lab"
               />
             </div>
@@ -183,96 +178,110 @@ const AboutPage = () => {
       </section>
 
       {/* Vision & Mission */}
-      <section className="pb-20" data-testid="section-vision-mission">
+      <section className="py-20 bg-gray-50 border-b-2 border-gray-300" data-testid="section-vision-mission">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10">
-          <Card className="shadow-md p-8 border-t-4 border-blue-500 bg-gradient-to-br from-blue-50 to-white">
-            <div className="flex items-center mb-6 gap-3">
-              <Star className="w-7 h-7 text-blue-500" />
-              <h3 className="text-2xl font-bold text-gray-900">Vision</h3>
+          <div className="border-2 border-gray-400 bg-white p-8">
+            <div className="flex items-start mb-6 pb-4 border-b-2 border-blue-900">
+              <div className="bg-blue-900 p-3 mr-4">
+                <Star className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 uppercase tracking-wide">Vision</h3>
             </div>
-            <p className="text-gray-700 leading-relaxed text-lg">
+            <p className="text-gray-800 leading-relaxed text-base text-justify">
               {about.vision}
             </p>
-          </Card>
-          <Card className="shadow-md p-8 border-t-4 border-teal-500 bg-gradient-to-br from-teal-50 to-white">
-            <div className="flex items-center mb-6 gap-3">
-              <BookOpen className="w-7 h-7 text-teal-500" />
-              <h3 className="text-2xl font-bold text-gray-900">Mission</h3>
+          </div>
+
+          <div className="border-2 border-gray-400 bg-white p-8">
+            <div className="flex items-start mb-6 pb-4 border-b-2 border-blue-900">
+              <div className="bg-blue-900 p-3 mr-4">
+                <BookOpen className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 uppercase tracking-wide">Mission</h3>
             </div>
-            <p className="text-gray-700 leading-relaxed text-lg">
+            <p className="text-gray-800 leading-relaxed text-base text-justify">
               {about.mission}
             </p>
-          </Card>
+          </div>
         </div>
       </section>
 
       {/* Program Outcomes & Objectives */}
-      <section className="py-16 bg-gray-50" data-testid="section-objectives">
+      <section className="py-16 bg-white border-b-2 border-gray-300" data-testid="section-objectives">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12">
-          <Card className="p-8 border-l-4 border-blue-300 bg-white shadow">
-            <h4 className="text-xl font-bold text-blue-800 mb-4">Program Educational Objectives (PEOs)</h4>
-            <ul className="list-disc ml-6">
-              {about.programObjectives?.PEOs?.map((peo: string, i: number) =>
-                <li className="text-gray-700 mb-2 leading-relaxed" key={i}>{peo}</li>
-              )}
+          <div className="p-8 border-2 border-gray-400 bg-gray-50">
+            <h4 className="text-xl font-bold text-blue-900 mb-4 uppercase tracking-wide pb-3 border-b-2 border-blue-900">
+              Program Educational Objectives (PEOs)
+            </h4>
+            <ul className="list-disc ml-6 space-y-2">
+              {about.programObjectives?.PEOs?.map((peo: string, i: number) => (
+                <li className="text-gray-800 leading-relaxed" key={i}>{peo}</li>
+              ))}
             </ul>
-          </Card>
-          <Card className="p-8 border-l-4 border-teal-300 bg-white shadow">
-            <h4 className="text-xl font-bold text-teal-800 mb-4">Program Outcomes (POs)</h4>
-            <ul className="list-disc ml-6">
-              {about.programObjectives?.POs?.map((po: string, i: number) =>
-                <li className="text-gray-700 mb-2 leading-relaxed" key={i}>{po}</li>
-              )}
+          </div>
+
+          <div className="p-8 border-2 border-gray-400 bg-gray-50">
+            <h4 className="text-xl font-bold text-blue-900 mb-4 uppercase tracking-wide pb-3 border-b-2 border-blue-900">
+              Program Outcomes (POs)
+            </h4>
+            <ul className="list-disc ml-6 space-y-2">
+              {about.programObjectives?.POs?.map((po: string, i: number) => (
+                <li className="text-gray-800 leading-relaxed" key={i}>{po}</li>
+              ))}
             </ul>
-          </Card>
+          </div>
         </div>
       </section>
 
       {/* HoD Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-50 via-white to-teal-50" data-testid="section-hod">
-        <div className="max-w-4xl mx-auto px-6">
-          <Card className="p-8 shadow-md grid md:grid-cols-3 gap-8 items-center">
+      <section className="py-20 bg-gray-100 border-b-2 border-gray-300" data-testid="section-hod">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="p-10 border-2 border-gray-400 bg-white grid md:grid-cols-3 gap-10 items-center">
             <div>
               <img
                 src="/images/Prof.Bit.jpg"
                 alt="Dr. Arindam Bit - HoD"
-                className="rounded-xl shadow-lg w-full max-w-xs mx-auto object-cover"
+                className="border-4 border-blue-900 w-full max-w-xs mx-auto object-cover"
                 data-testid="image-hod"
               />
             </div>
             <div className="col-span-2">
-              <h3 className="text-3xl font-bold text-gray-900 mb-4">Message from the HoD</h3>
-              <blockquote className="text-lg text-gray-700 italic border-l-4 border-blue-400 pl-6">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4 uppercase tracking-wide pb-3 border-b-2 border-blue-900">
+                Message from the Head of Department
+              </h3>
+              <blockquote className="text-base text-gray-800 italic border-l-4 border-blue-900 pl-6 mb-6 leading-relaxed">
                 "{about.hodMessage || 'Welcome to the Department. Our mission is to shape the future of healthcare technology through innovation, research, and interdisciplinary learning.'}"
               </blockquote>
-              <div className="mt-6">
-                <div className="font-semibold text-gray-900">{about.HoD.name || 'Prof. Bit'}</div>
-                <div className="text-gray-600">Head of Department</div>
+              <div className="mt-6 pt-4 border-t-2 border-gray-300">
+                <div className="font-bold text-gray-900 text-lg">{about.HoD.name || 'Prof. Bit'}</div>
+                <div className="text-gray-700 font-semibold">Head of Department</div>
                 <div className="text-gray-600">hod.bme@nitrr.ac.in</div>
               </div>
             </div>
-          </Card>
+          </div>
         </div>
       </section>
 
       {/* Department Highlights */}
-      <section className="py-20" data-testid="section-highlights">
+      <section className="py-20 bg-white" data-testid="section-highlights">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Department Highlights</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <div className="text-center mb-12 pb-6 border-b-2 border-gray-400">
+            <h2 className="text-3xl font-bold text-gray-900 mb-3 uppercase tracking-wide">Department Highlights</h2>
+            <div className="w-24 h-1 bg-blue-900 mx-auto mb-4"></div>
+            <p className="text-lg text-gray-700 max-w-2xl mx-auto">
               Our key strengths and achievements in biomedical engineering
             </p>
           </div>
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {highlightCards.map(({ icon: Icon, title, desc, color }, i) => (
-              <Card key={i} className={`p-6 text-center hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 ${color}`}>
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4">
-                  <Icon className="w-8 h-8" />
+            {highlightCards.map(({ icon: Icon, title, desc }, i) => (
+              <div key={i} className="p-6 text-center border-2 border-gray-400 bg-gray-50 hover:shadow-lg hover:border-blue-900 transition-all duration-300">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-900 mb-4">
+                  <Icon className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">{title}</h3>
-                <p className="text-gray-600">{desc}</p>
-              </Card>
+                <h3 className="text-lg font-bold text-gray-900 mb-2 uppercase tracking-wide">{title}</h3>
+                <p className="text-gray-700 text-sm leading-relaxed">{desc}</p>
+              </div>
             ))}
           </div>
         </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Menu, X, Search } from "lucide-react";
@@ -16,112 +16,32 @@ import {
 import Fuse from "fuse.js";
 
 const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openCommandDialog, setOpenCommandDialog] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 30);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // Keyboard shortcut for command dialog (Ctrl+K or Cmd+K)
-  useEffect(() => {
-    const down = (e: KeyboardEvent) => {
-      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault();
-        setOpenCommandDialog((open) => !open);
-      }
-    };
-
-    document.addEventListener("keydown", down);
-    return () => document.removeEventListener("keydown", down);
-  }, []);
-
   const navItems = [
-    { 
-      name: "Home", 
-      path: "/", 
-      keywords: ["homepage", "main", "landing", "index", "home page"],
-      description: "Return to homepage"
-    },
-    { 
-      name: "About", 
-      path: "/about", 
-      keywords: ["department", "vision", "mission", "history", "overview", "information", "details", "biomedical engineering", "introduction", "about us"],
-      description: "Learn about the department"
-    },
-    { 
-      name: "Academics", 
-      path: "/academics", 
-      keywords: ["courses", "curriculum", "programs", "syllabus", "btech", "mtech", "phd", "degree", "education", "study", "learning", "undergraduate", "postgraduate", "doctorate"],
-      description: "Academic programs and curriculum"
-    },
-    { 
-      name: "Research", 
-      path: "/research", 
-      keywords: ["publications", "papers", "projects", "innovation", "labs", "biomechanics", "signal processing", "tissue engineering", "medical imaging", "laboratories", "funded projects", "patents"],
-      description: "Research areas and publications"
-    },
-    { 
-      name: "People", 
-      path: "/people", 
-      keywords: ["faculty", "staff", "professors", "hod", "teachers", "team", "members", "employees", "dr", "doctor", "head of department", "assistant professor", "associate professor"],
-      description: "Faculty and staff directory"
-    },
-    { 
-      name: "Events", 
-      path: "/events", 
-      keywords: ["activities", "workshops", "seminars", "conferences", "symposium", "calendar", "upcoming", "news", "webinar", "lecture", "guest talk"],
-      description: "Upcoming events and activities"
-    },
-    { 
-      name: "Placement", 
-      path: "/placement", 
-      keywords: ["jobs", "careers", "recruitment", "companies", "internships", "opportunities", "hiring", "employment", "training", "job placement", "campus recruitment"],
-      description: "Placement and career opportunities"
-    },
-    { 
-      name: "Alumni", 
-      path: "/alumni", 
-      keywords: ["graduates", "former students", "alumni network", "passed out", "old students", "alumni association", "alumni meet", "alumni portal"],
-      description: "Alumni network and achievements"
-    },
-    { 
-      name: "Gallery", 
-      path: "/gallery", 
-      keywords: ["photos", "images", "pictures", "media", "events photos", "lab photos", "campus pictures", "photo gallery", "visual gallery"],
-      description: "Photo gallery and media"
-    },
-    { 
-      name: "Contact", 
-      path: "/contact", 
-      keywords: ["address", "phone", "email", "location", "reach us", "get in touch", "enquiry", "contact us", "contact details", "office address"],
-      description: "Contact information and location"
-    },
+    { name: "Home", path: "/", keywords: ["homepage"], description: "Return to homepage" },
+    { name: "About", path: "/about", keywords: ["department"], description: "Learn about the department" },
+    { name: "Academics", path: "/academics", keywords: ["courses"], description: "Academic programs" },
+    { name: "Research", path: "/research", keywords: ["projects"], description: "Research & publications" },
+    { name: "People", path: "/people", keywords: ["faculty"], description: "Faculty directory" },
+    { name: "Events", path: "/events", keywords: ["workshops"], description: "Upcoming events" },
+    { name: "Placement", path: "/placement", keywords: ["careers"], description: "Placement opportunities" },
+    { name: "Alumni", path: "/alumni", keywords: ["graduates"], description: "Alumni network" },
+    { name: "Gallery", path: "/gallery", keywords: ["photos"], description: "Media gallery" },
+    { name: "Contact", path: "/contact", keywords: ["address"], description: "Contact info" },
   ];
 
-  // Fuzzy search configuration
-  const fuse = useMemo(() => {
-    return new Fuse(navItems, {
-      keys: [
-        { name: "name", weight: 2 },
-        { name: "keywords", weight: 1 },
-        { name: "description", weight: 0.5 },
-      ],
-      threshold: 0.3,
-      distance: 100,
-      minMatchCharLength: 2,
-      includeScore: true,
-      shouldSort: true,
-      ignoreLocation: true,
-    });
-  }, []);
+  const fuse = new Fuse(navItems, {
+    keys: [
+      { name: "name", weight: 2 },
+      { name: "keywords", weight: 1 },
+      { name: "description", weight: 0.5 },
+    ],
+    threshold: 0.3,
+  });
 
   const handleCommandSelect = (path: string) => {
     router.push(path);
@@ -130,44 +50,36 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-7xl px-2 sm:px-2">
-        <div
-          className={`backdrop-blur-xl rounded-2xl border transition-all duration-300 ${
-            isScrolled 
-              ? "bg-white/95 shadow-lg border-gray-200/70" 
-              : "bg-white/85 shadow-md border-gray-200/50"
-          }`}
-        >
-          <div className="flex items-center justify-between px-5 py-3.5">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b-4 border-blue-900 shadow-md">
+        <div className="max-w-screen mx-auto px-4 md:px-6">
+          <div className="flex items-center justify-between py-2 md:py-3 lg:py-3">
             {/* Logo */}
-            <Link href="/" className="flex items-center space-x-3 flex-shrink-0 group">
-              <div className="relative">
-                <img 
-                  src="/image.png" 
-                  alt="NIT Raipur Logo" 
-                  className="h-11 w-11 rounded-full ring-2 ring-gray-200/70 group-hover:ring-blue-500/40 transition-all duration-300" 
-                />
-              </div>
+            <Link href="/" className="flex items-center space-x-2 md:space-x-3 flex-shrink-0">
+              <img
+                src="/image.png"
+                alt="NIT Raipur Logo"
+                className="h-8 w-8 md:h-10 md:w-10 lg:h-12 lg:w-12"
+              />
               <div className="hidden sm:block">
-                <div className="text-[15px] font-bold text-gray-900 tracking-tight leading-tight">
+                <div className="text-xs md:text-sm lg:text-base font-bold text-gray-900 uppercase leading-tight">
                   NIT Raipur
                 </div>
-                <div className="text-[12.5px] font-semibold text-gray-600 leading-tight">
+                <div className="text-[10px] md:text-xs lg:text-sm font-semibold text-gray-700 leading-tight">
                   Biomedical Engineering
                 </div>
               </div>
             </Link>
 
-            {/* Navigation Links - Desktop */}
-            <div className="hidden lg:flex items-center space-x-0.5">
+            {/* Navigation Links */}
+            <div className="hidden lg:flex flex-1 justify-center gap-x-4 md:gap-x-2 flex-wrap">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   href={item.path}
-                  className={`px-3.5 py-2 rounded-lg text-[14.5px] font-semibold transition-all duration-200 ${
+                  className={`relative px-2 md:px-3 lg:px-4 py-1 md:py-2 text-xs md:text-sm lg:text-base font-semibold uppercase tracking-wide transition-colors duration-200 border-b-2 ${
                     pathname === item.path
-                      ? "bg-blue-50 text-blue-700 shadow-sm"
-                      : "text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                      ? "border-blue-900 text-blue-900"
+                      : "border-transparent text-gray-700 hover:border-blue-900"
                   }`}
                 >
                   {item.name}
@@ -177,58 +89,44 @@ const Navbar = () => {
 
             {/* Search + Mobile Toggle */}
             <div className="flex items-center space-x-2">
-              {/* Desktop Search Button */}
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => setOpenCommandDialog(true)}
-                className="hidden sm:flex items-center space-x-2 h-9 px-3 rounded-lg hover:bg-gray-100 text-gray-600"
+                className="hidden sm:flex items-center space-x-1 md:space-x-2 h-7 md:h-9 px-2 md:px-3 border border-gray-300 hover:bg-gray-100 text-gray-700 text-xs md:text-sm"
               >
-                <Search size={16} />
-                <span className="text-[13px] font-medium">Search</span>
-                <kbd className="pointer-events-none hidden lg:inline-flex h-5 select-none items-center gap-1 rounded border border-gray-200 bg-gray-50 px-1.5 text-[10px] font-semibold text-gray-600">
-                  <span className="text-xs">⌘</span>K
+                <Search size={14} className="md:hidden" />
+                <Search size={16} className="hidden md:inline" />
+                <span className="hidden md:inline">Search</span>
+                <kbd className="pointer-events-none hidden md:inline-flex h-4 md:h-5 select-none items-center gap-1 border border-gray-300 bg-gray-100 px-1 text-[10px] md:text-xs font-semibold text-gray-600">
+                  <span className="text-[10px] md:text-xs">⌘</span>K
                 </kbd>
-              </Button>
-
-              {/* Mobile Search Button */}
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setOpenCommandDialog(true)}
-                className="sm:hidden h-9 w-9 rounded-lg hover:bg-gray-100"
-              >
-                <Search size={18} className="text-gray-600" />
               </Button>
 
               {/* Mobile menu toggle */}
               <Button
                 variant="ghost"
                 size="sm"
-                className="lg:hidden h-9 w-9 rounded-lg hover:bg-gray-100"
+                className="lg:hidden h-8 w-8 md:h-9 md:w-9 border border-gray-300 hover:bg-gray-100"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               >
-                {isMobileMenuOpen ? (
-                  <X size={20} className="text-gray-700" />
-                ) : (
-                  <Menu size={20} className="text-gray-700" />
-                )}
+                {isMobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
               </Button>
             </div>
           </div>
 
           {/* Mobile menu */}
           {isMobileMenuOpen && (
-            <div className="lg:hidden border-t border-gray-200/50 p-4 bg-gradient-to-b from-white/50 to-white/80 backdrop-blur-sm rounded-b-2xl">
-              <div className="grid grid-cols-2 gap-2">
+            <div className="lg:hidden border-t-2 border-gray-300 bg-gray-50">
+              <div className="grid grid-cols-2 gap-2 p-3 md:p-4">
                 {navItems.map((item) => (
                   <Link
                     key={item.name}
                     href={item.path}
-                    className={`px-4 py-3 rounded-lg text-[14.5px] font-semibold text-center transition-all duration-200 ${
+                    className={`px-3 py-2 text-xs md:text-sm text-center uppercase tracking-wide transition-colors duration-200 border-2 ${
                       pathname === item.path
-                        ? "bg-blue-50 text-blue-700 shadow-sm border border-blue-100"
-                        : "text-gray-800 hover:bg-gray-100 hover:text-gray-900 border border-gray-100"
+                        ? "border-blue-900 bg-blue-900 text-white"
+                        : "border-gray-300 text-gray-800 hover:border-blue-900 hover:bg-white"
                     }`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
@@ -241,26 +139,26 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Command Dialog for Search */}
+      {/* Command Dialog */}
       <CommandDialog open={openCommandDialog} onOpenChange={setOpenCommandDialog}>
-        <CommandInput placeholder="Search pages, courses, faculty..." className="text-[15px] font-medium" />
+        <CommandInput placeholder="Search pages, courses, faculty..." className="text-base font-medium" />
         <CommandList className="max-h-[400px]">
-          <CommandEmpty className="py-6 text-center text-[14px] text-gray-500 font-medium">
+          <CommandEmpty className="py-6 text-center text-sm text-gray-500 font-medium">
             No results found.
           </CommandEmpty>
-          <CommandGroup heading="Navigation" className="text-[13px] font-bold text-gray-500 px-2 py-2">
+          <CommandGroup heading="Navigation" className="text-sm font-bold text-gray-700 px-2 py-2">
             {navItems.map((item) => (
               <CommandItem
                 key={item.path}
-                value={`${item.name} ${item.keywords.join(" ")} ${item.description}`}
+                value={`${item.name} ${item.keywords?.join(" ")} ${item.description}`}
                 onSelect={() => handleCommandSelect(item.path)}
-                className="px-3 py-3 rounded-md cursor-pointer"
+                className="px-3 py-3 cursor-pointer border-b border-gray-200 hover:bg-gray-100"
               >
                 <div className="flex flex-col">
-                  <span className="text-[14.5px] font-semibold text-gray-900">
+                  <span className="text-base font-bold text-gray-900 uppercase tracking-wide">
                     {item.name}
                   </span>
-                  <span className="text-[12.5px] text-gray-500 font-medium mt-0.5">
+                  <span className="text-sm text-gray-600 font-medium mt-1">
                     {item.description}
                   </span>
                 </div>

@@ -286,11 +286,11 @@ const staffData = {
 };
 
 const ComingSoonPlaceholder = ({ icon: Icon, title }: { icon: any; title: string }) => (
-  <Card className="p-12 text-center">
-    <Icon className="w-16 h-16 mx-auto mb-4 text-gray-300" />
-    <h3 className="text-xl font-semibold text-gray-400 mb-2">{title}</h3>
-    <p className="text-gray-500">Content will be updated soon</p>
-  </Card>
+  <div className="p-16 text-center border-2 border-gray-300 bg-gray-50">
+    <Icon className="w-16 h-16 mx-auto mb-4 text-gray-400" />
+    <h3 className="text-xl font-bold text-gray-900 mb-2 uppercase tracking-wide">{title}</h3>
+    <p className="text-gray-700">Content will be updated soon</p>
+  </div>
 );
 
 const People = () => {
@@ -300,57 +300,59 @@ const People = () => {
   const FacultyModal = ({ faculty, index }: { faculty: any; index: number }) => (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline" size="sm" className="w-full mt-4">
+        <Button variant="outline" size="sm" className="w-full mt-4 bg-blue-900 hover:bg-blue-800 text-white border-0 font-bold uppercase tracking-wide">
           View Full Profile
         </Button>
       </DialogTrigger>
-      <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto border-4 border-gray-400">
         <DialogHeader>
-          <DialogTitle className="text-2xl">{faculty.name}</DialogTitle>
+          <DialogTitle className="text-2xl font-bold text-gray-900 uppercase tracking-wide border-b-2 border-blue-900 pb-3">
+            {faculty.name}
+          </DialogTitle>
         </DialogHeader>
         <div className="grid md:grid-cols-3 gap-6">
           <div className="md:col-span-1">
             <img
               src={faculty.image_url}
               alt={faculty.name}
-              className="w-full rounded-lg shadow-lg"
+              className="w-full border-4 border-gray-400"
               onError={(e) => {
                 e.currentTarget.src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop";
               }}
             />
           </div>
           <div className="md:col-span-2 space-y-4">
-            <div>
-              <h4 className="flex items-center font-semibold text-gray-900 mb-2">
-                <Award className="w-4 h-4 mr-2 text-blue-600" />
+            <div className="pb-3 border-b-2 border-gray-300">
+              <h4 className="flex items-center font-bold text-gray-900 mb-2 uppercase tracking-wide text-sm">
+                <Award className="w-4 h-4 mr-2 text-blue-900" />
                 Designation
               </h4>
-              <p className="text-gray-700">{faculty.designation}</p>
+              <p className="text-gray-800 font-semibold">{faculty.designation}</p>
             </div>
-            <div>
-              <h4 className="flex items-center font-semibold text-gray-900 mb-2">
-                <GraduationCap className="w-4 h-4 mr-2 text-purple-600" />
+            <div className="pb-3 border-b-2 border-gray-300">
+              <h4 className="flex items-center font-bold text-gray-900 mb-2 uppercase tracking-wide text-sm">
+                <GraduationCap className="w-4 h-4 mr-2 text-blue-900" />
                 Qualification
               </h4>
-              <p className="text-gray-700 text-sm">{faculty.qualification}</p>
+              <p className="text-gray-800 text-sm leading-relaxed">{faculty.qualification}</p>
             </div>
-            <div>
-              <h4 className="flex items-center font-semibold text-gray-900 mb-2">
-                <Briefcase className="w-4 h-4 mr-2 text-green-600" />
+            <div className="pb-3 border-b-2 border-gray-300">
+              <h4 className="flex items-center font-bold text-gray-900 mb-2 uppercase tracking-wide text-sm">
+                <Briefcase className="w-4 h-4 mr-2 text-blue-900" />
                 Area of Interest
               </h4>
-              <ul className="list-disc ml-5 text-gray-700 text-sm space-y-1">
+              <ul className="list-disc ml-5 text-gray-800 text-sm space-y-1">
                 {faculty.specialisation_area_of_interest.map((spec: string, i: number) => (
                   <li key={i}>{spec}</li>
                 ))}
               </ul>
             </div>
             <div className="space-y-2">
-              <h4 className="font-semibold text-gray-900 mb-2">Contact Information</h4>
+              <h4 className="font-bold text-gray-900 mb-2 uppercase tracking-wide text-sm">Contact Information</h4>
               {faculty.contact_info.phone && (
                 <a
                   href={`tel:${faculty.contact_info.phone}`}
-                  className="flex items-center text-blue-600 hover:text-blue-800 text-sm"
+                  className="flex items-center text-blue-900 hover:underline text-sm font-semibold"
                 >
                   <Phone className="w-4 h-4 mr-2" />
                   {faculty.contact_info.phone}
@@ -360,7 +362,7 @@ const People = () => {
                 <a
                   key={i}
                   href={`mailto:${email}`}
-                  className="flex items-center text-blue-600 hover:text-blue-800 text-sm"
+                  className="flex items-center text-blue-900 hover:underline text-sm font-semibold"
                 >
                   <Mail className="w-4 h-4 mr-2" />
                   {email}
@@ -374,50 +376,51 @@ const People = () => {
   );
 
   return (
-    <div className="min-h-screen pt-28 bg-gradient-to-b from-gray-50 to-white">
-      {/* Hero Section */}
-      <section className="pb-10 bg-gradient-to-r from-indigo-50 via-purple-50 to-pink-50">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+    <div className="min-h-screen pt-28 bg-white">
+      {/* Hero Section - Academic */}
+      <section className="pb-12 bg-blue-900 border-b-4 border-gray-800">
+        <div className="max-w-7xl mx-auto px-6 text-center py-20">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 uppercase tracking-wide">
             Our People
           </h1>
-          <p className="text-lg md:text-2xl text-gray-700 max-w-3xl mx-auto">
+          <div className="w-32 h-1 bg-white mx-auto mb-6"></div>
+          <p className="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto">
             Meet our dedicated faculty, staff, and students driving excellence in biomedical engineering
           </p>
         </div>
       </section>
 
       {/* Main Content */}
-      <section className="py-12">
+      <section className="py-16">
         <div className="max-w-7xl mx-auto px-6">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
             <div className="flex flex-col lg:flex-row gap-8">
               {/* Sidebar for Desktop */}
-              <TabsList className="hidden lg:flex flex-col w-64 rounded-xl bg-white shadow-md gap-2 p-4 h-fit sticky top-28">
+              <TabsList className="hidden lg:flex flex-col w-64 bg-gray-50 border-2 border-gray-300 gap-0 p-0 h-fit sticky top-28">
                 <TabsTrigger
                   value="faculty"
-                  className="w-full justify-start text-left px-4 py-3 data-[state=active]:bg-indigo-50 data-[state=active]:text-indigo-700"
+                  className="w-full justify-start text-left px-4 py-3 border-b-2 border-gray-300 data-[state=active]:bg-blue-900 data-[state=active]:text-white font-bold uppercase tracking-wide text-sm"
                 >
                   <GraduationCap className="w-5 h-5 mr-3" />
                   Faculty Members
                 </TabsTrigger>
                 <TabsTrigger
                   value="staff"
-                  className="w-full justify-start text-left px-4 py-3 data-[state=active]:bg-indigo-50 data-[state=active]:text-indigo-700"
+                  className="w-full justify-start text-left px-4 py-3 border-b-2 border-gray-300 data-[state=active]:bg-blue-900 data-[state=active]:text-white font-bold uppercase tracking-wide text-sm"
                 >
                   <UsersIcon className="w-5 h-5 mr-3" />
                   Staff
                 </TabsTrigger>
                 <TabsTrigger
                   value="officers"
-                  className="w-full justify-start text-left px-4 py-3 data-[state=active]:bg-indigo-50 data-[state=active]:text-indigo-700"
+                  className="w-full justify-start text-left px-4 py-3 border-b-2 border-gray-300 data-[state=active]:bg-blue-900 data-[state=active]:text-white font-bold uppercase tracking-wide text-sm"
                 >
                   <Briefcase className="w-5 h-5 mr-3" />
                   Officers
                 </TabsTrigger>
                 <TabsTrigger
                   value="students"
-                  className="w-full justify-start text-left px-4 py-3 data-[state=active]:bg-indigo-50 data-[state=active]:text-indigo-700"
+                  className="w-full justify-start text-left px-4 py-3 data-[state=active]:bg-blue-900 data-[state=active]:text-white font-bold uppercase tracking-wide text-sm"
                 >
                   <User className="w-5 h-5 mr-3" />
                   Students
@@ -425,17 +428,17 @@ const People = () => {
               </TabsList>
 
               {/* Mobile Tabs */}
-              <TabsList className="lg:hidden grid grid-cols-4 gap-2 rounded-lg bg-white shadow p-2 mb-6">
-                <TabsTrigger value="faculty" className="text-xs px-2 py-2">
+              <TabsList className="lg:hidden grid grid-cols-4 gap-2 bg-gray-50 border-2 border-gray-300 p-2 mb-6">
+                <TabsTrigger value="faculty" className="text-xs px-2 py-2 font-bold uppercase data-[state=active]:bg-blue-900 data-[state=active]:text-white">
                   Faculty
                 </TabsTrigger>
-                <TabsTrigger value="staff" className="text-xs px-2 py-2">
+                <TabsTrigger value="staff" className="text-xs px-2 py-2 font-bold uppercase data-[state=active]:bg-blue-900 data-[state=active]:text-white">
                   Staff
                 </TabsTrigger>
-                <TabsTrigger value="officers" className="text-xs px-2 py-2">
+                <TabsTrigger value="officers" className="text-xs px-2 py-2 font-bold uppercase data-[state=active]:bg-blue-900 data-[state=active]:text-white">
                   Officers
                 </TabsTrigger>
-                <TabsTrigger value="students" className="text-xs px-2 py-2">
+                <TabsTrigger value="students" className="text-xs px-2 py-2 font-bold uppercase data-[state=active]:bg-blue-900 data-[state=active]:text-white">
                   Students
                 </TabsTrigger>
               </TabsList>
@@ -447,36 +450,36 @@ const People = () => {
                   <div className="space-y-12">
                     {/* HOD Section */}
                     <div>
-                      <h2 className="text-3xl font-bold text-gray-900 mb-8 flex items-center">
-                        <Award className="w-8 h-8 mr-3 text-indigo-600" />
+                      <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center uppercase tracking-wide pb-4 border-b-2 border-gray-400">
+                        <Award className="w-8 h-8 mr-3 text-blue-900" />
                         Head of Department
                       </h2>
-                      <Card className="p-6 bg-gradient-to-br from-indigo-50 to-white border-2 border-indigo-200">
+                      <div className="p-8 bg-gray-50 border-2 border-gray-400">
                         <div className="grid md:grid-cols-4 gap-6">
                           <div className="md:col-span-1">
                             <img
                               src={facultyData.head_of_department.image_url}
                               alt={facultyData.head_of_department.name}
-                              className="w-full rounded-lg shadow-lg"
+                              className="w-full border-4 border-blue-900"
                               onError={(e) => {
                                 e.currentTarget.src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop";
                               }}
                             />
                           </div>
-                          <div className="md:col-span-3 space-y-3">
-                            <h3 className="text-2xl font-bold text-gray-900">
+                          <div className="md:col-span-3 space-y-4">
+                            <h3 className="text-2xl font-bold text-gray-900 uppercase tracking-wide">
                               {facultyData.head_of_department.name}
                             </h3>
-                            <p className="text-indigo-700 font-semibold">
+                            <p className="text-blue-900 font-bold uppercase tracking-wide">
                               {facultyData.head_of_department.designation}
                             </p>
-                            <p className="text-sm text-gray-600">
+                            <p className="text-sm text-gray-800 pb-3 border-b border-gray-300">
                               {facultyData.head_of_department.qualification}
                             </p>
-                            <div className="flex flex-wrap gap-3">
+                            <div className="flex flex-wrap gap-3 pb-3 border-b border-gray-300">
                               <a
                                 href={`tel:${facultyData.head_of_department.contact_info.phone}`}
-                                className="inline-flex items-center px-3 py-2 bg-blue-50 text-blue-700 rounded-lg hover:bg-blue-100 text-sm font-medium"
+                                className="inline-flex items-center px-3 py-2 border border-gray-400 bg-white text-blue-900 hover:bg-gray-100 text-sm font-bold"
                               >
                                 <Phone className="w-4 h-4 mr-2" />
                                 {facultyData.head_of_department.contact_info.phone}
@@ -485,7 +488,7 @@ const People = () => {
                                 <a
                                   key={i}
                                   href={`mailto:${email}`}
-                                  className="inline-flex items-center px-3 py-2 bg-green-50 text-green-700 rounded-lg hover:bg-green-100 text-sm font-medium"
+                                  className="inline-flex items-center px-3 py-2 border border-gray-400 bg-white text-blue-900 hover:bg-gray-100 text-sm font-bold"
                                 >
                                   <Mail className="w-4 h-4 mr-2" />
                                   {email}
@@ -493,12 +496,12 @@ const People = () => {
                               ))}
                             </div>
                             <div>
-                              <h4 className="font-semibold text-gray-900 mb-2">Specialization:</h4>
+                              <h4 className="font-bold text-gray-900 mb-3 uppercase tracking-wide text-sm">Specialization:</h4>
                               <div className="flex flex-wrap gap-2">
                                 {facultyData.head_of_department.specialisation_area_of_interest.map((spec, i) => (
                                   <span
                                     key={i}
-                                    className="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-xs font-medium"
+                                    className="px-3 py-1 border border-gray-400 bg-white text-gray-900 text-xs font-semibold"
                                   >
                                     {spec}
                                   </span>
@@ -507,40 +510,40 @@ const People = () => {
                             </div>
                           </div>
                         </div>
-                      </Card>
+                      </div>
                     </div>
 
                     {/* Faculty Grid */}
                     <div>
-                      <h2 className="text-3xl font-bold text-gray-900 mb-8">
+                      <h2 className="text-3xl font-bold text-gray-900 mb-6 uppercase tracking-wide pb-4 border-b-2 border-gray-400">
                         Faculty Members
                       </h2>
                       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {facultyData.faculty.map((faculty, index) => (
-                          <Card
+                          <div
                             key={index}
-                            className="p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                            className="p-6 border-2 border-gray-400 bg-gray-50 hover:shadow-lg hover:border-blue-900 transition-all duration-300"
                           >
                             <div className="text-center">
                               <img
                                 src={faculty.image_url}
                                 alt={faculty.name}
-                                className="w-32 h-32 rounded-full mx-auto mb-4 object-cover shadow-lg border-4 border-gray-100"
+                                className="w-32 h-32 border-4 border-blue-900 mx-auto mb-4 object-cover"
                                 onError={(e) => {
                                   e.currentTarget.src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop";
                                 }}
                               />
-                              <h3 className="text-lg font-bold text-gray-900 mb-1">
+                              <h3 className="text-base font-bold text-gray-900 mb-1 uppercase tracking-wide">
                                 {faculty.name}
                               </h3>
-                              <p className="text-indigo-600 font-semibold text-sm mb-3">
+                              <p className="text-blue-900 font-bold text-sm mb-3 uppercase tracking-wide">
                                 {faculty.designation}
                               </p>
-                              <div className="space-y-2 mb-4">
+                              <div className="space-y-2 mb-4 pb-4 border-b-2 border-gray-300">
                                 {faculty.contact_info.phone && (
                                   <a
                                     href={`tel:${faculty.contact_info.phone}`}
-                                    className="flex items-center justify-center text-blue-600 hover:text-blue-800 text-xs"
+                                    className="flex items-center justify-center text-blue-900 hover:underline text-xs font-semibold"
                                   >
                                     <Phone className="w-3 h-3 mr-1" />
                                     {faculty.contact_info.phone}
@@ -548,7 +551,7 @@ const People = () => {
                                 )}
                                 <a
                                   href={`mailto:${faculty.contact_info.emails[0]}`}
-                                  className="flex items-center justify-center text-green-600 hover:text-green-800 text-xs"
+                                  className="flex items-center justify-center text-blue-900 hover:underline text-xs font-semibold"
                                 >
                                   <Mail className="w-3 h-3 mr-1" />
                                   {faculty.contact_info.emails[0]}
@@ -556,7 +559,7 @@ const People = () => {
                               </div>
                               <FacultyModal faculty={faculty} index={index} />
                             </div>
-                          </Card>
+                          </div>
                         ))}
                       </div>
                     </div>
@@ -566,45 +569,45 @@ const People = () => {
                 {/* Staff Tab */}
                 <TabsContent value="staff" className="mt-0">
                   <div>
-                    <h2 className="text-3xl font-bold text-gray-900 mb-8 flex items-center">
-                      <UsersIcon className="w-8 h-8 mr-3 text-teal-600" />
+                    <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center uppercase tracking-wide pb-4 border-b-2 border-gray-400">
+                      <UsersIcon className="w-8 h-8 mr-3 text-blue-900" />
                       Support Staff
                     </h2>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                       {staffData.employees.map((staff, index) => (
-                        <Card
+                        <div
                           key={index}
-                          className="p-6 hover:shadow-xl transition-all duration-300"
+                          className="p-6 border-2 border-gray-400 bg-gray-50 hover:shadow-lg hover:border-blue-900 transition-all duration-300"
                         >
                           <div className="text-center">
                             <img
                               src={staff.image_url}
                               alt={staff.name}
-                              className="w-32 h-32 rounded-full mx-auto mb-4 object-cover shadow-lg border-4 border-gray-100"
+                              className="w-32 h-32 border-4 border-blue-900 mx-auto mb-4 object-cover"
                               onError={(e) => {
                                 e.currentTarget.src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop";
                               }}
                             />
-                            <h3 className="text-lg font-bold text-gray-900 mb-1">
+                            <h3 className="text-base font-bold text-gray-900 mb-1 uppercase tracking-wide">
                               {staff.name}
                             </h3>
-                            <p className="text-teal-600 font-semibold text-sm mb-2">
+                            <p className="text-blue-900 font-bold text-sm mb-2 uppercase tracking-wide">
                               {staff.designation}
                             </p>
-                            <p className="text-gray-600 text-xs mb-3">
+                            <p className="text-gray-800 text-xs mb-3 font-semibold pb-3 border-b border-gray-300">
                               {staff.qualification}
                             </p>
-                            <div className="flex items-center justify-center text-gray-500 text-xs mb-3">
+                            <div className="flex items-center justify-center text-gray-700 text-xs mb-3 font-semibold">
                               <Calendar className="w-3 h-3 mr-1" />
                               Joined: {staff.date_of_appointment}
                             </div>
-                            <div className="space-y-2">
+                            <div className="space-y-2 pt-3 border-t-2 border-gray-300">
                               {Array.isArray(staff.contact_info.phone) ? (
                                 staff.contact_info.phone.map((phone, i) => (
                                   <a
                                     key={i}
                                     href={`tel:${phone}`}
-                                    className="flex items-center justify-center text-blue-600 hover:text-blue-800 text-xs"
+                                    className="flex items-center justify-center text-blue-900 hover:underline text-xs font-semibold"
                                   >
                                     <Phone className="w-3 h-3 mr-1" />
                                     {phone}
@@ -613,7 +616,7 @@ const People = () => {
                               ) : (
                                 <a
                                   href={`tel:${staff.contact_info.phone}`}
-                                  className="flex items-center justify-center text-blue-600 hover:text-blue-800 text-xs"
+                                  className="flex items-center justify-center text-blue-900 hover:underline text-xs font-semibold"
                                 >
                                   <Phone className="w-3 h-3 mr-1" />
                                   {staff.contact_info.phone}
@@ -622,7 +625,7 @@ const People = () => {
                               {staff.contact_info.email && (
                                 <a
                                   href={`mailto:${staff.contact_info.email}`}
-                                  className="flex items-center justify-center text-green-600 hover:text-green-800 text-xs"
+                                  className="flex items-center justify-center text-blue-900 hover:underline text-xs font-semibold"
                                 >
                                   <Mail className="w-3 h-3 mr-1" />
                                   {staff.contact_info.email}
@@ -630,7 +633,7 @@ const People = () => {
                               )}
                             </div>
                           </div>
-                        </Card>
+                        </div>
                       ))}
                     </div>
                   </div>

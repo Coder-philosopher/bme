@@ -86,12 +86,11 @@ const eventsData = [
   {
     SlNo: 10,
     Title:
-      "1st International Conference on “Biomedical Engineering Science and Technology: Roadway from Laboratory to Market” (ICBEST 2018)",
+      "1st International Conference on Biomedical Engineering Science and Technology: Roadway from Laboratory to Market (ICBEST 2018)",
     Date: "20th - 21st Dec 2018",
     Coordinators: ["Dr. Neelamshobha Nirala", "Dr. Arindam Bit", "Dr. Saurabh Gupta"],
     Type: "Conference",
   },
-  // ... add remaining entries as-is ...
 ];
 
 // Category list
@@ -148,36 +147,40 @@ const Events = () => {
   const EventModal = ({ event, index }: { event: any; index: number }) => (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="secondary" size="sm" className="mt-4 rounded-lg">
+        <Button variant="secondary" size="sm" className="mt-4 bg-blue-900 hover:bg-blue-800 text-white border-0 font-bold uppercase tracking-wide text-xs">
           View Details
         </Button>
       </DialogTrigger>
-      <DialogContent className="max-w-2xl">
+      <DialogContent className="max-w-2xl border-4 border-gray-400">
         <DialogHeader>
-          <DialogTitle>{event.Title}</DialogTitle>
+          <DialogTitle className="text-xl font-bold text-gray-900 uppercase tracking-wide border-b-2 border-blue-900 pb-3">
+            {event.Title}
+          </DialogTitle>
         </DialogHeader>
-        <div className="mt-2 space-y-3">
-          <div className="flex items-center text-gray-600 text-sm">
-            <Calendar className="h-5 w-5 mr-2 text-blue-500" />
-            {event.Date}
+        <div className="mt-4 space-y-4">
+          <div className="flex items-center text-gray-800 text-sm pb-3 border-b border-gray-300">
+            <Calendar className="h-5 w-5 mr-2 text-blue-900" />
+            <span className="font-semibold">{event.Date}</span>
           </div>
-          <div className="flex flex-wrap items-center text-gray-600 text-sm">
-            <Users className="h-5 w-5 mr-2 text-teal-600" />
-            <span className="font-medium">Coordinators:</span>
+          <div className="pb-3 border-b border-gray-300">
+            <div className="flex items-center text-gray-800 text-sm mb-2">
+              <Users className="h-5 w-5 mr-2 text-blue-900" />
+              <span className="font-bold uppercase tracking-wide">Coordinators:</span>
+            </div>
             {event.Coordinators && (
-              <div className="flex flex-wrap gap-2 ml-2">
+              <div className="flex flex-wrap gap-2 ml-7">
                 {event.Coordinators.map((coor: string, i: number) => (
-                  <span key={i} className="bg-gray-100 text-gray-700 rounded-full px-3 py-1 text-xs font-medium">
+                  <span key={i} className="border border-gray-400 bg-gray-50 text-gray-900 px-3 py-1 text-xs font-semibold">
                     {coor}
                   </span>
                 ))}
               </div>
             )}
           </div>
-          <div className="flex items-center text-gray-600 text-sm">
-            <Badge variant="default" className="bg-blue-100 text-blue-700 font-medium">
+          <div className="flex items-center text-gray-800 text-sm">
+            <span className="px-3 py-1 bg-blue-900 text-white font-bold text-xs uppercase tracking-wide">
               {event.type}
-            </Badge>
+            </span>
           </div>
         </div>
       </DialogContent>
@@ -185,26 +188,33 @@ const Events = () => {
   );
 
   return (
-    <div className="min-h-screen pt-28 bg-gradient-to-b from-gray-50 to-white">
-      {/* Hero Section */}
-      <section className="pb-10 bg-gradient-to-r from-teal-50 via-indigo-50 to-purple-50">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">Events & Activities</h1>
-          <p className="text-lg md:text-2xl text-gray-700 max-w-3xl mx-auto">
+    <div className="min-h-screen pt-28 bg-white">
+      {/* Hero Section - Academic */}
+      <section className="pb-12 bg-blue-900 border-b-4 border-gray-800">
+        <div className="max-w-7xl mx-auto px-6 text-center py-20">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 uppercase tracking-wide">
+            Events & Activities
+          </h1>
+          <div className="w-32 h-1 bg-white mx-auto mb-6"></div>
+          <p className="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto">
             Conferences, Workshops, Academic Sessions, and More
           </p>
         </div>
       </section>
 
       {/* Category & Search Filters */}
-      <section className="py-8 border-b bg-white sticky top-20 z-40">
+      <section className="py-6 border-b-2 border-gray-300 bg-gray-50 sticky top-20 z-40">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row md:items-center gap-4">
           <div className="flex flex-wrap gap-2">
             {categories.map((cat) => (
               <Button
                 key={cat}
                 variant={cat === selectedCategory ? "default" : "outline"}
-                className={`text-sm rounded-xl ${cat === selectedCategory ? "bg-primary-teal text-white" : ""}`}
+                className={`text-sm font-bold uppercase tracking-wide ${
+                  cat === selectedCategory 
+                    ? "bg-blue-900 text-white border-2 border-blue-900 hover:bg-blue-800" 
+                    : "border-2 border-gray-400 text-gray-800 hover:bg-gray-100"
+                }`}
                 onClick={() => setSelectedCategory(cat)}>
                 {cat}
               </Button>
@@ -212,27 +222,27 @@ const Events = () => {
           </div>
           <div className="flex items-center ml-auto md:ml-8 w-full md:w-64">
             <div className="relative w-full">
-              <Search className="absolute left-2 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-600" />
               <input
                 type="text"
                 placeholder="Search events..."
-                className="pl-8 pr-3 py-2 rounded-lg border w-full bg-gray-50 text-gray-700 shadow-inner"
+                className="pl-10 pr-3 py-2 border-2 border-gray-400 w-full bg-white text-gray-900 font-medium"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                />
+              />
             </div>
           </div>
         </div>
       </section>
 
       {/* Events by Year */}
-      <section className="py-12">
+      <section className="py-16">
         <div className="max-w-7xl mx-auto px-6">
           {eventsByYear.length === 0 || eventsByYear.every((group) => group.items.length === 0) ? (
-            <div className="text-center py-16">
+            <div className="text-center py-16 border-2 border-gray-300 bg-gray-50">
               <Calendar className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-gray-600 mb-2">No events found</h3>
-              <p className="text-gray-500">Try adjusting category or search terms.</p>
+              <h3 className="text-xl font-bold text-gray-900 mb-2 uppercase tracking-wide">No Events Found</h3>
+              <p className="text-gray-700">Try adjusting category or search terms.</p>
             </div>
           ) : (
             <div>
@@ -242,7 +252,7 @@ const Events = () => {
                     <div key={group.year} className="mb-12">
                       {/* Year Heading with Collapse Toggle */}
                       <div
-                        className="flex items-center cursor-pointer mb-6 group select-none"
+                        className="flex items-center cursor-pointer mb-6 pb-4 border-b-2 border-gray-400 group select-none"
                         onClick={() =>
                           setCollapsedYears((prev) => ({
                             ...prev,
@@ -250,58 +260,62 @@ const Events = () => {
                           }))
                         }>
                         <ChevronDown
-                          className={`w-6 h-6 mr-2 transition-transform duration-200 ${collapsedYears[group.year] ? "-rotate-90" : ""}`}
+                          className={`w-6 h-6 mr-2 text-blue-900 transition-transform duration-200 ${
+                            collapsedYears[group.year] ? "-rotate-90" : ""
+                          }`}
                         />
-                        <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 tracking-wide">
+                        <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 uppercase tracking-wide">
                           {group.year}
                         </h2>
-                        <span className="ml-3 text-sm text-gray-500 font-medium group-hover:text-teal-600">
+                        <span className="ml-4 px-3 py-1 bg-gray-200 text-gray-900 text-sm font-bold uppercase tracking-wide">
                           {collapsedYears[group.year]
                             ? "Show"
-                            : `(${group.items.length} event${group.items.length > 1 ? "s" : ""})`}
+                            : `${group.items.length} Event${group.items.length > 1 ? "s" : ""}`}
                         </span>
                       </div>
                       {!collapsedYears[group.year] && (
-                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                           {group.items.map((event, idx) => (
-                            <Card key={event.SlNo} className="p-6 bg-white border shadow hover:shadow-lg rounded-xl flex flex-col">
-                              <div className="flex items-center gap-3 mb-3">
-                                <Badge
-                                  variant="outline"
-                                  className={`uppercase tracking-wide text-xs px-2.5 py-1.5 font-bold ${
+                            <div 
+                              key={event.SlNo} 
+                              className="p-6 bg-gray-50 border-2 border-gray-400 hover:shadow-lg hover:border-blue-900 transition-all duration-300 flex flex-col"
+                            >
+                              <div className="flex items-center gap-3 mb-4 pb-3 border-b-2 border-gray-300">
+                                <span
+                                  className={`uppercase tracking-wide text-xs px-3 py-1 font-bold border-2 ${
                                     event.type === "Conference"
-                                      ? "border-blue-300 text-blue-600"
+                                      ? "border-blue-900 bg-blue-900 text-white"
                                       : event.type === "Workshop"
-                                      ? "border-green-300 text-green-600"
-                                      : "border-gray-200 text-gray-600"
+                                      ? "border-gray-600 bg-gray-600 text-white"
+                                      : "border-gray-400 bg-gray-200 text-gray-900"
                                   }`}>
                                   {event.type}
-                                </Badge>
-                                <span className="text-xs px-2 py-1 bg-gray-100 text-gray-500 rounded-full">
+                                </span>
+                                <span className="text-xs px-2 py-1 border border-gray-400 bg-white text-gray-700 font-semibold">
                                   {event.year}
                                 </span>
                               </div>
-                              <h3 className="text-lg font-semibold text-gray-900 mb-3 line-clamp-2">
+                              <h3 className="text-base font-bold text-gray-900 mb-3 leading-tight uppercase tracking-wide">
                                 {event.Title}
                               </h3>
-                              <div className="flex items-center text-gray-600 text-sm mb-2">
-                                <Calendar className="h-4 w-4 mr-2 text-teal-600" />
+                              <div className="flex items-center text-gray-800 text-sm mb-3 font-semibold">
+                                <Calendar className="h-4 w-4 mr-2 text-blue-900" />
                                 {event.Date}
                               </div>
-                              <div className="mb-2 flex flex-wrap items-center gap-2">
+                              <div className="mb-3 flex flex-wrap items-center gap-2 pb-3 border-b border-gray-300">
                                 {(event.Coordinators || []).map((coord: string, ic: number) => (
                                   <span
                                     key={ic}
-                                    className="px-2 py-1 bg-indigo-50 text-indigo-700 rounded-full text-xs font-medium"
+                                    className="px-2 py-1 border border-gray-400 bg-white text-gray-800 text-xs font-semibold"
                                   >
                                     {coord}
                                   </span>
                                 ))}
                               </div>
-                              <div className="mt-auto pt-2 flex items-end justify-between">
+                              <div className="mt-auto pt-2">
                                 <EventModal event={event} index={idx} />
                               </div>
-                            </Card>
+                            </div>
                           ))}
                         </div>
                       )}
