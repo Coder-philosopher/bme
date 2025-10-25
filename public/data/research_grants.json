@@ -1,0 +1,156 @@
+{
+  "research_projects": [
+    {
+      "project_no": "NITRR/RP/BME/2017/84",
+      "title": "On Chip Development of Three Dimensional Clinical Graft for the Treatment of Diseased Esophageal with integration of Vascularisation and Enhanced Neurogenesis",
+      "coordinators": ["Dr. Arindam Bit"],
+      "research_grant": "33,18,100.00",
+      "funding_agency": "SERB",
+      "year_of_sanction": 2017,
+      "current_status": "Completed"
+    },
+    {
+      "project_no": "NITRR/RP/BME/2016/79",
+      "title": "Three-Dimensional Monte-Carlo Simulation for Photoacoustic Tomography using Graphics Processing Unit",
+      "coordinators": ["Dr. Saurabh Gupta"],
+      "research_grant": "20,19,330.00",
+      "funding_agency": "SERB",
+      "year_of_sanction": 2017,
+      "current_status": "Completed"
+    },
+    {
+      "project_no": "NITRR/RP/BME/2018/111",
+      "title": "Development of Risk Stratification System for Clinical Management of Sickle Cell Disease Using Predictive Machine Learning Approaches",
+      "coordinators": ["Dr. Bikesh Kumar Singh"],
+      "research_grant": "16,06,930.00",
+      "funding_agency": "SERB",
+      "year_of_sanction": 2018,
+      "current_status": "Completed"
+    },
+    {
+      "project_no": "NITRR/RP/BME/2019/115",
+      "title": "Regeneration Mechanisms of Deep-layer Skin Wounds in Response to Treatment with Polyelectrolyte-Hydrogel Complex Dressing and Gene Therapy",
+      "coordinators": [
+        "Dr. Arindam Bit",
+        "Dr. Linur I. Salafutdinov (Federal University, Kazan Russia)"
+      ],
+      "research_grant": "29,29,440.00",
+      "funding_agency": "RUS/RFBR",
+      "year_of_sanction": 2018,
+      "current_status": "Completed"
+    },
+    {
+      "project_no": "NITRR/RP/BME/2019/122",
+      "title": "Development of Complete Functional Blood Vessel Network on Multi-layered Microfluidic Platform",
+      "coordinators": [
+        "Dr. Arindam Bit (PI)",
+        "Dr. Lata Upadhyay (co-PI)"
+      ],
+      "research_grant": "49,19,622.00",
+      "funding_agency": "MHRD",
+      "year_of_sanction": 2019,
+      "current_status": "Completed"
+    },
+    {
+      "project_no": "NITRR/RP/BME/2019/123",
+      "title": "Development of Microfluidic Platform for Point-of-care Diagnosis of Sickle Cell Anemia of Chhattisgarh",
+      "coordinators": ["Dr. Arindam Bit"],
+      "research_grant": "29,95,344.00",
+      "funding_agency": "DST-TDP",
+      "year_of_sanction": 2019,
+      "current_status": "Completed"
+    },
+    {
+      "project_no": "NITRR/RP/BME/2020/125",
+      "title": "Development of a MultiModal Artificial Intelligent System for Detection of Endophenotypes in Schizophrenia Using Automated Speech and EEG Signal Analysis: An Explorative Study from Chhattisgarh State",
+      "coordinators": ["Dr. Bikesh Kumar Singh"],
+      "research_grant": "25,38,240.00",
+      "funding_agency": "DST (CSRI)",
+      "year_of_sanction": 2020,
+      "current_status": "Completed"
+    },
+    {
+      "project_no": "NITRR/RP/BME/2019/131",
+      "title": "Development of Patient-Specific Vertebral Disc Joint Impact with Multi-Components Designing Approach",
+      "coordinators": ["Dr. Arindam Bit"],
+      "research_grant": "28,88,580.00",
+      "funding_agency": "DST (India-Taiwan)",
+      "year_of_sanction": 2020,
+      "current_status": "Completed"
+    },
+    {
+      "project_no": "NITRR/RP/BME/2021/135",
+      "title": "Development of Breast Cancer Risk Assessment in Women using Advanced Artificial Intelligence Techniques: A Pilot Study",
+      "coordinators": ["Dr. Bikesh Kumar Singh"],
+      "research_grant": "2,33,000.00",
+      "funding_agency": "ICMR",
+      "year_of_sanction": 2021,
+      "current_status": "Completed"
+    },
+    {
+      "project_no": "NITRR/RP/BME/2021/141",
+      "title": "Enhancing Brain Cognition Through Neuro–Feedback Model in Indian Children with Learning Disability",
+      "coordinators": ["Dr. Bikesh Kumar Singh"],
+      "research_grant": "27,25,316.00",
+      "funding_agency": "SERB",
+      "year_of_sanction": 2021,
+      "current_status": "Completed"
+    },
+    {
+      "project_no": "NITRR/RP/BME/2023/162",
+      "title": "Identification of Composite Neural Biomarkers for Differentiating Psychotic Disorders Using Quantitative EEG and Speech Signal Analysis",
+      "coordinators": [
+        "Dr. Bikesh Kumar Singh (PI)",
+        "Dr. Sai Krishna Tikka (Co-PI)",
+        "Dr. Lokesh Kumar Singh (Co-PI)"
+      ],
+      "research_grant": "45,79,696.00",
+      "funding_agency": "SERB (CRG)",
+      "year_of_sanction": 2023,
+      "current_status": "On Going"
+    },
+    {
+      "project_no": "NITRR/RP/BME/2023/170",
+      "title": "Investigating EEG and fNIRS Signatures for Different Types of Meditation – An Artificial Intelligence-Based Approach for Evaluation and Validation",
+      "coordinators": ["Dr. Bikesh Kumar Singh"],
+      "research_grant": "27,54,259.00",
+      "funding_agency": "DST/SATYAM",
+      "year_of_sanction": 2023,
+      "current_status": "On Going"
+    }
+  ],
+  "seed_grant_projects": [
+    {
+      "project_no": "NITRR/Seed Grant/2019-20/003",
+      "title": "Development of Patient Specific Triply Periodic Minimal Surface Based Pre-Constructed Porous Orthopedic Implant",
+      "coordinators": ["Dr. Nishant Kumar Singh"],
+      "research_grant": "4,99,700.00",
+      "year_of_sanction": 2019,
+      "current_status": "Completed"
+    },
+    {
+      "project_no": "NITRR/Seed Grant/2021-22/34",
+      "title": "Development of 3D Printed Scoliotic Model for Surgical Training",
+      "coordinators": ["Dr. M. Marieswaran"],
+      "research_grant": "5,00,000.00",
+      "year_of_sanction": 2022,
+      "current_status": "On Going"
+    },
+    {
+      "project_no": "NITRR/Seed Grant/2024-25/10",
+      "title": "Study of Mechanotransduction of Cartilage on Chip to Identify Osteoarthritis (OA)",
+      "coordinators": ["Dr. Mainak Basu"],
+      "research_grant": "5,00,000.00",
+      "year_of_sanction": 2024,
+      "current_status": "On Going"
+    },
+    {
+      "project_no": "NITRR/Seed Grant/2024-25/11",
+      "title": "Comparative Analysis of Plantar Pressure and Muscle Activation in Normal and Flat-Footed Individuals: Effects of Correction Insoles",
+      "coordinators": ["Dr. Shivangi Giri"],
+      "research_grant": "5,00,000.00",
+      "year_of_sanction": 2024,
+      "current_status": "On Going"
+    }
+  ]
+}

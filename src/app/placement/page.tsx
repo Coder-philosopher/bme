@@ -1,8 +1,8 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
-import Image from "next/image";
+import { useState } from "react";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import {
   Table,
   TableBody,
@@ -11,226 +11,461 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import Chart from "@/components/Chart";
+import {
+  BarChart,
+  Bar,
+  LineChart,
+  Line,
+  PieChart,
+  Pie,
+  Cell,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
+import {
+  TrendingUp,
+  Users,
+  Award,
+  Briefcase,
+  Building2,
+  Calendar,
+} from "lucide-react";
+
+// Hardcoded placement data
+const placementData = {
+  placement_data: [
+    { batch: "2024-2025", eligible: 30, offer_received: 6 },
+    { batch: "2023-2024", eligible: 52, offer_received: 9 },
+    { batch: "2022-2023", eligible: 58, offer_received: 28 },
+    { batch: "2021-2022", eligible: 37, offer_received: 21 },
+    { batch: "2020-2021", eligible: 28, offer_received: 9 },
+  ],
+  details: {
+    institution: "National Institute of Technology Raipur",
+    department: "Bio-Medical Engineering (B.Tech)",
+    placement_overview: {
+      batch_wise_summary: [
+        {
+          batch: "2024-2025",
+          academic_year: "2024-25",
+          eligible_students: 30,
+          total_offers_received: 6,
+          placement_percentage: 20.0,
+          highest_ctc_lpa: 16.2,
+          lowest_ctc_lpa: 5.5,
+          average_ctc_lpa: 8.76,
+          total_recruiters: 135,
+        },
+        {
+          batch: "2023-2024",
+          academic_year: "2023-24",
+          eligible_students: 52,
+          total_offers_received: 9,
+          placement_percentage: 17.31,
+          highest_ctc_lpa: "NA",
+          lowest_ctc_lpa: "NA",
+          average_ctc_lpa: "NA",
+          total_recruiters: 127,
+        },
+        {
+          batch: "2022-2023",
+          academic_year: "2022-23",
+          eligible_students: 58,
+          total_offers_received: 28,
+          placement_percentage: 48.28,
+          highest_ctc_lpa: 12.0,
+          lowest_ctc_lpa: 6.0,
+          average_ctc_lpa: 8.38,
+          total_recruiters: 11,
+        },
+        {
+          batch: "2021-2022",
+          academic_year: "2021-22",
+          eligible_students: 37,
+          total_offers_received: 21,
+          placement_percentage: 56.76,
+          highest_ctc_lpa: "NA",
+          lowest_ctc_lpa: "NA",
+          average_ctc_lpa: "NA",
+          total_recruiters: 19,
+        },
+        {
+          batch: "2020-2021",
+          academic_year: "2020-21",
+          eligible_students: 28,
+          total_offers_received: 9,
+          placement_percentage: 32.14,
+          highest_ctc_lpa: 10.0,
+          lowest_ctc_lpa: 3.6,
+          average_ctc_lpa: 6.8,
+          total_recruiters: 8,
+        },
+      ],
+      five_year_trends: {
+        total_eligible_students: 205,
+        total_offers_received: 73,
+        overall_placement_percentage: 35.61,
+      },
+    },
+    detailed_placement_data: {
+      "2024-2025": {
+        placements: [
+          { company_name: "Analitica Global", students_placed: 1, ctc_lpa: 7.0 },
+          { company_name: "GE Healthcare", students_placed: 2, ctc_lpa: 16.2 },
+          { company_name: "PharmaAce", students_placed: 1, ctc_lpa: 8.6 },
+          { company_name: "Sri Chaitanya", students_placed: 1, ctc_lpa: 5.5 },
+          { company_name: "Wipro", students_placed: 2, ctc_lpa: 6.5 },
+        ],
+      },
+      "2023-2024": {
+        placements: [
+          { company_name: "Zscaler", students_placed: 1 },
+          { company_name: "PharmaACE", students_placed: 2 },
+          { company_name: "Amazon", students_placed: 1 },
+          { company_name: "Impact Analytics", students_placed: 1 },
+          { company_name: "PRADAN", students_placed: 1 },
+          { company_name: "Sri Chaitanya Education", students_placed: 1 },
+          { company_name: "ZS Associates", students_placed: 1 },
+          { company_name: "PhonePe", students_placed: 1 },
+        ],
+      },
+      "2022-2023": {
+        placements: [
+          { company_name: "TCS Digital", students_placed: 2, ctc_lpa: 9.0 },
+          { company_name: "EXL", students_placed: 4, ctc_lpa: 6.5 },
+          { company_name: "Quantiphi", students_placed: 3, ctc_lpa: 8.5 },
+          { company_name: "PharmaACE", students_placed: 2, ctc_lpa: 7.5 },
+          { company_name: "Tredence", students_placed: 2, ctc_lpa: 10.0 },
+          { company_name: "NexTurn", students_placed: 3, ctc_lpa: 6.0 },
+          { company_name: "Zycus", students_placed: 1, ctc_lpa: 8.25 },
+          { company_name: "Aakash Byju's", students_placed: 3, ctc_lpa: 9.0 },
+          { company_name: "Sprinklr", students_placed: 1, ctc_lpa: 12.0 },
+          { company_name: "PRADAN", students_placed: 1, ctc_lpa: 8.16 },
+          { company_name: "TCS INI", students_placed: 1, ctc_lpa: 9.0 },
+        ],
+      },
+    },
+    company_frequency_analysis: {
+      recurring_recruiters: [
+        {
+          company_name: "PharmaACE",
+          appearances: 5,
+          years: ["2020-21", "2021-22", "2022-23", "2023-24", "2024-25"],
+          total_students_placed: 7,
+        },
+        {
+          company_name: "GE Healthcare",
+          appearances: 2,
+          years: ["2021-22", "2024-25"],
+          total_students_placed: 4,
+        },
+        {
+          company_name: "ZS Associates",
+          appearances: 2,
+          years: ["2021-22", "2023-24"],
+          total_students_placed: 3,
+        },
+        {
+          company_name: "Tredence Analytics",
+          appearances: 3,
+          years: ["2020-21", "2021-22", "2022-23"],
+          total_students_placed: 5,
+        },
+        {
+          company_name: "EXL Service",
+          appearances: 2,
+          years: ["2021-22", "2022-23"],
+          total_students_placed: 5,
+        },
+        {
+          company_name: "PRADAN",
+          appearances: 3,
+          years: ["2021-22", "2022-23", "2023-24"],
+          total_students_placed: 4,
+        },
+        {
+          company_name: "TCS",
+          appearances: 3,
+          years: ["2020-21", "2022-23", "2022-23"],
+          total_students_placed: 4,
+        },
+        {
+          company_name: "Wipro",
+          appearances: 2,
+          years: ["2020-21", "2024-25"],
+          total_students_placed: 3,
+        },
+      ],
+    },
+  },
+};
+
+const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#8884D8"];
 
 const Placement = () => {
-  const { data: placementData, isLoading } = useQuery({
-    queryKey: ["/api/department-data/placements"],
-  });
+  const [selectedYear, setSelectedYear] = useState("2024-2025");
 
-  const placement = placementData?.data;
+  const summary = placementData.details.placement_overview.batch_wise_summary;
+  const trendData = placementData.details.placement_overview.five_year_trends;
+  const companies = placementData.details.company_frequency_analysis.recurring_recruiters;
 
-  if (isLoading) {
-    return (
-      <div
-        className="min-h-screen pt-20"
-        data-testid="page-placement-loading"
-      >
-        <div className="max-w-7xl mx-auto px-6 py-20">
-          <div className="animate-pulse">
-            <div className="h-12 bg-gray-200 rounded mb-6"></div>
-            <div className="grid md:grid-cols-2 gap-6">
-              <Card className="p-6">
-                <div className="h-6 bg-gray-200 rounded mb-2"></div>
-                <div className="h-4 bg-gray-200 rounded"></div>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  // Chart data transformations
+  const placementTrendData = summary.map((s) => ({
+    year: s.batch.split("-")[0],
+    eligible: s.eligible_students,
+    placed: s.total_offers_received,
+    percentage: s.placement_percentage,
+  }));
+
+  const ctcData = summary
+    .filter((s) => s.average_ctc_lpa !== "NA")
+    .map((s) => ({
+      year: s.batch.split("-")[0],
+      highest: s.highest_ctc_lpa,
+      average: s.average_ctc_lpa,
+      lowest: s.lowest_ctc_lpa,
+    }));
+
+  const currentYearData = summary.find((s) => s.batch === selectedYear);
+  const currentYearCompanies =
+    placementData.details.detailed_placement_data[selectedYear]?.placements || [];
 
   return (
-    <div className="min-h-screen " data-testid="page-placement">
-      {/* Hero Section */}
-      <section
-        className=" bg-gradient-to-r from-primary-teal to-primary-blue text-white"
-        data-testid="section-placement-hero"
-      >
+    <div className="min-h-screen pt-28 bg-gradient-to-b from-gray-50 to-white">
+      {/* Hero */}
+      <section className="pb-10 bg-gradient-to-r from-teal-50 via-blue-50 to-blue-100">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <h1
-            className="text-5xl md:text-6xl font-heading font-bold mb-6"
-            data-testid="heading-placement-title"
-          >
+          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4">
             Training & Placement
           </h1>
-          <p
-            className="text-xl md:text-2xl max-w-3xl mx-auto"
-            data-testid="text-placement-subtitle"
-          >
-            Excellence in career development and industry partnerships
+          <p className="text-lg md:text-xl text-gray-700 mb-2">
+            {placementData.details.department}
+          </p>
+          <p className="text-base text-gray-600">
+            {placementData.details.institution}
           </p>
         </div>
       </section>
 
-      {/* Placement Overview */}
-      <section className="py-20" data-testid="section-placement-overview">
+    
+      <section className="py-12 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2
-              className="text-4xl font-heading font-bold text-gray-900 mb-4"
-              data-testid="heading-placement-overview"
-            >
-              Placement Activities
-            </h2>
-            <p
-              className="text-xl text-gray-600 max-w-3xl mx-auto"
-              data-testid="text-placement-description"
-            >
-              {placement?.description}
-            </p>
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+            Placement Trends & Analytics
+          </h2>
+
+          <div className="grid lg:grid-cols-2 gap-8 mb-8">
+            {/* Placement Trend Chart */}
+            <Card className="p-6">
+              <h3 className="text-xl font-bold text-gray-900 mb-4">
+                5-Year Placement Trends
+              </h3>
+              <ResponsiveContainer width="100%" height={300}>
+                <LineChart data={placementTrendData}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="year" />
+                  <YAxis />
+                  <Tooltip />
+                  <Legend />
+                  <Line
+                    type="monotone"
+                    dataKey="eligible"
+                    stroke="#3B82F6"
+                    strokeWidth={2}
+                    name="Eligible"
+                  />
+                  <Line
+                    type="monotone"
+                    dataKey="placed"
+                    stroke="#10B981"
+                    strokeWidth={2}
+                    name="Placed"
+                  />
+                </LineChart>
+              </ResponsiveContainer>
+            </Card>
+
+            {/* Placement Percentage Bar Chart */}
+            <Card className="p-6">
+              <h3 className="text-xl font-bold text-gray-900 mb-4">
+                Placement Percentage by Year
+              </h3>
+              <ResponsiveContainer width="100%" height={300}>
+                <BarChart data={placementTrendData}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="year" />
+                  <YAxis />
+                  <Tooltip />
+                  <Legend />
+                  <Bar dataKey="percentage" fill="#8B5CF6" name="Placement %" />
+                </BarChart>
+              </ResponsiveContainer>
+            </Card>
+
+            {/* CTC Trends */}
+            {ctcData.length > 0 && (
+              <Card className="p-6">
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
+                  CTC Trends (LPA)
+                </h3>
+                <ResponsiveContainer width="100%" height={300}>
+                  <BarChart data={ctcData}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="year" />
+                    <YAxis />
+                    <Tooltip />
+                    <Legend />
+                    <Bar dataKey="highest" fill="#F59E0B" name="Highest" />
+                    <Bar dataKey="average" fill="#14B8A6" name="Average" />
+                    <Bar dataKey="lowest" fill="#6366F1" name="Lowest" />
+                  </BarChart>
+                </ResponsiveContainer>
+              </Card>
+            )}
+
+            {/* Top Recruiters */}
+            <Card className="p-6">
+              <h3 className="text-xl font-bold text-gray-900 mb-4">
+                Top Recurring Recruiters
+              </h3>
+              <div className="space-y-3">
+                {companies.slice(0, 6).map((company, idx) => (
+                  <div
+                    key={idx}
+                    className="flex items-center justify-between p-3 bg-gray-50 rounded-lg"
+                  >
+                    <div>
+                      <p className="font-semibold text-gray-900">
+                        {company.company_name}
+                      </p>
+                      <p className="text-sm text-gray-600">
+                        {company.appearances} years • {company.total_students_placed}{" "}
+                        students
+                      </p>
+                    </div>
+                    <Briefcase className="w-6 h-6 text-teal-600" />
+                  </div>
+                ))}
+              </div>
+            </Card>
           </div>
         </div>
       </section>
 
-      {/* Placement Coordinator */}
-      <section
-        className="py-20 bg-gray-50"
-        data-testid="section-coordinator"
-      >
+      {/* Year Selector */}
+      <section className="py-8 bg-white border-y">
         <div className="max-w-7xl mx-auto px-6">
-          <Card className="p-8 shadow-lg" data-testid="card-coordinator">
-            <div className="grid md:grid-cols-3 gap-8 items-center">
-              <div>
-                <Image
-                  src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300"
-                  alt="Placement Coordinator"
-                  width={300}
-                  height={300}
-                  className="rounded-xl shadow-lg w-full max-w-xs mx-auto"
-                  data-testid="image-coordinator"
-                />
+          <div className="flex items-center justify-center gap-3 flex-wrap">
+            <span className="text-sm font-semibold text-gray-700">Select Batch:</span>
+            {summary.map((s) => (
+              <Button
+                key={s.batch}
+                onClick={() => setSelectedYear(s.batch)}
+                variant={selectedYear === s.batch ? "default" : "outline"}
+                className={
+                  selectedYear === s.batch
+                    ? "bg-teal-600 hover:bg-teal-700 text-white"
+                    : "border-gray-300"
+                }
+              >
+                {s.batch}
+              </Button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Selected Year Details */}
+      {currentYearData && (
+        <section className="py-12">
+          <div className="max-w-7xl mx-auto px-6">
+            <Card className="p-8">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                Batch {selectedYear} Placement Summary
+              </h2>
+              <div className="grid md:grid-cols-3 gap-6 mb-8">
+                <div className="p-4 bg-blue-50 rounded-lg">
+                  <p className="text-sm text-gray-600 mb-1">Eligible Students</p>
+                  <p className="text-2xl font-bold text-blue-700">
+                    {currentYearData.eligible_students}
+                  </p>
+                </div>
+                <div className="p-4 bg-green-50 rounded-lg">
+                  <p className="text-sm text-gray-600 mb-1">Students Placed</p>
+                  <p className="text-2xl font-bold text-green-700">
+                    {currentYearData.total_offers_received}
+                  </p>
+                </div>
+                <div className="p-4 bg-purple-50 rounded-lg">
+                  <p className="text-sm text-gray-600 mb-1">Placement Rate</p>
+                  <p className="text-2xl font-bold text-purple-700">
+                    {currentYearData.placement_percentage.toFixed(1)}%
+                  </p>
+                </div>
               </div>
 
-              <div className="md:col-span-2">
-                <h3
-                  className="text-2xl font-heading font-bold text-gray-900 mb-4"
-                  data-testid="heading-coordinator"
-                >
-                  Placement Coordinator
-                </h3>
-                <div className="space-y-2 text-lg text-gray-700 mb-6">
-                  <div>
-                    <strong>Name:</strong>{" "}
-                    <span data-testid="text-coordinator-name">
-                      {placement?.coordinator?.name}
-                    </span>
+              {currentYearData.average_ctc_lpa !== "NA" && (
+                <div className="grid md:grid-cols-3 gap-6">
+                  <div className="p-4 bg-orange-50 rounded-lg">
+                    <p className="text-sm text-gray-600 mb-1">Highest CTC</p>
+                    <p className="text-xl font-bold text-orange-700">
+                      ₹{currentYearData.highest_ctc_lpa} LPA
+                    </p>
                   </div>
-                  <div>
-                    <strong>Email:</strong>{" "}
-                    <span data-testid="text-coordinator-email">
-                      {placement?.coordinator?.email}
-                    </span>
+                  <div className="p-4 bg-teal-50 rounded-lg">
+                    <p className="text-sm text-gray-600 mb-1">Average CTC</p>
+                    <p className="text-xl font-bold text-teal-700">
+                      ₹{currentYearData.average_ctc_lpa} LPA
+                    </p>
                   </div>
-                  <div>
-                    <strong>Phone:</strong>{" "}
-                    <span data-testid="text-coordinator-phone">
-                      {placement?.coordinator?.phone}
-                    </span>
+                  <div className="p-4 bg-cyan-50 rounded-lg">
+                    <p className="text-sm text-gray-600 mb-1">Lowest CTC</p>
+                    <p className="text-xl font-bold text-cyan-700">
+                      ₹{currentYearData.lowest_ctc_lpa} LPA
+                    </p>
                   </div>
                 </div>
-                <p
-                  className="text-gray-600 leading-relaxed"
-                  data-testid="text-coordinator-description"
-                >
-                  Our dedicated placement team works tirelessly to connect our
-                  talented students with leading healthcare and technology
-                  companies. We provide comprehensive career guidance, skill
-                  development programs, and industry exposure to ensure our
-                  graduates are well-prepared for successful careers.
-                </p>
-              </div>
-            </div>
-          </Card>
-        </div>
-      </section>
-
-      {/* Placement Statistics */}
-      <section className="py-20" data-testid="section-statistics">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2
-              className="text-4xl font-heading font-bold text-gray-900 mb-4"
-              data-testid="heading-statistics"
-            >
-              Placement Statistics
-            </h2>
-            <p
-              className="text-xl text-gray-600"
-              data-testid="text-statistics-subtitle"
-            >
-              Track record of successful placements across all programs
-            </p>
+              )}
+            </Card>
           </div>
+        </section>
+      )}
 
-          <div className="grid lg:grid-cols-2 gap-12 mb-12">
-            {/* Statistics Table */}
-            <Card
-              className="p-8 shadow-lg"
-              data-testid="card-statistics-table"
-            >
-              <h3
-                className="text-2xl font-heading font-bold text-gray-900 mb-6"
-                data-testid="heading-statistics-table"
-              >
-                Placement Statistics
+      {/* Charts Section */}
+      
+
+      {/* Companies for Selected Year */}
+      {currentYearCompanies.length > 0 && (
+        <section className="py-12">
+          <div className="max-w-7xl mx-auto px-6">
+            <Card className="p-8">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">
+                Recruiters for Batch {selectedYear}
               </h3>
               <div className="overflow-x-auto">
-                <Table data-testid="table-placement-stats">
+                <Table>
                   <TableHeader>
                     <TableRow>
-                      <TableHead data-testid="header-year">Year</TableHead>
-                      <TableHead
-                        className="text-center"
-                        data-testid="header-ug"
-                      >
-                        UG Students
-                      </TableHead>
-                      <TableHead
-                        className="text-center"
-                        data-testid="header-pg"
-                      >
-                        PG Students
-                      </TableHead>
-                      <TableHead
-                        className="text-center"
-                        data-testid="header-phd"
-                      >
-                        PhD Students
-                      </TableHead>
+                      <TableHead>Company Name</TableHead>
+                      <TableHead className="text-center">Students Placed</TableHead>
+                      <TableHead className="text-center">CTC (LPA)</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
-                    {placement?.stats?.map((stat: any, index: number) => (
-                      <TableRow
-                        key={index}
-                        className="hover:bg-gray-50"
-                        data-testid={`row-stat-${index}`}
-                      >
-                        <TableCell
-                          className="font-medium"
-                          data-testid={`cell-year-${index}`}
-                        >
-                          {stat.year}
+                    {currentYearCompanies.map((company: any, idx: number) => (
+                      <TableRow key={idx}>
+                        <TableCell className="font-medium">
+                          {company.company_name}
                         </TableCell>
-                        <TableCell
-                          className="text-center"
-                          data-testid={`cell-ug-${index}`}
-                        >
-                          {stat.UG}
+                        <TableCell className="text-center">
+                          {company.students_placed}
                         </TableCell>
-                        <TableCell
-                          className="text-center"
-                          data-testid={`cell-pg-${index}`}
-                        >
-                          {stat.PG}
-                        </TableCell>
-                        <TableCell
-                          className="text-center"
-                          data-testid={`cell-phd-${index}`}
-                        >
-                          {stat.PhD}
+                        <TableCell className="text-center">
+                          {company.ctc_lpa ? `₹${company.ctc_lpa}` : "NA"}
                         </TableCell>
                       </TableRow>
                     ))}
@@ -238,86 +473,58 @@ const Placement = () => {
                 </Table>
               </div>
             </Card>
-
-            {/* Chart */}
-            <Card className="p-8 shadow-lg" data-testid="card-chart">
-              <Chart
-                data={placement?.stats || []}
-                title="Placement Trends"
-              />
-            </Card>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-         <section className="py-20 bg-gray-50" data-testid="section-companies">
+      {/* Complete Batch-wise Table */}
+      <section className="py-12 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6">
-          <Card className="p-8 shadow-lg" data-testid="card-companies">
-            <h3 className="text-2xl font-heading font-bold text-gray-900 mb-8 text-center" data-testid="heading-companies">
-              Our Recruiting Partners
-            </h3>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
-              {placement?.companies?.map((company, index) => (
-                <div 
-                  key={index}
-                  className="h-16 bg-white rounded-lg flex items-center justify-center shadow border hover:shadow-lg transition-shadow duration-300"
-                  data-testid={`company-${index}`}
-                >
-                  <span className="text-gray-600 font-medium text-center px-2">
-                    {company}
-                  </span>
-                </div>
-              ))}
-            </div>
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+            Complete Placement Statistics
+          </h2>
+          <Card className="p-8 overflow-x-auto">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Batch</TableHead>
+                  <TableHead className="text-center">Eligible</TableHead>
+                  <TableHead className="text-center">Placed</TableHead>
+                  <TableHead className="text-center">Placement %</TableHead>
+                  <TableHead className="text-center">Avg CTC</TableHead>
+                  <TableHead className="text-center">Highest CTC</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {summary.map((stat, idx) => (
+                  <TableRow key={idx} className="hover:bg-gray-50">
+                    <TableCell className="font-medium">{stat.batch}</TableCell>
+                    <TableCell className="text-center">
+                      {stat.eligible_students}
+                    </TableCell>
+                    <TableCell className="text-center">
+                      {stat.total_offers_received}
+                    </TableCell>
+                    <TableCell className="text-center">
+                      <span className="px-2 py-1 bg-green-100 text-green-800 rounded-full text-sm font-semibold">
+                        {stat.placement_percentage.toFixed(1)}%
+                      </span>
+                    </TableCell>
+                    <TableCell className="text-center">
+                      {stat.average_ctc_lpa !== "NA"
+                        ? `₹${stat.average_ctc_lpa}`
+                        : "NA"}
+                    </TableCell>
+                    <TableCell className="text-center">
+                      {stat.highest_ctc_lpa !== "NA"
+                        ? `₹${stat.highest_ctc_lpa}`
+                        : "NA"}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
           </Card>
-        </div>
-      </section>
-
-      {/* Placement Process */}
-      <section className="py-20" data-testid="section-process">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-heading font-bold text-gray-900 mb-4" data-testid="heading-process">
-              Placement Process
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto" data-testid="text-process-subtitle">
-              A comprehensive approach to career development and placement
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <Card className="p-6 text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-testid="card-process-1">
-              <div className="bg-primary-teal p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                <i className="fas fa-user-edit text-white text-2xl"></i>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Resume Building</h3>
-              <p className="text-gray-600">Professional resume and profile development guidance</p>
-            </Card>
-            
-            <Card className="p-6 text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-testid="card-process-2">
-              <div className="bg-primary-blue p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                <i className="fas fa-chalkboard-teacher text-white text-2xl"></i>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Skill Development</h3>
-              <p className="text-gray-600">Technical and soft skills training programs</p>
-            </Card>
-            
-            <Card className="p-6 text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-testid="card-process-3">
-              <div className="bg-primary-teal p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                <i className="fas fa-handshake text-white text-2xl"></i>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Industry Connect</h3>
-              <p className="text-gray-600">Regular interaction with industry professionals</p>
-            </Card>
-            
-            <Card className="p-6 text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-testid="card-process-4">
-              <div className="bg-primary-blue p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                <i className="fas fa-briefcase text-white text-2xl"></i>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Job Placement</h3>
-              <p className="text-gray-600">Direct placement assistance and follow-up support</p>
-            </Card>
-          </div>
         </div>
       </section>
     </div>

@@ -1,0 +1,240 @@
+{
+  "head_of_department": {
+    "name": "Dr. Arindam Bit",
+    "qualification": "B. Tech (Biomed.), M.E (Biomed.), PhD (Jadavpur University)",
+    "designation": "Associate Professor",
+    "contact_info": {
+      "phone": "9399603267",
+      "emails": [
+        "arinbit.bme@nitrr.ac.in",
+        "ab.mbme@gmail.com"
+      ]
+    },
+    "specialisation_area_of_interest": [
+      "Numerical and Experimental Biomechanics",
+      "CFD Application in Biomedical Engineering",
+      "EEG Signal Analysis",
+      "Medical Image Processing"
+    ],
+    "image_url": "/images/Prof.Bit.jpg"
+  },
+  "faculty": [
+    {
+      "name": "Dr. Bikesh Kumar Singh",
+      "qualification": "Ph.D. (Biomedical Engineering), NIT Raipur; M. Tech. (Instrumentation and Control), B Tech (E & T. C.)",
+      "designation": "Associate Professor",
+      "contact_info": {
+        "phone": "+91‑9826469522",
+        "emails": [
+          "bsingh.bme@nitrr.ac.in"
+        ]
+      },
+      "specialisation_area_of_interest": [
+        "Biomedical Signal Processing (EEG, PPG, Lung sounds)",
+        "Medical Image Processing and Analysis",
+        "Computational Neuroscience",
+        "Computer Aided Diagnosis",
+        "Deep Learning and Machine Learning Applications in Healthcare"
+      ],
+      "image_url": "/images/bksingh.jpg"
+    },
+    {
+      "name": "Dr. Arindam Bit",
+      "qualification": "B. Tech (Biomed.), M.E (Biomed.), PhD (Jadavpur University)",
+      "designation": "Associate Professor",
+      "contact_info": {
+        "phone": "9399603267",
+        "emails": [
+          "arinbit.bme@nitrr.ac.in",
+          "ab.mbme@gmail.com"
+        ]
+      },
+      "specialisation_area_of_interest": [
+        "Numerical and Experimental Biomechanics",
+        "CFD Application in Biomedical Engineering",
+        "EEG Signal Analysis",
+        "Medical Image Processing"
+      ],
+      "image_url": "/images/Prof.Bit.jpg"
+    },
+    {
+      "name": "Dr. Saurabh Gupta",
+      "qualification": "PhD (Inverse Problems), IISc Bangalore; M S (Medical Software), Manipal University; B Tech (BME), Bundelkhand University",
+      "designation": "Associate Professor",
+      "contact_info": {
+        "phone": "7389727963",
+        "emails": [
+          "sgupta.bme@nitrr.ac.in"
+        ]
+      },
+      "specialisation_area_of_interest": [
+        "Inverse Problems",
+        "Optical Tomography",
+        "Optimization Algorithms",
+        "Pattern Recognition",
+        "Medical Imaging"
+      ],
+      "image_url": "/images/saurabh_bme.jpeg"
+    },
+    {
+      "name": "Dr. Sudip Paul",
+      "qualification": "B. Tech Biomedical Engineering IT BHU, PhD Biomedical Engineering IIT BHU, PDF Computer Science and Software Engineering: The University of Western Australia, Perth",
+      "designation": "Associate Professor",
+      "contact_info": {
+        "phone": "9485026088",
+        "emails": [
+          "spaul.bme@nitrr.ac.in"
+        ]
+      },
+      "specialisation_area_of_interest": [
+        "Biomedical Instrumentation",
+        "Electrophysiology",
+        "Medical Device",
+        "Cognitive Neuroscience",
+        "AI in healthcare"
+      ],
+      "image_url": "/images/sudip paul pic.jpg"
+    },
+    {
+      "name": "Dr. Neelamshobha Nirala",
+      "qualification": "B. Tech (Biomedical Engineering - NIT Raipur), M. Tech (Biomedical Engineering - SRM University), PhD (NIT Raipur)",
+      "designation": "Assistant Professor",
+      "contact_info": {
+        "phone": "+91‑6232089917",
+        "emails": [
+          "neelanir.bme@nitrr.ac.in"
+        ]
+      },
+      "specialisation_area_of_interest": [
+        "Signal Processing",
+        "Image Processing",
+        "Photoplethysmogram"
+      ],
+      "image_url": "/images/Mrs.Neelam Shobha Nirala.jpg"
+    },
+    {
+      "name": "Dr. Nishant Kumar Singh",
+      "qualification": "Ph.D. (Biomechanics), IIT‑BHU, Varanasi; M. Tech (Biomedical Engineering), IIT‑BHU, Varanasi; B. Tech (Biomedical Engineering), UPTU",
+      "designation": "Assistant Professor (Grade‑I)",
+      "contact_info": {
+        "phone": "+91‑7905733489",
+        "emails": [
+          "nksingh.bme@nitrr.ac.in"
+        ]
+      },
+      "specialisation_area_of_interest": [
+        "Computational & Multiscale Biomechanics",
+        "Orthopedic & Dental Implant Biomechanics",
+        "Biomaterials",
+        "Finite Element Analysis",
+        "Rehabilitation Engineering"
+      ],
+      "image_url": "/images/nishant.jpg"
+    },
+    {
+      "name": "Dr. M. Marieswaran",
+      "qualification": "PhD – Experimental Biomechanics, IIT Delhi (2019); M. Tech – Biomedical Engineering – VIT University (2012); B.E. Biomedical Engineering – SSN College of Engineering, Anna University (2010)",
+      "designation": "Assistant Professor (Grade‑I)",
+      "contact_info": {
+        "emails": [
+          "mmarieswaran.bme@nitrr.ac.in"
+        ]
+      },
+      "specialisation_area_of_interest": [
+        "Experimental & Orthopaedic Biomechanics",
+        "Medical Instrumentation",
+        "Biosensors",
+        "MEMS Fabrication",
+        "3D‑Printing"
+      ],
+      "image_url": "/images/Dr Maries.jpg"
+    },
+    {
+      "name": "Dr. Shivangi Giri",
+      "qualification": "Ph.D. (Biomechanics), MNNIT Allahabad; M. Tech. (Biomedical Engineering), MNNIT Allahabad; B. Tech. (Instrumentation & Control), UPTU",
+      "designation": "Assistant Professor (Grade‑II)",
+      "contact_info": {
+        "phone": "+91‑9450666459",
+        "emails": [
+          "sgiri.bme@nitrr.ac.in"
+        ]
+      },
+      "specialisation_area_of_interest": [
+        "Computational Biomechanics",
+        "Human Musculoskeletal"
+      ],
+      "image_url": "/images/Shivangi_Giri_Photograph.jpg"
+    },
+    {
+      "name": "Dr. Mainak Basu",
+      "qualification": "Ph.D. – MEMS and Microfluidics, IIT Kharagpur (2022); M. Tech – Biomedical Engineering, VIT University (2014); B. Tech – Biomedical Engineering, WBUT (2012)",
+      "designation": "Assistant Professor (Grade‑II)",
+      "contact_info": {
+        "phone": "+91‑8902033161",
+        "emails": [
+          "mbasu.bme@nitrr.ac.in"
+        ]
+      },
+      "specialisation_area_of_interest": [
+        "Microfluidics and Digital Microfluidics",
+        "MEMS, Bio‑MEMS, NEMS",
+        "Electrochemical and Optical methods for diagnostic devices",
+        "Biosensors and Biomedical Instrumentation"
+      ],
+      "image_url": "/images/Mainak_image.jpg"
+    },
+    {
+      "name": "Dr. Souvik Biswas",
+      "qualification": "B. Tech Biomedical Engineering WBUT; M. Tech Biomedical Engineering Jadavpur University; PhD Biomedical Engineering IIT Kharagpur, PDF Dielectric Spectroscopy, Chalmers University of Technology",
+      "designation": "Assistant Professor (Grade‑II)",
+      "contact_info": {
+        "phone": "905164557",
+        "emails": [
+          "sbiswas.bme@nitrr.ac.in"
+        ]
+      },
+      "specialisation_area_of_interest": [
+        "Biosensor",
+        "Computational nanoelectronics"
+      ],
+      "image_url": "/images/Souvik-Biswas-5.jpg"
+    },
+    {
+      "name": "Dr. Bijit Basumatary",
+      "qualification": "Ph. D (PMRF, Biomedical Engg, IIT Ropar); M. Tech (Biomedical Engg, IIT Ropar); B. Tech (Instrumentation Engg, CIT Kokrajhar)",
+      "designation": "Temporary Faculty",
+      "contact_info": {
+        "phone": "+91‑8011425713",
+        "emails": [
+          "bbasumatary.bme@nitrr.ac.in"
+        ]
+      },
+      "specialisation_area_of_interest": [
+        "Electrical Stimulation",
+        "Neuromuscular Rehabilitation",
+        "Biomedical Instrumentation",
+        "Medical Device"
+      ],
+      "image_url": "/images/bijit.png"
+    },
+    {
+      "name": "Dr. Adarsha Narayan Mallick",
+      "qualification": "Ph.D. – Biomedical Engineering, IIT Ropar (2025); B. Tech – Instrumentation and Electronics Engineering, CET Bhubaneswar BPUT, Odisha (2019)",
+      "designation": "Temporary Faculty",
+      "contact_info": {
+        "phone": "+91 9078825885",
+        "emails": [
+          "anmallick.bme@nitrr.ac.in"
+        ]
+      },
+      "specialisation_area_of_interest": [
+        "Medical Devices",
+        "Biomedical Instrumentation and Electronics",
+        "Signal and Image Processing",
+        "Embedded Systems and IoT",
+        "FEM, CFD, Machine Learning"
+      ],
+      "image_url": "/images/adarsha.jpg"
+    }
+  ]
+}

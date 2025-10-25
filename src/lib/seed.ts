@@ -4,7 +4,7 @@ import { neon } from "@neondatabase/serverless";
 import defaultData from "./defaultData"; // move that big array into its own file
 
 // Create a Neon client using your connection string
-const sql = neon(process.env.NODE_ENV);
+const sql = neon("postgresql://neondb_owner:npg_hruHDMUn86aq@ep-fragrant-mud-adgum4oe-pooler.c-2.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require");
 
 async function seed() {
   try {

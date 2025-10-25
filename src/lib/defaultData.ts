@@ -9,7 +9,7 @@
           establishment: "2008",
           accreditation: "NBA Accredited, NAAC A++ Grade",
           stats: {
-            faculties: 25,
+            faculties: 30,
             staff: 12,
             UGstudents: 320,
             PGstudents: 85,

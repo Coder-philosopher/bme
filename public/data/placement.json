@@ -1,0 +1,696 @@
+{
+  "placement_data": [
+    {
+      "batch": "2024-2025",
+      "eligible": 30,
+      "offer_received": 6
+    },
+    {
+      "batch": "2023-2024",
+      "eligible": 52,
+      "offer_received": 9
+    },
+    {
+      "batch": "2022-2023",
+      "eligible": 58,
+      "offer_received": 28
+    },
+    {
+      "batch": "2021-2022",
+      "eligible": 37,
+      "offer_received": 21
+    },
+    {
+      "batch": "2020-2021",
+      "eligible": 28,
+      "offer_received": 9
+    }
+  ],
+  "details":{
+  "institution": "National Institute of Technology Raipur",
+  "department": "Bio-Medical Engineering (B.Tech)",
+  "data_compilation_date": "2025-10-22",
+  "placement_overview": {
+    "batch_wise_summary": [
+      {
+        "batch": "2024-2025",
+        "academic_year": "2024-25",
+        "eligible_students": 30,
+        "total_offers_received": 6,
+        "on_campus_placements": 21,
+        "off_campus_placements": 1,
+        "placement_percentage": 20.0,
+        "highest_ctc_lpa": 16.2,
+        "lowest_ctc_lpa": 5.5,
+        "average_ctc_lpa": 8.76,
+        "total_recruiters": 135,
+        "data_status": "Complete with CTC"
+      },
+      {
+        "batch": "2023-2024",
+        "academic_year": "2023-24",
+        "eligible_students": 52,
+        "total_offers_received": 9,
+        "on_campus_placements": 7,
+        "off_campus_placements": 2,
+        "placement_percentage": 17.31,
+        "highest_ctc_lpa": "NA",
+        "lowest_ctc_lpa": "NA",
+        "average_ctc_lpa": "NA",
+        "total_recruiters": 127,
+        "data_status": "CTC not available in document"
+      },
+      {
+        "batch": "2022-2023",
+        "academic_year": "2022-23",
+        "eligible_students": 58,
+        "total_offers_received": 28,
+        "on_campus_placements": 27,
+        "off_campus_placements": "NA",
+        "placement_percentage": 48.28,
+        "highest_ctc_lpa": 12.0,
+        "lowest_ctc_lpa": 6.0,
+        "average_ctc_lpa": 8.38,
+        "total_recruiters": 11,
+        "data_status": "Complete with CTC"
+      },
+      {
+        "batch": "2021-2022",
+        "academic_year": "2021-22",
+        "eligible_students": 37,
+        "total_offers_received": 21,
+        "on_campus_placements": 20,
+        "off_campus_placements": "NA",
+        "placement_percentage": 56.76,
+        "highest_ctc_lpa": "NA",
+        "lowest_ctc_lpa": "NA",
+        "average_ctc_lpa": "NA",
+        "total_recruiters": 19,
+        "data_status": "CTC not available in document"
+      },
+      {
+        "batch": "2020-2021",
+        "academic_year": "2020-21",
+        "eligible_students": 28,
+        "total_offers_received": 9,
+        "on_campus_placements": 9,
+        "off_campus_placements": 4,
+        "placement_percentage": 32.14,
+        "highest_ctc_lpa": 10.0,
+        "lowest_ctc_lpa": 3.6,
+        "average_ctc_lpa": 6.8,
+        "total_recruiters": 8,
+        "data_status": "Complete with CTC"
+      }
+    ],
+    "five_year_trends": {
+      "total_eligible_students": 205,
+      "total_offers_received": 73,
+      "overall_placement_percentage": 35.61,
+      "year_range": "2020-21 to 2024-25"
+    }
+  },
+  "detailed_placement_data": {
+    "2024-2025": {
+      "academic_year": "2024-25",
+      "report_status": "Ongoing",
+      "total_recruiters": 135,
+      "placements": [
+        {
+          "serial_no": 2,
+          "company_name": "Analitica Global",
+          "placement_date": "NA",
+          "students_placed": 1,
+          "ctc_lpa": 7.0,
+          "mode": "NA"
+        },
+        {
+          "serial_no": 14,
+          "company_name": "GE Healthcare",
+          "placement_date": "14-08-2024",
+          "students_placed": 2,
+          "ctc_lpa": 16.2,
+          "mode": "NA"
+        },
+        {
+          "serial_no": 29,
+          "company_name": "PharmaAce",
+          "placement_date": "27-09-2024 to 28-09-2024",
+          "students_placed": 1,
+          "ctc_lpa": 8.6,
+          "mode": "NA"
+        },
+        {
+          "serial_no": 82,
+          "company_name": "Sri Chaitanya",
+          "placement_date": "03-01-2025",
+          "students_placed": 1,
+          "ctc_lpa": 5.5,
+          "mode": "NA"
+        },
+        {
+          "serial_no": 135,
+          "company_name": "Wipro",
+          "placement_date": "07-07-2025",
+          "students_placed": 2,
+          "ctc_lpa": 6.5,
+          "mode": "NA"
+        }
+      ],
+      "summary": {
+        "total_students_placed": 7,
+        "total_companies": 5,
+        "on_campus": 21,
+        "off_campus": 1
+      }
+    },
+    "2023-2024": {
+      "academic_year": "2023-24",
+      "report_status": "Complete",
+      "total_recruiters": 127,
+      "placements": [
+        {
+          "serial_no": 24,
+          "company_name": "Zscaler",
+          "placement_date": "05-09-2023",
+          "students_placed": 1,
+          "ctc_lpa": "NA",
+          "mode": "Online"
+        },
+        {
+          "serial_no": 42,
+          "company_name": "PharmaACE",
+          "placement_date": "29-09-2023",
+          "students_placed": 2,
+          "ctc_lpa": "NA",
+          "mode": "Online"
+        },
+        {
+          "serial_no": 46,
+          "company_name": "Amazon",
+          "placement_date": "10-10-2023",
+          "students_placed": 1,
+          "ctc_lpa": "NA",
+          "mode": "Online"
+        },
+        {
+          "serial_no": 98,
+          "company_name": "Impact Analytics",
+          "placement_date": "05-02-2024",
+          "students_placed": 1,
+          "ctc_lpa": "NA",
+          "mode": "Online"
+        },
+        {
+          "serial_no": 105,
+          "company_name": "PRADAN",
+          "placement_date": "16-02-2024",
+          "students_placed": 1,
+          "ctc_lpa": "NA",
+          "mode": "Offline"
+        },
+        {
+          "serial_no": 116,
+          "company_name": "Sri Chaitanya Education Institutions",
+          "placement_date": "08-04-2024",
+          "students_placed": 1,
+          "ctc_lpa": "NA",
+          "mode": "Offline"
+        },
+        {
+          "serial_no": 121,
+          "company_name": "ZS Associates",
+          "placement_date": "14-05-2024",
+          "students_placed": 1,
+          "ctc_lpa": "NA",
+          "mode": "Online"
+        },
+        {
+          "serial_no": 124,
+          "company_name": "PhonePe",
+          "placement_date": "15-06-2024",
+          "students_placed": 1,
+          "ctc_lpa": "NA",
+          "mode": "Online"
+        }
+      ],
+      "summary": {
+        "total_students_placed": 9,
+        "total_companies": 8,
+        "on_campus": 7,
+        "off_campus": 2
+      }
+    },
+    "2022-2023": {
+      "academic_year": "2022-23",
+      "report_status": "Complete",
+      "total_recruiters": "NA",
+      "placements": [
+        {
+          "serial_no": "NA",
+          "company_name": "TCS - Digital",
+          "placement_date": "23-07-2022",
+          "students_placed": 2,
+          "ctc_lpa": 9.0,
+          "mode": "Online"
+        },
+        {
+          "serial_no": "NA",
+          "company_name": "EXL",
+          "placement_date": "07-09-2022",
+          "students_placed": 4,
+          "ctc_lpa": 6.5,
+          "mode": "Online"
+        },
+        {
+          "serial_no": "NA",
+          "company_name": "Quantiphi",
+          "placement_date": "13-09-2022",
+          "students_placed": 3,
+          "ctc_lpa": 8.5,
+          "mode": "Hybrid"
+        },
+        {
+          "serial_no": "NA",
+          "company_name": "PharmaACE",
+          "placement_date": "10-11-2022",
+          "students_placed": 2,
+          "ctc_lpa": 7.5,
+          "mode": "Online"
+        },
+        {
+          "serial_no": "NA",
+          "company_name": "Tredence",
+          "placement_date": "11-11-2022",
+          "students_placed": 2,
+          "ctc_lpa": 10.0,
+          "mode": "Online"
+        },
+        {
+          "serial_no": "NA",
+          "company_name": "NexTurn",
+          "placement_date": "21-10-2022",
+          "students_placed": 3,
+          "ctc_lpa": 6.0,
+          "mode": "Online"
+        },
+        {
+          "serial_no": "NA",
+          "company_name": "Zycus",
+          "placement_date": "22-10-2022",
+          "students_placed": 1,
+          "ctc_lpa": 8.25,
+          "mode": "Online"
+        },
+        {
+          "serial_no": "NA",
+          "company_name": "Aakash Byju's",
+          "placement_date": "02-01-2023",
+          "students_placed": 3,
+          "ctc_lpa": 9.0,
+          "mode": "Online"
+        },
+        {
+          "serial_no": "NA",
+          "company_name": "Sprinklr",
+          "placement_date": "24-01-2023",
+          "students_placed": 1,
+          "ctc_lpa": 12.0,
+          "mode": "Online"
+        },
+        {
+          "serial_no": "NA",
+          "company_name": "PRADAN",
+          "placement_date": "31-01-2023",
+          "students_placed": 1,
+          "ctc_lpa": 8.16,
+          "mode": "Offline"
+        },
+        {
+          "serial_no": "NA",
+          "company_name": "TCS INI",
+          "placement_date": "NA",
+          "students_placed": 1,
+          "ctc_lpa": 9.0,
+          "mode": "Online"
+        }
+      ],
+      "summary": {
+        "total_students_placed": 27,
+        "total_companies": 11,
+        "on_campus": 27,
+        "off_campus": "NA",
+        "placement_period": "July 2022 - January 2023"
+      }
+    },
+    "2021-2022": {
+      "academic_year": "2021-22",
+      "report_status": "Complete",
+      "total_recruiters": "NA",
+      "placements": [
+        {
+          "serial_no": 8,
+          "company_name": "ZS Associates",
+          "placement_date": "NA",
+          "students_placed": 2,
+          "ctc_lpa": "NA",
+          "mode": "NA"
+        },
+        {
+          "serial_no": 20,
+          "company_name": "GE Healthcare",
+          "placement_date": "NA",
+          "students_placed": 2,
+          "ctc_lpa": "NA",
+          "mode": "NA"
+        },
+        {
+          "serial_no": 23,
+          "company_name": "Kantar",
+          "placement_date": "NA",
+          "students_placed": 1,
+          "ctc_lpa": "NA",
+          "mode": "NA"
+        },
+        {
+          "serial_no": 26,
+          "company_name": "Genpact",
+          "placement_date": "NA",
+          "students_placed": 2,
+          "ctc_lpa": "NA",
+          "mode": "NA"
+        },
+        {
+          "serial_no": 31,
+          "company_name": "Fractal",
+          "placement_date": "NA",
+          "students_placed": 1,
+          "ctc_lpa": "NA",
+          "mode": "NA"
+        },
+        {
+          "serial_no": 39,
+          "company_name": "Ugam Solutions",
+          "placement_date": "NA",
+          "students_placed": 1,
+          "ctc_lpa": "NA",
+          "mode": "NA"
+        },
+        {
+          "serial_no": 45,
+          "company_name": "Zensar",
+          "placement_date": "NA",
+          "students_placed": 1,
+          "ctc_lpa": "NA",
+          "mode": "NA"
+        },
+        {
+          "serial_no": 48,
+          "company_name": "Tredence Analytics",
+          "placement_date": "NA",
+          "students_placed": 1,
+          "ctc_lpa": "NA",
+          "mode": "NA"
+        },
+        {
+          "serial_no": 55,
+          "company_name": "EXL Service",
+          "placement_date": "NA",
+          "students_placed": 1,
+          "ctc_lpa": "NA",
+          "mode": "NA"
+        },
+        {
+          "serial_no": 56,
+          "company_name": "Narayana Health",
+          "placement_date": "NA",
+          "students_placed": 2,
+          "ctc_lpa": "NA",
+          "mode": "NA"
+        },
+        {
+          "serial_no": 62,
+          "company_name": "CGI",
+          "placement_date": "NA",
+          "students_placed": 1,
+          "ctc_lpa": "NA",
+          "mode": "NA"
+        },
+        {
+          "serial_no": 63,
+          "company_name": "PharmaAce",
+          "placement_date": "NA",
+          "students_placed": 1,
+          "ctc_lpa": "NA",
+          "mode": "NA"
+        },
+        {
+          "serial_no": 71,
+          "company_name": "Cogoport",
+          "placement_date": "NA",
+          "students_placed": 1,
+          "ctc_lpa": "NA",
+          "mode": "NA"
+        },
+        {
+          "serial_no": 72,
+          "company_name": "NFIL",
+          "placement_date": "NA",
+          "students_placed": 1,
+          "ctc_lpa": "NA",
+          "mode": "NA"
+        },
+        {
+          "serial_no": 88,
+          "company_name": "Engineers India Limited (EIL)",
+          "placement_date": "NA",
+          "students_placed": 1,
+          "ctc_lpa": "NA",
+          "mode": "NA"
+        },
+        {
+          "serial_no": 91,
+          "company_name": "Pradan",
+          "placement_date": "11-04-2022",
+          "students_placed": 2,
+          "ctc_lpa": "NA",
+          "mode": "NA"
+        },
+        {
+          "serial_no": 94,
+          "company_name": "RCCPL (MP Birla Group)",
+          "placement_date": "04-04-2022",
+          "students_placed": 1,
+          "ctc_lpa": "NA",
+          "mode": "NA"
+        },
+        {
+          "serial_no": 97,
+          "company_name": "Thomson Digital",
+          "placement_date": "NA",
+          "students_placed": 1,
+          "ctc_lpa": "NA",
+          "mode": "NA"
+        },
+        {
+          "serial_no": 101,
+          "company_name": "Avalara",
+          "placement_date": "NA",
+          "students_placed": 1,
+          "ctc_lpa": "NA",
+          "mode": "NA"
+        }
+      ],
+      "summary": {
+        "total_students_placed": 20,
+        "total_companies": 19,
+        "on_campus": 20,
+        "off_campus": "NA",
+        "note": "CTC information not available in document"
+      }
+    },
+    "2020-2021": {
+      "academic_year": "2020-21",
+      "report_status": "Complete",
+      "report_date": "27-08-2021",
+      "total_recruiters": "NA",
+      "placements": [
+        {
+          "serial_no": "NA",
+          "company_name": "TCS Digital",
+          "placement_date": "18-10-2020",
+          "students_placed": 1,
+          "ctc_lpa": 7.3,
+          "mode": "NA"
+        },
+        {
+          "serial_no": "NA",
+          "company_name": "Wipro",
+          "placement_date": "05-12-2020",
+          "students_placed": 1,
+          "ctc_lpa": 6.5,
+          "mode": "NA"
+        },
+        {
+          "serial_no": "NA",
+          "company_name": "Infosys (FT+PPO)",
+          "placement_date": "27-12-2020",
+          "students_placed": 1,
+          "ctc_lpa": 3.6,
+          "mode": "NA"
+        },
+        {
+          "serial_no": "NA",
+          "company_name": "Pharma ACE",
+          "placement_date": "31-03-2021",
+          "students_placed": 1,
+          "ctc_lpa": 6.5,
+          "mode": "NA"
+        },
+        {
+          "serial_no": "NA",
+          "company_name": "Tredence Analytics",
+          "placement_date": "09-04-2021",
+          "students_placed": 2,
+          "ctc_lpa": 6.5,
+          "mode": "NA"
+        },
+        {
+          "serial_no": "NA",
+          "company_name": "Byju's",
+          "placement_date": "10-05-2021",
+          "students_placed": 1,
+          "ctc_lpa": 10.0,
+          "mode": "NA"
+        },
+        {
+          "serial_no": "NA",
+          "company_name": "LTI (ICC 2021)",
+          "placement_date": "01-06-2021",
+          "students_placed": 1,
+          "ctc_lpa": 8.0,
+          "mode": "NA"
+        },
+        {
+          "serial_no": "NA",
+          "company_name": "Dr. Lal Pathlabs",
+          "placement_date": "13-08-2021",
+          "students_placed": 1,
+          "ctc_lpa": 6.0,
+          "mode": "NA"
+        }
+      ],
+      "summary": {
+        "total_students_placed": 9,
+        "total_companies": 8,
+        "on_campus": 9,
+        "off_campus": 4,
+        "note": "Off-campus placements included 4 additional students not listed individually"
+      }
+    }
+  },
+  "company_frequency_analysis": {
+    "recurring_recruiters": [
+      {
+        "company_name": "PharmaACE/Pharma ACE",
+        "appearances": 5,
+        "years": [
+          "2020-21",
+          "2021-22",
+          "2022-23",
+          "2023-24",
+          "2024-25"
+        ],
+        "total_students_placed": 7
+      },
+      {
+        "company_name": "GE Healthcare",
+        "appearances": 2,
+        "years": [
+          "2021-22",
+          "2024-25"
+        ],
+        "total_students_placed": 4
+      },
+      {
+        "company_name": "ZS Associates",
+        "appearances": 2,
+        "years": [
+          "2021-22",
+          "2023-24"
+        ],
+        "total_students_placed": 3
+      },
+      {
+        "company_name": "Tredence/Tredence Analytics",
+        "appearances": 3,
+        "years": [
+          "2020-21",
+          "2021-22",
+          "2022-23"
+        ],
+        "total_students_placed": 5
+      },
+      {
+        "company_name": "EXL/EXL Service",
+        "appearances": 2,
+        "years": [
+          "2021-22",
+          "2022-23"
+        ],
+        "total_students_placed": 5
+      },
+      {
+        "company_name": "PRADAN/Pradan",
+        "appearances": 3,
+        "years": [
+          "2021-22",
+          "2022-23",
+          "2023-24"
+        ],
+        "total_students_placed": 4
+      },
+      {
+        "company_name": "TCS (Digital/INI)",
+        "appearances": 3,
+        "years": [
+          "2020-21",
+          "2022-23",
+          "2022-23"
+        ],
+        "total_students_placed": 4
+      },
+      {
+        "company_name": "Sri Chaitanya Education Institutions",
+        "appearances": 2,
+        "years": [
+          "2023-24",
+          "2024-25"
+        ],
+        "total_students_placed": 2
+      },
+      {
+        "company_name": "Wipro",
+        "appearances": 2,
+        "years": [
+          "2020-21",
+          "2024-25"
+        ],
+        "total_students_placed": 3
+      }
+    ]
+  },
+  "metadata": {
+    "total_batches_covered": 5,
+    "data_period": "2020-21 to 2024-25",
+    "compilation_method": "Manual consolidation from multiple placement reports",
+    "data_quality_notes": [
+      "CTC data not available for 2021-22 and 2023-24",
+      "Some serial numbers missing in older reports",
+      "Placement mode information not consistently available across all years",
+      "Off-campus placement details incomplete for some years"
+    ],
+    "last_updated": "2025-10-22"
+  }
+}
+}

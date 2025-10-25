@@ -1,16 +1,17 @@
 import { fontFamily } from 'tailwindcss/defaultTheme'
 
-const font = {
+const config = {
   theme: {
     extend: {
       fontFamily: {
+        sans: ['var(--font-inter)', ...fontFamily.sans], // Inter as default
+        inter: ['var(--font-inter)', ...fontFamily.sans],
         playfair: ['var(--font-playfair)', ...fontFamily.serif],
         roboto: ['var(--font-roboto)', ...fontFamily.sans],
         nunito: ['var(--font-nunito)', ...fontFamily.sans],
-        sans: ['var(--font-nunito)', ...fontFamily.sans], // Make nunito default
       },
     },
   },
   plugins: [],
 }
-export default font
+export default config

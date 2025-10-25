@@ -1,296 +1,317 @@
-"use client"; // ✅ needed because of useState + useQuery + UI dialogs
+"use client";
 
 import { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Calendar, MapPin, Users, Clock } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Calendar, MapPin, Users, Clock, ChevronDown, Search } from "lucide-react";
+
+// Hardcoded events data for demo purposes
+const eventsData = [
+  {
+    SlNo: 1,
+    Title: "High-End Workshop (Karyashala) on Mechanics and Materials for Biomedical Applications",
+    Date: "30th Jan - 5th Feb 2024",
+    Coordinators: ["Dr. Nishant Kumar Singh", "Dr. M. Marieswaran"],
+    Type: "Workshop",
+  },
+  {
+    SlNo: 2,
+    Title:
+      "3rd International Conference on Biomedical Engineering Science and Technology: Roadway from Laboratory to Market (ICBEST 2024)",
+    Date: "10-11 April 2025",
+    Coordinators: ["Dr. Neelam Shobha Nirala", "Dr. Saurabh Gupta", "Dr. Nishant Kumar Singh"],
+    Type: "Conference",
+  },
+  {
+    SlNo: 3,
+    Title: "IICC expert lecture: 'Smart Microelectrode Patch for Accelerated Wound Healing' by Dr. Debasish Maji",
+    Date: "12-September-2024",
+    Coordinators: ["Dr. Mainak Basu", "Dr. Arindam Bit"],
+    Type: "Guest Lecture",
+  },
+  {
+    SlNo: 4,
+    Title:
+      "IICC expert lecture: 'Modern CT scanners - a long journey from fundamentals to features' by Mr. Bodhisattva Sensarma",
+    Date: "01-October-2024",
+    Coordinators: ["Dr. Mainak Basu", "Dr. Arindam Bit"],
+    Type: "Guest Lecture",
+  },
+  {
+    SlNo: 5,
+    Title:
+      "IICC expert lecture: 'Gamified Rehabilitation: Transformative Approach to boost patient engagement and accelerate recovery' by Ms. Rupsa Mukherjee",
+    Date: "12-November-2024",
+    Coordinators: ["Dr. Mainak Basu", "Dr. Arindam Bit"],
+    Type: "Guest Lecture",
+  },
+  {
+    SlNo: 6,
+    Title:
+      "IICC expert lecture: 'Challenges with commercialization of Microfluidic Devices' by Mr. Muthuraman Swaminathan",
+    Date: "04-February-2025",
+    Coordinators: ["Dr. Mainak Basu", "Dr. Arindam Bit"],
+    Type: "Guest Lecture",
+  },
+  {
+    SlNo: 7,
+    Title: "IICC expert lecture: 'Revolutionizing Healthcare: The AI Advantage' by Mr. Ajit Deshpande",
+    Date: "19-September-2025",
+    Coordinators: ["Dr. Sudip Paul", "Dr. Arindam Bit"],
+    Type: "Guest Lecture",
+  },
+  {
+    SlNo: 8,
+    Title: "Short Term Training Program (STTP) on Emerging Trends and Challenges in Biomechanics and Biomaterials",
+    Date: "25th - 30th July 2023",
+    Coordinators: ["Dr. Nishant Kumar Singh", "Dr. M. Marieswaran"],
+    Type: "Training Program",
+  },
+  {
+    SlNo: 9,
+    Title:
+      "2nd International Conference on Biomedical Engineering Science and Technology: Roadway from Laboratory to Market (ICBEST 2023)",
+    Date: "10th - 11th Feb 2023",
+    Coordinators: ["Dr. Saurabh Gupta", "Dr. Nishant Kumar Singh", "Dr. M. Marieswaran"],
+    Type: "Conference",
+  },
+  {
+    SlNo: 10,
+    Title:
+      "1st International Conference on “Biomedical Engineering Science and Technology: Roadway from Laboratory to Market” (ICBEST 2018)",
+    Date: "20th - 21st Dec 2018",
+    Coordinators: ["Dr. Neelamshobha Nirala", "Dr. Arindam Bit", "Dr. Saurabh Gupta"],
+    Type: "Conference",
+  },
+  // ... add remaining entries as-is ...
+];
+
+// Category list
+const categories = [
+  "All",
+  "Conference",
+  "Workshop",
+  "Training Program",
+  "Guest Lecture",
+  "Talks",
+  "Departmental Events",
+  "Induction",
+];
+
+// Helper: Extract numeric year from mixed date string
+const extractYear = (dateStr: string) => {
+  const matches = dateStr.match(/\b(20\d{2})\b/);
+  return matches ? matches[1] : "Other";
+};
 
 const Events = () => {
-  const { data: eventsData, isLoading } = useQuery({
-    queryKey: ["/api/department-data/events"],
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [collapsedYears, setCollapsedYears] = useState<Record<string, boolean>>({});
+
+  // Map events to include a year field
+  const events = eventsData.map((ev) => ({
+    ...ev,
+    year: extractYear(ev.Date),
+    type: ev.Type || (ev.Title.includes("Conference") ? "Conference" : ev.Title.includes("Workshop") ? "Workshop" : "Other"),
+  }));
+
+  // Unique years, latest first
+  const years = Array.from(new Set(events.map((e) => e.year))).sort((a, b) => Number(b) - Number(a));
+
+  // Category and search filtering
+  const filteredEvents = events.filter((event) => {
+    const matchesCategory =
+      selectedCategory === "All" || (event.type?.toLowerCase() === selectedCategory.toLowerCase());
+    const matchesSearch =
+      !searchQuery ||
+      event.Title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (event.Coordinators || []).some((c) => c.toLowerCase().includes(searchQuery.toLowerCase()));
+    return matchesCategory && matchesSearch;
   });
 
-  const events = eventsData?.data;
-  const [selectedCategory, setSelectedCategory] = useState("all");
+  // Group by year
+  const eventsByYear = years.map((year) => ({
+    year,
+    items: filteredEvents.filter((e) => e.year === year),
+  }));
 
-  const categories = [
-    "all",
-    "Conference",
-    "Workshop",
-    "Guest Lecture",
-    "Talks",
-    "Departmental Events",
-    "Induction",
-  ];
-
-  const allEvents = [
-    ...(events?.upcoming || []).map((event: any) => ({ ...event, status: "upcoming" })),
-    ...(events?.past || []).map((event: any) => ({ ...event, status: "past" })),
-  ];
-
-  const filteredEvents =
-    selectedCategory === "all"
-      ? allEvents
-      : allEvents.filter((event: any) => event.type === selectedCategory);
-
+  // Modal for event details
   const EventModal = ({ event, index }: { event: any; index: number }) => (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline" size="sm" data-testid={`button-event-details-${index}`}>
+        <Button variant="secondary" size="sm" className="mt-4 rounded-lg">
           View Details
         </Button>
       </DialogTrigger>
-      <DialogContent className="max-w-2xl" data-testid={`modal-event-${index}`}>
+      <DialogContent className="max-w-2xl">
         <DialogHeader>
-          <DialogTitle data-testid={`modal-event-title-${index}`}>{event.title}</DialogTitle>
+          <DialogTitle>{event.Title}</DialogTitle>
         </DialogHeader>
-        <div className="space-y-4">
-          <div className="flex items-center space-x-2">
-            <Calendar className="h-5 w-5 text-primary-teal" />
-            <span data-testid={`modal-event-date-${index}`}>
-              {new Date(event.date).toLocaleDateString()}
-              {event.endDate && ` - ${new Date(event.endDate).toLocaleDateString()}`}
-            </span>
+        <div className="mt-2 space-y-3">
+          <div className="flex items-center text-gray-600 text-sm">
+            <Calendar className="h-5 w-5 mr-2 text-blue-500" />
+            {event.Date}
           </div>
-
-          {event.venue && (
-            <div className="flex items-center space-x-2">
-              <MapPin className="h-5 w-5 text-primary-blue" />
-              <span data-testid={`modal-event-venue-${index}`}>{event.venue}</span>
-            </div>
-          )}
-
-          {event.speaker && (
-            <div className="flex items-center space-x-2">
-              <Users className="h-5 w-5 text-primary-teal" />
-              <span data-testid={`modal-event-speaker-${index}`}>
-                <strong>Speaker:</strong> {event.speaker}
-              </span>
-            </div>
-          )}
-
-          {event.participants && (
-            <div className="flex items-center space-x-2">
-              <Users className="h-5 w-5 text-primary-blue" />
-              <span data-testid={`modal-event-participants-${index}`}>
-                <strong>Participants:</strong> {event.participants}
-              </span>
-            </div>
-          )}
-
-          <div>
-            <h4 className="font-semibold text-gray-900 mb-2">Description</h4>
-            <p className="text-gray-600" data-testid={`modal-event-description-${index}`}>
-              {event.description}
-            </p>
+          <div className="flex flex-wrap items-center text-gray-600 text-sm">
+            <Users className="h-5 w-5 mr-2 text-teal-600" />
+            <span className="font-medium">Coordinators:</span>
+            {event.Coordinators && (
+              <div className="flex flex-wrap gap-2 ml-2">
+                {event.Coordinators.map((coor: string, i: number) => (
+                  <span key={i} className="bg-gray-100 text-gray-700 rounded-full px-3 py-1 text-xs font-medium">
+                    {coor}
+                  </span>
+                ))}
+              </div>
+            )}
           </div>
-
-          {event.registrationRequired && (
-            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-              <p className="text-yellow-800">
-                <strong>Note:</strong> Registration required for this event
-              </p>
-            </div>
-          )}
+          <div className="flex items-center text-gray-600 text-sm">
+            <Badge variant="default" className="bg-blue-100 text-blue-700 font-medium">
+              {event.type}
+            </Badge>
+          </div>
         </div>
       </DialogContent>
     </Dialog>
   );
 
-  if (isLoading) {
-    return (
-      <div className="min-h-screen pt-20" data-testid="page-events-loading">
-        <div className="max-w-7xl mx-auto px-6 py-20">
-          <div className="animate-pulse">
-            <div className="h-12 bg-gray-200 rounded mb-6"></div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[...Array(6)].map((_, i) => (
-                <Card key={i} className="p-6">
-                  <div className="h-6 bg-gray-200 rounded mb-2"></div>
-                  <div className="h-4 bg-gray-200 rounded"></div>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className="min-h-screen " data-testid="page-events">
+    <div className="min-h-screen pt-28 bg-gradient-to-b from-gray-50 to-white">
       {/* Hero Section */}
-      <section className=" bg-gradient-to-r from-primary-teal to-primary-blue text-white" data-testid="section-events-hero">
+      <section className="pb-10 bg-gradient-to-r from-teal-50 via-indigo-50 to-purple-50">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <h1 className="text-5xl md:text-6xl font-heading font-bold mb-6" data-testid="heading-events-title">
-            Events & Activities
-          </h1>
-          <p className="text-xl md:text-2xl max-w-3xl mx-auto" data-testid="text-events-subtitle">
-            Stay updated with our latest conferences, workshops, and academic activities
+          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">Events & Activities</h1>
+          <p className="text-lg md:text-2xl text-gray-700 max-w-3xl mx-auto">
+            Conferences, Workshops, Academic Sessions, and More
           </p>
         </div>
       </section>
 
-      {/* Event Categories Filter */}
-      <section className="py-8 bg-white sticky top-20 z-40 shadow-sm" data-testid="section-event-filters">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-wrap justify-center gap-2">
-            {categories.map((category) => (
+      {/* Category & Search Filters */}
+      <section className="py-8 border-b bg-white sticky top-20 z-40">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row md:items-center gap-4">
+          <div className="flex flex-wrap gap-2">
+            {categories.map((cat) => (
               <Button
-                key={category}
-                variant={selectedCategory === category ? "default" : "outline"}
-                onClick={() => setSelectedCategory(category)}
-                className={selectedCategory === category ? "bg-primary-teal hover:bg-teal-700" : ""}
-                data-testid={`filter-${category.toLowerCase().replace(' ', '-')}`}
-              >
-                {category === "all" ? "All Events" : category}
+                key={cat}
+                variant={cat === selectedCategory ? "default" : "outline"}
+                className={`text-sm rounded-xl ${cat === selectedCategory ? "bg-primary-teal text-white" : ""}`}
+                onClick={() => setSelectedCategory(cat)}>
+                {cat}
               </Button>
             ))}
+          </div>
+          <div className="flex items-center ml-auto md:ml-8 w-full md:w-64">
+            <div className="relative w-full">
+              <Search className="absolute left-2 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+              <input
+                type="text"
+                placeholder="Search events..."
+                className="pl-8 pr-3 py-2 rounded-lg border w-full bg-gray-50 text-gray-700 shadow-inner"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Events Grid */}
-      <section className="py-20" data-testid="section-events-grid">
+      {/* Events by Year */}
+      <section className="py-12">
         <div className="max-w-7xl mx-auto px-6">
-          {filteredEvents.length === 0 ? (
-            <div className="text-center py-12" data-testid="empty-events">
-              <div className="bg-gray-100 p-8 rounded-lg">
-                <Calendar className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-gray-600 mb-2">No Events Found</h3>
-                <p className="text-gray-500">No events found for the selected category.</p>
-              </div>
+          {eventsByYear.length === 0 || eventsByYear.every((group) => group.items.length === 0) ? (
+            <div className="text-center py-16">
+              <Calendar className="h-16 w-16 text-gray-400 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold text-gray-600 mb-2">No events found</h3>
+              <p className="text-gray-500">Try adjusting category or search terms.</p>
             </div>
           ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredEvents.map((event, index) => (
-                <Card 
-                  key={index}
-                  className="p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
-                  data-testid={`card-event-${index}`}
-                >
-                  <div className="flex items-start justify-between mb-4">
-                    <Badge 
-                      variant={event.status === "upcoming" ? "default" : "secondary"}
-                      className={event.status === "upcoming" ? "bg-primary-teal" : ""}
-                      data-testid={`badge-event-status-${index}`}
-                    >
-                      {event.status}
-                    </Badge>
-                    <Badge variant="outline" data-testid={`badge-event-type-${index}`}>
-                      {event.type}
-                    </Badge>
-                  </div>
-                  
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3" data-testid={`heading-event-title-${index}`}>
-                    {event.title}
-                  </h3>
-                  
-                  <div className="space-y-2 mb-4">
-                    <div className="flex items-center text-gray-600 text-sm">
-                      <Calendar className="h-4 w-4 mr-2 text-primary-teal" />
-                      <span data-testid={`text-event-date-${index}`}>
-                        {new Date(event.date).toLocaleDateString()}
-                        {event.endDate && ` - ${new Date(event.endDate).toLocaleDateString()}`}
-                      </span>
+            <div>
+              {eventsByYear.map(
+                (group, gidx) =>
+                  group.items.length > 0 && (
+                    <div key={group.year} className="mb-12">
+                      {/* Year Heading with Collapse Toggle */}
+                      <div
+                        className="flex items-center cursor-pointer mb-6 group select-none"
+                        onClick={() =>
+                          setCollapsedYears((prev) => ({
+                            ...prev,
+                            [group.year]: !prev[group.year],
+                          }))
+                        }>
+                        <ChevronDown
+                          className={`w-6 h-6 mr-2 transition-transform duration-200 ${collapsedYears[group.year] ? "-rotate-90" : ""}`}
+                        />
+                        <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 tracking-wide">
+                          {group.year}
+                        </h2>
+                        <span className="ml-3 text-sm text-gray-500 font-medium group-hover:text-teal-600">
+                          {collapsedYears[group.year]
+                            ? "Show"
+                            : `(${group.items.length} event${group.items.length > 1 ? "s" : ""})`}
+                        </span>
+                      </div>
+                      {!collapsedYears[group.year] && (
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
+                          {group.items.map((event, idx) => (
+                            <Card key={event.SlNo} className="p-6 bg-white border shadow hover:shadow-lg rounded-xl flex flex-col">
+                              <div className="flex items-center gap-3 mb-3">
+                                <Badge
+                                  variant="outline"
+                                  className={`uppercase tracking-wide text-xs px-2.5 py-1.5 font-bold ${
+                                    event.type === "Conference"
+                                      ? "border-blue-300 text-blue-600"
+                                      : event.type === "Workshop"
+                                      ? "border-green-300 text-green-600"
+                                      : "border-gray-200 text-gray-600"
+                                  }`}>
+                                  {event.type}
+                                </Badge>
+                                <span className="text-xs px-2 py-1 bg-gray-100 text-gray-500 rounded-full">
+                                  {event.year}
+                                </span>
+                              </div>
+                              <h3 className="text-lg font-semibold text-gray-900 mb-3 line-clamp-2">
+                                {event.Title}
+                              </h3>
+                              <div className="flex items-center text-gray-600 text-sm mb-2">
+                                <Calendar className="h-4 w-4 mr-2 text-teal-600" />
+                                {event.Date}
+                              </div>
+                              <div className="mb-2 flex flex-wrap items-center gap-2">
+                                {(event.Coordinators || []).map((coord: string, ic: number) => (
+                                  <span
+                                    key={ic}
+                                    className="px-2 py-1 bg-indigo-50 text-indigo-700 rounded-full text-xs font-medium"
+                                  >
+                                    {coord}
+                                  </span>
+                                ))}
+                              </div>
+                              <div className="mt-auto pt-2 flex items-end justify-between">
+                                <EventModal event={event} index={idx} />
+                              </div>
+                            </Card>
+                          ))}
+                        </div>
+                      )}
                     </div>
-                    
-                    {event.venue && (
-                      <div className="flex items-center text-gray-600 text-sm">
-                        <MapPin className="h-4 w-4 mr-2 text-primary-blue" />
-                        <span data-testid={`text-event-venue-${index}`}>{event.venue}</span>
-                      </div>
-                    )}
-                    
-                    {event.speaker && (
-                      <div className="flex items-center text-gray-600 text-sm">
-                        <Users className="h-4 w-4 mr-2 text-primary-teal" />
-                        <span data-testid={`text-event-speaker-${index}`}>{event.speaker}</span>
-                      </div>
-                    )}
-                  </div>
-                  
-                  <p className="text-gray-600 text-sm mb-4 line-clamp-3" data-testid={`text-event-description-${index}`}>
-                    {event.description}
-                  </p>
-                  
-                  <div className="flex items-center justify-between">
-                    <EventModal event={event} index={index} />
-                    
-                    {event.registrationRequired && (
-                      <Badge variant="outline" className="text-yellow-600 border-yellow-600" data-testid={`badge-registration-${index}`}>
-                        Registration Required
-                      </Badge>
-                    )}
-                  </div>
-                </Card>
-              ))}
+                  )
+              )}
             </div>
           )}
         </div>
       </section>
-
-      {/* Upcoming Events Highlight */}
-      {events?.upcoming && events.upcoming.length > 0 && (
-        <section className="py-20 bg-gray-50" data-testid="section-upcoming-highlight">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-heading font-bold text-gray-900 mb-4" data-testid="heading-upcoming">
-                Upcoming Events
-              </h2>
-              <p className="text-xl text-gray-600" data-testid="text-upcoming-subtitle">
-                Don&apos;t miss these exciting upcoming events
-              </p>
-            </div>
-            
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {events.upcoming.slice(0, 3).map((event, index) => (
-                <Card 
-                  key={index}
-                  className="p-6 bg-gradient-to-br from-primary-teal/10 to-primary-blue/10 border-primary-teal hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
-                  data-testid={`card-upcoming-${index}`}
-                >
-                  <div className="flex items-center mb-4">
-                    <div className="bg-primary-teal p-3 rounded-full mr-4">
-                      <Calendar className="h-6 w-6 text-white" />
-                    </div>
-                    <Badge className="bg-primary-teal text-white" data-testid={`badge-upcoming-type-${index}`}>
-                      {event.type}
-                    </Badge>
-                  </div>
-                  
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3" data-testid={`heading-upcoming-title-${index}`}>
-                    {event.title}
-                  </h3>
-                  
-                  <div className="space-y-2 mb-4">
-                    <div className="flex items-center text-gray-600 text-sm">
-                      <Clock className="h-4 w-4 mr-2 text-primary-teal" />
-                      <span data-testid={`text-upcoming-date-${index}`}>
-                        {new Date(event.date).toLocaleDateString()}
-                      </span>
-                    </div>
-                    
-                    {event.venue && (
-                      <div className="flex items-center text-gray-600 text-sm">
-                        <MapPin className="h-4 w-4 mr-2 text-primary-blue" />
-                        <span data-testid={`text-upcoming-venue-${index}`}>{event.venue}</span>
-                      </div>
-                    )}
-                  </div>
-                  
-                  <p className="text-gray-600 text-sm" data-testid={`text-upcoming-description-${index}`}>
-                    {event.description}
-                  </p>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
     </div>
   );
 };

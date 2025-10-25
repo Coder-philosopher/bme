@@ -1,99 +1,254 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
+// Hardcoded API-like data split in fragments (managed inside component directly)
+const UGProgram = {
+  title: "Bachelor of Technology in Biomedical Engineering",
+  duration: "4 Years (8 Semesters)",
+  programs: ["B.Tech in Biomedical Engineering"],
+  syllabus: "/syllabus/ug.pdf",
+  description:
+    "A comprehensive undergraduate program combining engineering principles with medical sciences, emphasizing biomedical instrumentation, biomaterials, medical imaging, and clinical engineering. Includes lab work, internships, and final-year projects.",
+  eligibility: "JEE Main qualified with Physics, Chemistry, and Mathematics.",
+  careerProspects: [
+    "Medical Device Industry",
+    "Healthcare Technology",
+    "Clinical Engineering",
+    "Research & Development",
+    "Higher Studies",
+  ],
+};
+
+const PGProgram = {
+  title: "Master of Technology in Biomedical Engineering",
+  duration: "2 Years (4 Semesters)",
+  programs: ["M.Tech in Biomedical Engineering"],
+  syllabus: "/syllabus/pg.pdf",
+  description:
+    "An advanced postgraduate program focused on specialized areas such as medical device design, biomaterials, and clinical applications. Students undertake research and collaborate with industry partners.",
+  eligibility: "GATE qualified in relevant streams.",
+  specializations: [
+    "Medical Device Design",
+    "Biomaterials & Tissue Engineering",
+    "Medical Signal Processing",
+    "Clinical Engineering",
+  ],
+};
+
+const PhDProgram = {
+  title: "Doctor of Philosophy (PhD) in Biomedical Engineering",
+  description:
+    "Research-based doctoral program in Biomedical Engineering with focus areas including medical imaging, signal processing, biomechanical modeling, and clinical applications.",
+  eligibility: "Masters in related engineering or science stream.",
+};
+
+const Laboratories = [
+  
+  {
+    id: 2,
+    name: "Microviscometer Anton Paar Lovis 2000ME",
+    specs: {
+      "Max Power": "80 W",
+      Speed: "1000 mm/s",
+      Repetitions: "20",
+    },
+  },
+  {
+          "id": 3,
+          "name": "3D Printer",
+          "specs": {
+            "dimensions": "342x505x588 mm",
+            "build_volume": "215x215x200 mm",
+            "build_speed": "<24 mm³/s",
+            "travel_speed": "30–300 mm/s",
+            "sound": "50 dBA",
+            "filament_diameter": "2.85 mm",
+            "nozzle_temperature": "180–280 °C",
+            "bed_temperature": "20–120 °C",
+            "resolution": "6.9, 6.9, 2.5 microns (XYZ)",
+            "materials": "PLA, PETG"
+          }
+        },
+        {
+          "id": 4,
+          "name": "Spin Coater Apex India SpinNXG-P1A",
+          "specs": {
+            "speed_range": "100–10,000 RPM",
+            "acceleration": "40–5,000 RPM",
+            "duration": "1–9,999 seconds per step",
+            "error_rate": "Less than 1%"
+          }
+        },
+        {
+          "id": 5,
+          "name": "Oxygen Plasma Harrick Plasma PDC/32G/2",
+          "specs": {
+            "chamber_size": "3” Dia. x 6.5” L",
+            "rf_power": "18 W max",
+            "dimensions": "9” H x 10” W x 8” D",
+            "weight": "13 Lbs"
+          }
+        },
+        
+        {
+          "id": 7,
+          "name": "Hot Air Oven - Pooja Scientific Instruments",
+          "specs": {
+            "serial_no": "12017",
+            "max_temp": "180 °C",
+            "air_circulation": "Forced Air",
+            "chambers": "One",
+            "power": "1.2 HP"
+          }
+        },
+        {
+          "id": 8,
+          "name": "Autoclave - Pooja Scientific Instruments",
+          "specs": {
+            "inner_dimensions": "250x450 mm",
+            "capacity": "22 L",
+            "working_load": "2.0 KW",
+            "pressure": "1.2 kgf/cm² (15 psi) at 121°C"
+          }
+        },
+        {
+          "id": 9,
+          "name": "16-channel EEG setup - AD Instruments 16/35",
+          "specs": {
+            "inputs": "16 (12 single-ended, 4 configurable)",
+            "amplification_range": "±2 mV to ±10 V",
+            "max_input_voltage": "±15 V",
+            "frequency_response": "25 kHz",
+            "output_range": "±200 mV to ±10 V"
+          }
+        },
+        {
+          "id": 10,
+          "name": "Spectrophotometer / Plate Reader",
+          "specs": {
+            "bandwidth": "<2.5 nm",
+            "wavelength_range": "200–1,000 nm",
+            "light_source": "Xenon flash lamp",
+            "accuracy": "±1.0% + 0.003 Abs"
+          }
+        },
+        {
+          "id": 11,
+          "name": "Cell Imaging System",
+          "specs": {
+            "magnification": "1.25X–100X",
+            "resolution": "1920x1080 pixels",
+            "light_source": "Lumen Dynamics X-Cite 120Q",
+            "camera": "Zeiss AxioCam ERc5s"
+          }
+        },
+        {
+          "id": 12,
+          "name": "Microfluidic Workstation",
+          "specs": {
+            "flow_controller": "Fluigent Flow EZ",
+            "flow_range": "0±2 mL/min"
+          }
+        },
+        {
+          "id": 13,
+          "name": "Electrospinning Unit",
+          "specs": {
+            "output_voltage": "0–50 KV ±0.05%",
+            "voltage_adjustment": "0.1 KV",
+            "output_current": "0–400 μA"
+          }
+        },
+        {
+          "id": 14,
+          "name": "Bio Safety Cabinet (Laminar Air Flow 1300 Series)",
+          "specs": { "air_flow": "1415 m³/h" }
+        },
+        {
+          "id": 15,
+          "name": "Ultrasonic Bath",
+          "specs": {
+            "power": "120 W",
+            "heat_power": "50 W"
+          }
+        },
+       
+      ]
+
 const Academics = () => {
-  const { data: academicsData, isLoading } = useQuery({
-    queryKey: ["/api/department-data/academics"],
-  });
-
-  const academics = academicsData?.data;
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen pt-20" data-testid="page-academics-loading">
-        <div className="max-w-7xl mx-auto px-6 py-20">
-          <div className="animate-pulse">
-            <div className="h-12 bg-gray-200 rounded mb-6"></div>
-            <div className="h-4 bg-gray-200 rounded mb-4"></div>
-            <div className="h-4 bg-gray-200 rounded"></div>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  const [activeTab, setActiveTab] = useState("ug");
 
   return (
-    <div className="min-h-screen " data-testid="page-academics">
+    <div className="min-h-screen pt-28" data-testid="page-academics">
       {/* Hero Section */}
       <section
-        className=" bg-gradient-to-r from-primary-teal to-primary-blue text-white"
+        className="pb-10 bg-gradient-to-r from-teal-50 via-blue-50 to-blue-100"
         data-testid="section-academics-hero"
       >
         <div className="max-w-7xl mx-auto px-6 text-center">
           <h1
-            className="text-5xl md:text-6xl font-heading font-bold mb-6"
+            className="text-4xl md:text-6xl font-bold text-gray-900 mb-6"
             data-testid="heading-academics-title"
           >
             Academic Programs
           </h1>
           <p
-            className="text-xl md:text-2xl max-w-3xl mx-auto"
+            className="text-lg md:text-2xl max-w-3xl mx-auto text-gray-700"
             data-testid="text-academics-subtitle"
           >
-            Comprehensive programs designed to create future leaders in
-            biomedical engineering
+            Comprehensive programs to shape future leaders in biomedical engineering
           </p>
         </div>
       </section>
 
-      {/* Program Tabs */}
-      <section className="py-20" data-testid="section-programs">
+      {/* Tabs for Programs */}
+      <section className="py-16" data-testid="section-programs">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <h2
-              className="text-4xl font-heading font-bold text-gray-900 mb-4"
+              className="text-3xl md:text-4xl font-bold text-gray-900 mb-3"
               data-testid="heading-programs"
             >
               Our Programs
             </h2>
             <p
-              className="text-xl text-gray-600 max-w-3xl mx-auto"
+              className="text-lg text-gray-600 max-w-xl mx-auto"
               data-testid="text-programs-subtitle"
             >
-              Choose from our undergraduate, postgraduate, and doctoral programs
+              Explore undergraduate, postgraduate, and doctoral opportunities
             </p>
           </div>
-
           <Tabs
-            defaultValue="ug"
+            value={activeTab}
+            onValueChange={setActiveTab}
             className="w-full"
             data-testid="tabs-programs"
           >
             <TabsList
-              className="grid w-full grid-cols-3 mb-8"
+              className="grid w-full grid-cols-3 mb-8 gap-2 rounded-xl bg-gray-100"
               data-testid="tabs-list"
             >
               <TabsTrigger
                 value="ug"
-                className="text-lg"
+                className="text-base "
                 data-testid="tab-ug"
               >
                 UG Programs
               </TabsTrigger>
               <TabsTrigger
                 value="pg"
-                className="text-lg"
+                className="text-base "
                 data-testid="tab-pg"
               >
                 PG Programs
               </TabsTrigger>
               <TabsTrigger
                 value="phd"
-                className="text-lg"
+                className="text-base "
                 data-testid="tab-phd"
               >
                 PhD Programs
@@ -101,109 +256,145 @@ const Academics = () => {
             </TabsList>
 
             <TabsContent value="ug" data-testid="tab-content-ug">
-              <Card className="p-8">
+              <Card className="p-8 rounded-xl">
                 <h3
-                  className="text-2xl font-heading font-bold text-gray-900 mb-4"
+                  className="text-2xl font-bold text-gray-900 mb-4"
                   data-testid="heading-ug-program"
                 >
-                  Bachelor of Technology (B.Tech) in Biomedical Engineering
+                  {UGProgram.title}
                 </h3>
+                <div className="text-gray-700 mb-3">
+                  <span className="font-medium">Duration:</span> {UGProgram.duration}
+                </div>
                 <p
-                  className="text-gray-700 mb-6"
+                  className="text-gray-700 mb-5"
                   data-testid="text-ug-description"
                 >
-                  {academics?.UG?.description}
+                  {UGProgram.description}
                 </p>
+                <div className="text-gray-700 mb-3">
+                  <span className="font-medium">Eligibility:</span>{" "}
+                  {UGProgram.eligibility}
+                </div>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <h4
-                      className="font-semibold text-gray-900 mb-3"
-                      data-testid="heading-ug-subjects"
-                    >
-                      Key Subjects:
+                    <h4 className="font-semibold text-gray-900 mb-2">
+                      Career Prospects:
                     </h4>
                     <ul
-                      className="text-gray-700 space-y-2"
-                      data-testid="list-ug-subjects"
+                      className="list-disc ml-5 text-gray-700 space-y-1"
+                      data-testid="list-ug-careers"
                     >
-                      {academics?.UG?.subjects?.map((subject, index) => (
-                        <li key={index}>• {subject}</li>
+                      {UGProgram.careerProspects.map((career, index) => (
+                        <li key={index}>{career}</li>
                       ))}
                     </ul>
                   </div>
                   <div>
-                    <h4
-                      className="font-semibold text-gray-900 mb-3"
-                      data-testid="heading-ug-careers"
-                    >
-                      Career Opportunities:
+                    <h4 className="font-semibold text-gray-900 mb-2">
+                      Programs Offered:
                     </h4>
-                    <ul
-                      className="text-gray-700 space-y-2"
-                      data-testid="list-ug-careers"
-                    >
-                      {academics?.UG?.careers?.map((career, index) => (
-                        <li key={index}>• {career}</li>
+                    <ul className="list-disc ml-5 text-gray-700 space-y-1">
+                      {UGProgram.programs.map((p, idx) => (
+                        <li key={idx}>{p}</li>
                       ))}
                     </ul>
                   </div>
                 </div>
                 <div className="mt-6">
                   <Button
-                    className="bg-primary-teal hover:bg-teal-700 text-white"
+                    className="bg-teal-700 hover:bg-teal-800 text-white"
+                    asChild
                     data-testid="button-ug-syllabus"
                   >
-                    Download Syllabus
+                    <a
+                      href={UGProgram.syllabus}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Download Syllabus
+                    </a>
                   </Button>
                 </div>
               </Card>
             </TabsContent>
 
             <TabsContent value="pg" data-testid="tab-content-pg">
-              <Card className="p-8">
+              <Card className="p-8 rounded-xl">
                 <h3
-                  className="text-2xl font-heading font-bold text-gray-900 mb-4"
+                  className="text-2xl font-bold text-gray-900 mb-4"
                   data-testid="heading-pg-program"
                 >
-                  Master of Technology (M.Tech) in Biomedical Engineering
+                  {PGProgram.title}
                 </h3>
+                <div className="text-gray-700 mb-3">
+                  <span className="font-medium">Duration:</span> {PGProgram.duration}
+                </div>
                 <p
-                  className="text-gray-700 mb-6"
+                  className="text-gray-700 mb-5"
                   data-testid="text-pg-description"
                 >
-                  {academics?.PG?.description}
+                  {PGProgram.description}
                 </p>
+                <div className="text-gray-700 mb-3">
+                  <span className="font-medium">Eligibility:</span>{" "}
+                  {PGProgram.eligibility}
+                </div>
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-2">
+                    Specializations:
+                  </h4>
+                  <ul
+                    className="list-disc ml-5 text-gray-700 space-y-1"
+                    data-testid="list-pg-specializations"
+                  >
+                    {PGProgram.specializations.map((spec, idx) => (
+                      <li key={idx}>{spec}</li>
+                    ))}
+                  </ul>
+                </div>
                 <div className="mt-6">
                   <Button
-                    className="bg-primary-blue hover:bg-blue-700 text-white"
+                    className="bg-blue-700 hover:bg-blue-800 text-white"
+                    asChild
                     data-testid="button-pg-syllabus"
                   >
-                    Download Syllabus
+                    <a
+                      href={PGProgram.syllabus}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Download Syllabus
+                    </a>
                   </Button>
                 </div>
               </Card>
             </TabsContent>
 
             <TabsContent value="phd" data-testid="tab-content-phd">
-              <Card className="p-8">
+              <Card className="p-8 rounded-xl">
                 <h3
-                  className="text-2xl font-heading font-bold text-gray-900 mb-4"
+                  className="text-2xl font-bold text-gray-900 mb-4"
                   data-testid="heading-phd-program"
                 >
-                  Doctor of Philosophy (PhD) in Biomedical Engineering
+                  {PhDProgram.title || "Doctoral Program (PhD)"}
                 </h3>
                 <p
-                  className="text-gray-700 mb-6"
+                  className="text-gray-700 mb-5"
                   data-testid="text-phd-description"
                 >
-                  {academics?.PhD?.description}
+                  {PhDProgram.description}
                 </p>
+                <div className="text-gray-700 mb-3">
+                  <span className="font-medium">Eligibility:</span>{" "}
+                  {PhDProgram.eligibility}
+                </div>
                 <div className="mt-6">
                   <Button
-                    className="bg-primary-teal hover:bg-teal-700 text-white"
-                    data-testid="button-phd-syllabus"
+                    className="bg-teal-700 hover:bg-teal-800 text-white"
+                    data-testid="button-phd-contact"
                   >
-                    Download Syllabus
+                    Contact Department
                   </Button>
                 </div>
               </Card>
@@ -212,168 +403,49 @@ const Academics = () => {
         </div>
       </section>
 
-      {/* Laboratories Section */}
+      {/* Laboratories & Facilities */}
       <section
-        className="py-20 bg-gray-50"
+        className="py-16 bg-gray-50"
         data-testid="section-laboratories"
       >
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <h2
-              className="text-4xl font-heading font-bold text-gray-900 mb-4"
+              className="text-3xl md:text-4xl font-bold text-gray-900 mb-3"
               data-testid="heading-labs"
             >
-              Laboratories & Facilities
+              Laboratories & Equipment
             </h2>
             <p
-              className="text-xl text-gray-600 max-w-3xl mx-auto"
+              className="text-lg text-gray-600 max-w-xl mx-auto"
               data-testid="text-labs-subtitle"
             >
-              State-of-the-art facilities for hands-on learning and research
+              Hands-on learning with state-of-the-art biomedical engineering facilities
             </p>
           </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {academics?.labs?.map((lab, index) => (
+          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
+            {Laboratories.map((eq) => (
               <Card
-                key={index}
-                className="p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
-                data-testid={`card-lab-${index}`}
+                key={eq.id}
+                className="p-6 rounded-xl shadow hover:shadow-lg transition-all duration-300"
               >
-                <img
-                  src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90oy1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=250"
-                  alt={`${lab.name} facility`}
-                  className="w-full h-48 object-cover rounded-lg mb-4"
-                  data-testid={`image-lab-${index}`}
-                />
-
-                <h4
-                  className="text-xl font-semibold text-gray-900 mb-2"
-                  data-testid={`heading-lab-name-${index}`}
-                >
-                  {lab.name}
-                </h4>
-                <div className="space-y-2 text-sm text-gray-600 mb-4">
-                  <div>
-                    <strong>Established:</strong>{" "}
-                    <span data-testid={`text-lab-year-${index}`}>
-                      {lab.year}
-                    </span>
-                  </div>
-                  <div>
-                    <strong>In-charge:</strong>{" "}
-                    <span data-testid={`text-lab-incharge-${index}`}>
-                      {lab.incharge}
-                    </span>
-                  </div>
-                  <div>
-                    <strong>Contact:</strong>{" "}
-                    <span data-testid={`text-lab-contact-${index}`}>
-                      {lab.contact}
-                    </span>
-                  </div>
-                </div>
-                <div>
-                  <strong className="text-sm text-gray-800">
-                    Subjects Handled:
-                  </strong>
-                  <p
-                    className="text-sm text-gray-600 mt-1"
-                    data-testid={`text-lab-subjects-${index}`}
-                  >
-                    {lab.subjects}
-                  </p>
+                <div className="text-xl font-bold text-teal-700 mb-2">{eq.name}</div>
+                <div className="text-sm text-gray-700 mb-3">
+                  {eq.specs ? (
+                    Object.entries(eq.specs).map(([key, value]) => (
+                      <div key={key}>
+                        <span className="font-semibold">
+                          {key.replace(/_/g, " ")}:
+                        </span>{" "}
+                        {value}
+                      </div>
+                    ))
+                  ) : (
+                    <div className="italic text-gray-500">General Lab Equipment</div>
+                  )}
                 </div>
               </Card>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Admission Information */}
-      <section className="py-20" data-testid="section-admission">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2
-              className="text-4xl font-heading font-bold text-gray-900 mb-4"
-              data-testid="heading-admission"
-            >
-              Admission Process
-            </h2>
-            <p
-              className="text-xl text-gray-600 max-w-3xl mx-auto"
-              data-testid="text-admission-subtitle"
-            >
-              Information about admission requirements and procedures
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card
-              className="p-6 text-center"
-              data-testid="card-admission-ug"
-            >
-              <div className="bg-primary-teal p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                <i className="fas fa-graduation-cap text-white text-2xl"></i>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                B.Tech Admission
-              </h3>
-              <p className="text-gray-600 mb-4">
-                Through JEE Main followed by JoSAA counseling
-              </p>
-              <Button
-                variant="outline"
-                className="border-primary-teal text-primary-teal hover:bg-primary-teal hover:text-white"
-                data-testid="button-ug-admission"
-              >
-                Learn More
-              </Button>
-            </Card>
-
-            <Card
-              className="p-6 text-center"
-              data-testid="card-admission-pg"
-            >
-              <div className="bg-primary-blue p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                <i className="fas fa-user-graduate text-white text-2xl"></i>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                M.Tech Admission
-              </h3>
-              <p className="text-gray-600 mb-4">
-                Through GATE followed by CCMT counseling
-              </p>
-              <Button
-                variant="outline"
-                className="border-primary-blue text-primary-blue hover:bg-primary-blue hover:text-white"
-                data-testid="button-pg-admission"
-              >
-                Learn More
-              </Button>
-            </Card>
-
-            <Card
-              className="p-6 text-center"
-              data-testid="card-admission-phd"
-            >
-              <div className="bg-primary-teal p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                <i className="fas fa-university text-white text-2xl"></i>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                PhD Admission
-              </h3>
-              <p className="text-gray-600 mb-4">
-                Through departmental entrance test and interview
-              </p>
-              <Button
-                variant="outline"
-                className="border-primary-teal text-primary-teal hover:bg-primary-teal hover:text-white"
-                data-testid="button-phd-admission"
-              >
-                Learn More
-              </Button>
-            </Card>
           </div>
         </div>
       </section>

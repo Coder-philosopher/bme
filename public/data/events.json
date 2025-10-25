@@ -1,0 +1,152 @@
+[
+  {
+    "SlNo": 1,
+    "Title": "High-End Workshop (Karyashala) on Mechanics and Materials for Biomedical Applications",
+    "Date": "30th Jan - 5th Feb 2024",
+    "Coordinators": ["Dr. Nishant Kumar Singh", "Dr. M. Marieswaran"]
+  },
+  {
+    "SlNo": 2,
+    "Title": "3rd International Conference on Biomedical Engineering Science and Technology: Roadway from Laboratory to Market (ICBEST 2024)",
+    "Date": "10-11 April 2025",
+    "Coordinators": ["Dr. Neelam Shobha Nirala", "Dr. Saurabh Gupta", "Dr. Nishant Kumar Singh"]
+  },
+  {
+    "SlNo": 3,
+    "Title": "IICC expert lecture: 'Smart Microelectrode Patch for Accelerated Wound Healing' by Dr. Debasish Maji",
+    "Date": "12-September-2024",
+    "Coordinators": ["Dr. Mainak Basu", "Dr. Arindam Bit"]
+  },
+  {
+    "SlNo": 4,
+    "Title": "IICC expert lecture: 'Modern CT scanners - a long journey from fundamentals to features' by Mr. Bodhisattva Sensarma",
+    "Date": "01-October-2024",
+    "Coordinators": ["Dr. Mainak Basu", "Dr. Arindam Bit"]
+  },
+  {
+    "SlNo": 5,
+    "Title": "IICC expert lecture: 'Gamified Rehabilitation: Transformative Approach to boost patient engagement and accelerate recovery' by Ms. Rupsa Mukherjee",
+    "Date": "12-November-2024",
+    "Coordinators": ["Dr. Mainak Basu", "Dr. Arindam Bit"]
+  },
+  {
+    "SlNo": 6,
+    "Title": "IICC expert lecture: 'Challenges with commercialization of Microfluidic Devices' by Mr. Muthuraman Swaminathan",
+    "Date": "04-February-2025",
+    "Coordinators": ["Dr. Mainak Basu", "Dr. Arindam Bit"]
+  },
+  {
+    "SlNo": 7,
+    "Title": "IICC expert lecture: 'Revolutionizing Healthcare: The AI Advantage' by Mr. Ajit Deshpande",
+    "Date": "19-September-2025",
+    "Coordinators": ["Dr. Sudip Paul", "Dr. Arindam Bit"]
+  },
+  {
+    "SlNo": 8,
+    "Title": "Short Term Training Program (STTP) on Emerging Trends and Challenges in Biomechanics and Biomaterials",
+    "Date": "25th - 30th July 2023",
+    "Coordinators": ["Dr. Nishant Kumar Singh", "Dr. M. Marieswaran"]
+  },
+  {
+    "SlNo": 9,
+    "Title": "2nd International Conference on Biomedical Engineering Science and Technology: Roadway from Laboratory to Market (ICBEST 2023)",
+    "Date": "10th - 11th Feb 2023",
+    "Coordinators": ["Dr. Saurabh Gupta", "Dr. Nishant Kumar Singh", "Dr. M. Marieswaran"]
+  },
+  {
+    "SlNo": 10,
+    "Title": "1st International Conference on “Biomedical Engineering Science and Technology: Roadway from Laboratory to Market” (ICBEST 2018)",
+    "Date": "20th - 21st Dec 2018",
+    "Coordinators": ["Dr. Neelamshobha Nirala", "Dr. Arindam Bit", "Dr. Saurabh Gupta"]
+  },
+  {
+    "SlNo": 11,
+    "Title": "One-week short term training programme on “Big Data Analytic and related Technologies” under TEQIP III",
+    "Date": "8th - 12th Jan 2018",
+    "Coordinators": ["Dr. Saurabh Gupta", "Dr. Govind P Gupta", "Dr. Sandeep K Chouksey"]
+  },
+  {
+    "SlNo": 12,
+    "Title": "GIAN course on “Health Service Management”",
+    "Date": "17th - 21st Jan 2018",
+    "Coordinators": ["Dr. Saurabh Gupta"]
+  },
+  {
+    "SlNo": 13,
+    "Title": "One week short term course on Campus to Corporate",
+    "Date": "09th - 13th Oct 2017",
+    "Coordinators": ["Dr. Bikesh Kumar Singh"]
+  },
+  {
+    "SlNo": 14,
+    "Title": "One week short term course on Enhancing Employability Skills: Connecting Campus with Corporate",
+    "Date": "09th - 13th Dec 2017",
+    "Coordinators": ["Dr. Bikesh Kumar Singh"]
+  },
+  {
+    "SlNo": 15,
+    "Title": "Training programme on MIMICS under TEQIP II",
+    "Date": "18th - 20th Sept. 2016",
+    "Coordinators": ["Dr. Arindam Bit"]
+  },
+  {
+    "SlNo": 16,
+    "Title": "ISWT Course on Thermo-Fluid Science for Bioengineering & Energy Applications",
+    "Date": "27th May - 01st Jun 2016",
+    "Coordinators": ["Dr. Arindam Bit"]
+  },
+  {
+    "SlNo": 17,
+    "Title": "3 days National Workshop on Recent Advances in Biomedical Signal Processing: Application to rehabilitation and therapeutic solution (BSP : RTS 16)",
+    "Date": "20th - 24th Aug 2016",
+    "Coordinators": ["Dr. Bikesh Kumar Singh"]
+  },
+  {
+    "SlNo": 18,
+    "Title": "Academic-Research institution & Industry lecture series on Biomedical Circuit Design by Dr. Sanjeev Kumar",
+    "Date": "27th March 2015",
+    "Coordinators": ["Dr. R Periyasamy"]
+  },
+  {
+    "SlNo": 19,
+    "Title": "Academic-Research institution & Industry lecture series on Emerging Technical and social trends in limb prosthesis by Dr. Deepak Joshi",
+    "Date": "27th March 2015",
+    "Coordinators": ["Dr. R Periyasamy"]
+  },
+  {
+    "SlNo": 20,
+    "Title": "Academic-Research institution & Industry lecture series on Mobile App innovation in Indian healthcare by Shri. Sachin Gaur",
+    "Date": "27th March 2015",
+    "Coordinators": ["Dr. R Periyasamy"]
+  },
+  {
+    "SlNo": 21,
+    "Title": "National Workshop on “Statistical Data Analysis in Healthcare” under TEQIP II",
+    "Date": "30th - 31st Oct 2015",
+    "Coordinators": ["Dr. R Periyasamy", "Dr. Saurabh Gupta"]
+  },
+  {
+    "SlNo": 22,
+    "Title": "Webinar under National Knowledge Network (NKN)",
+    "Date": "30th Oct 2015",
+    "Coordinators": ["Dr. Saurabh Gupta"]
+  },
+  {
+    "SlNo": 23,
+    "Title": "National Workshop on Recent trends in the field of Biomechanics: Application to device development and Surgery issues (NWRTB-14)",
+    "Date": "11th - 13th Sep 2014",
+    "Coordinators": ["Dr. Arindam Bit"]
+  },
+  {
+    "SlNo": 24,
+    "Title": "Academic-Research institution & Industry lecture series under TEQIP II",
+    "Date": "23rd Sept 2014",
+    "Coordinators": ["NA"]
+  },
+  {
+    "SlNo": 25,
+    "Title": "One-week short term course on MATLAB Programming and its Engineering Applications (MPEA-2013) under CEC NIT Raipur",
+    "Date": "26th - 30th Dec 2013",
+    "Coordinators": ["Dr. Bi"]
+  }
+]

@@ -1,0 +1,67 @@
+{
+  "employees": [
+    {
+      "sl_no": 1,
+      "name": "Mr. Ramesh Kumar",
+      "designation": "Senior Technician (Regular)",
+      "qualification": "B.Sc (Physics)",
+      "date_of_appointment": "01-12-2023",
+      "contact_info": {
+        "phone": "+91-7033136182",
+        "email": "rkumar.bme@nitrr.ac.in"
+      },
+      "image_url": "/images/ramesh.jpg"
+    },
+    {
+      "sl_no": 2,
+      "name": "Mrs. Madhubala Diwakar",
+      "designation": "Laboratory Assistant (Regular)",
+      "qualification": "B.Sc (Biology)",
+      "date_of_appointment": "13-12-2017",
+      "contact_info": {
+        "phone": [
+          "+91-9827617707",
+          "+91-7974864846"
+        ],
+        "email": "mdiwakar.bme@nitrr.ac.in"
+      },
+      "image_url": "/images/madhubala.jpg"
+    },
+    {
+      "sl_no": 3,
+      "name": "Mr. Rajendra Kumar Singh",
+      "designation": "Technician (Regular)",
+      "qualification": "12th, ITI (COPA)",
+      "date_of_appointment": "01-12-2023",
+      "contact_info": {
+        "phone": "+91-9826971443",
+        "email": "rksingh.bme@nitrr.ac.in"
+      },
+      "image_url": "/images/rajendra.jpg"
+    },
+    {
+      "sl_no": 4,
+      "name": "Mr. Manoj Kumar Nayak",
+      "designation": "Assistant Grade-III (Contract)",
+      "qualification": "PGDAC, MA Sociology",
+      "date_of_appointment": "14-02-2013",
+      "contact_info": {
+        "phone": "+91-9907802124",
+        "email": "nayakmm143@gmail.com"
+      },
+      "image_url": "/images/nayak.jpg"
+    },
+    {
+      "sl_no": 5,
+      "name": "Ms. Laxmi Bai",
+      "designation": "Assistant Grade-IV (Contract)",
+      "qualification": "Intermediate",
+      "date_of_appointment": "NA",
+      "contact_info": {
+        "phone": "+91-9303418249",
+        "email": null
+      },
+      "image_url": "/images/laxmi.jpg"
+    }
+  ]
+}

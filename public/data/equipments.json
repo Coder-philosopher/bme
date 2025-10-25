@@ -1,0 +1,238 @@
+{
+  "equipment_list": [
+    {
+      "sn": 1,
+      "name": "Laser Pro X252",
+      "specs": {
+        "max_power": "80 W"
+      }
+    },
+    {
+      "sn": 2,
+      "name": "Microviscometer Anton Paar Lovis 2000ME",
+      "specs": {
+        "max_power": "80 W",
+        "speed": "1000 mm/s",
+        "repetitions": "20"
+      }
+    },
+    {
+      "sn": 3,
+      "name": "3D Printer",
+      "specs": {
+        "dimensions": "342x505x588 mm",
+        "build_volume": "215x215x200 mm",
+        "build_speed": "<24 mm³/s",
+        "print_head_travel_speed": "30 to 300 mm/s",
+        "operating_sound": "50 dBA",
+        "filament_diameter": "2.85 mm",
+        "nozzle_temperature": "180 - 280 °C",
+        "bed_temperature": "20 - 120 °C heated glass build plate",
+        "resolution": "6.9, 6.9, 2.5 microns (XYZ)",
+        "material_intake": "PLA, PETG"
+      }
+    },
+    {
+      "sn": 4,
+      "name": "Spin coater Apex India SpinNXG-P1A",
+      "specs": {
+        "speed_range": "100 - 10,000 RPM",
+        "acceleration": "40 - 5,000 RPM",
+        "duration": "1 - 9,999 seconds per step",
+        "error_rate": "Less than 1%"
+      }
+    },
+    {
+      "sn": 5,
+      "name": "Oxygen plasma Harrick Plasma PDC/32G/2",
+      "specs": {
+        "chamber_size": "3” Dia. x 6.5” L",
+        "rf_power": "18 W max",
+        "dimensions": "9” H x 10” W x 8” D",
+        "weight": "13 Lbs."
+      }
+    },
+    {
+      "sn": 6,
+      "name": "Lyophilizer Delvac Lyodel -80 Freeze dryer",
+      "specs": {
+        "details": "NA"
+      }
+    },
+    {
+      "sn": 7,
+      "name": "Hot air oven - Pooja Scientific Instruments",
+      "specs": {
+        "serial_no": "12017",
+        "max_temp": "180 °C",
+        "air_circulation": "Forced Air Circulation",
+        "chambers": "One",
+        "power": "1.2 HP"
+      }
+    },
+    {
+      "sn": 8,
+      "name": "Autoclave - Pooja Scientific Instruments",
+      "specs": {
+        "inner_dimensions": "250x450 mm",
+        "capacity": "22 L",
+        "working_load": "2.0 KW",
+        "sterilising_pressure": "1.2 kgf/cm² (15 psi) at 121°C",
+        "pressure_gauge": "0-2.1 kgf/cm² (30 psi)",
+        "operating_pressure": "15 to 20 psi (Adjustable)"
+      }
+    },
+    {
+      "sn": 9,
+      "name": "16-channel EEG setup - AD Instruments 16/35",
+      "specs": {
+        "inputs": "16 (12 single-ended, 4 configurable)",
+        "amplification_range": "±2 mV to ±10 V",
+        "max_input_voltage": "±15 V",
+        "frequency_response": "25 kHz on 10 V range",
+        "output_range": "±200 mV to ±10 V"
+      }
+    },
+    {
+      "sn": 10,
+      "name": "Spectrophotometer / Plate reader",
+      "specs": {
+        "bandwidth": "<2.5 nm",
+        "wavelength_selection": "Monochromator",
+        "light_source": "Xenon flash lamp",
+        "wavelength_range": "200–1,000 nm (1 nm steps)",
+        "readout_range": "Up to 4 absorbance units",
+        "linearity": "0–2.5 Abs, 2%",
+        "accuracy": "1.0% + 0.003 Abs (0–2.0 Abs), 2.0% (2.0–2.5 Abs)",
+        "measurement_speed": "6 sec with a 96-well plate",
+        "spectral_scanning_speed": "10 sec from 200–1,000 nm"
+      }
+    },
+    {
+      "sn": 11,
+      "name": "Cell Imaging System",
+      "specs": {
+        "magnification": "1.25X to 100X",
+        "resolution": "1920x1080 pixels",
+        "light_source": "Lumen Dynamics X-Cite Series 120Q",
+        "camera": "Zeiss AxioCam ERc5s",
+        "objective_lenses": "40x, 20x, 10x, 5x"
+      }
+    },
+    {
+      "sn": 12,
+      "name": "Microfluidic Workstation",
+      "specs": {
+        "flow_controller": "Fluigent, Flow EZ",
+        "link_module": "Fluigent, LINK",
+        "flow_sensors": "Fluigent, Flow Unit-M+",
+        "pressure_sensor": "Fluigent, Unit-M",
+        "switches": "Fluigent, L-Switches - 6 port/2 position",
+        "valve_controller": "Fluigent, Switch EZ",
+        "pressure_source": "Fluigent, FLPG Plus",
+        "flow_range": "0±2 mL/min"
+      }
+    },
+    {
+      "sn": 13,
+      "name": "Electrospinning Unit",
+      "specs": {
+        "output_voltage": "0 to 50 KV ± 0.05%",
+        "voltage_adjustment": "0.1 KV",
+        "output_current": "0 to 400 μA"
+      }
+    },
+    {
+      "sn": 14,
+      "name": "Bio Safety Cabinet (Laminar Air Flow 1300 Series)",
+      "specs": {
+        "air_flow": "1415 m³/h"
+      }
+    },
+    {
+      "sn": 15,
+      "name": "Ultrasonic Bath",
+      "specs": {
+        "power": "120 watts",
+        "heat_power": "50 watts"
+      }
+    },
+    {
+      "sn": 16,
+      "name": "Academic and Research Consultancy for COMSOL Multiphysics",
+      "specs": {
+        "details": "NA"
+      }
+    },
+    {
+      "sn": 17,
+      "name": "Scaffold Fabrication",
+      "specs": {
+        "details": "NA"
+      }
+    },
+    {
+      "sn": 18,
+      "name": "Augmented Reality & Virtual Reality Headsets",
+      "specs": {
+        "details": "NA"
+      }
+    },
+    {
+      "sn": 19,
+      "name": "Universal Testing Machine",
+      "specs": {
+        "details": "NA"
+      }
+    },
+    {
+      "sn": 20,
+      "name": "Surface Roughness Measurement Equipment",
+      "specs": {
+        "details": "NA"
+      }
+    },
+    {
+      "sn": 21,
+      "name": "Desktop Filament Maker",
+      "specs": {
+        "details": "NA"
+      }
+    },
+    {
+      "sn": 22,
+      "name": "Contact Angle Measurement Equipment",
+      "specs": {
+        "details": "NA"
+      }
+    },
+    {
+      "sn": 23,
+      "name": "Neuropathy Analyser - Vibrotherm Dx",
+      "specs": {
+        "method": "Thermal and Vibration"
+      }
+    },
+    {
+      "sn": 24,
+      "name": "Automatic ABI Measurement - Versalab Auto",
+      "specs": {
+        "details": "NA"
+      }
+    },
+    {
+      "sn": 25,
+      "name": "Stereo Microscope",
+      "specs": {
+        "details": "NA"
+      }
+    },
+    {
+      "sn": 26,
+      "name": "DC Sputtering Unit",
+      "specs": {
+        "details": "NA"
+      }
+    }
+  ]
+}
